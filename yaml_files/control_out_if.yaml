@@ -1,0 +1,155 @@
+# The purpose of this file is meant to provide a
+# starting point for the creation of a new YAML interface
+# description. Uncomment what you require to define a
+# given interface YAML file.
+
+uvmf:
+  interfaces:
+    "control_out":
+      clock: "clock"
+      reset: "reset"
+      reset_assertion_level: "True"
+      ## Set this flag to disable generation of this interface
+#      existing_library_component : "True"
+      veloce_ready: "False"
+#      parameters:
+#        - name: "IF_PARAMETER"
+#          type: "parameter_type"
+#          value: "parameter_value"
+#      hvl_pkg_parameters:
+#        - name: "IF_HVL_PKG_PARAMETER1"
+#          type: "parameter_type"
+#          value: "parameter_value"
+#      hdl_pkg_parameters:
+#        - name: "IF_HDL_PKG_PARAMETER1"
+#          type: "parameter_type"
+#          value: "parameter_value"
+#      imports:
+#        - name: "name_of_package_to_be_imported"
+#      hdl_typedefs:
+#        - name: "typedef_name"
+#          type: "typedef_definition"       
+#      hvl_typedefs:
+#       - name: "typedef_name"
+#          type: "typedef_definition"
+      ports: # Specify the port direction from the perspective of the INITIATOR or MASTER
+#          Valid values for dir include input, output, and inout.
+        - name: "enable_updatePC"
+          width: "1"        
+          dir: "input" 
+          reset_value: "'bz"
+        - name: "enable_fetch"   
+          width: "1"        
+          dir: "input" 
+          reset_value: "'bz"
+        - name: "enable_decode"   
+          width: "1"        
+          dir: "input" 
+          reset_value: "'bz"
+        - name: "enable_execute"   
+          width: "1"        
+          dir: "input" 
+          reset_value: "'bz"
+        - name: "enable_writeback"   
+          width: "1"        
+          dir: "input" 
+          reset_value: "'bz" 
+        - name: "br_taken"   
+          width: "1"        
+          dir: "input" 
+          reset_value: "'bz"
+        - name: "bypass_alu_1"   
+          width: "1"        
+          dir: "input" 
+          reset_value: "'bz"
+        - name: "bypass_alu_2"   
+          width: "1"        
+          dir: "input" 
+          reset_value: "'bz"
+        - name: "bypass_mem_1"   
+          width: "1"        
+          dir: "input" 
+          reset_value: "'bz"
+        - name: "bypass_mem_2"   
+          width: "1"        
+          dir: "input" 
+          reset_value: "'bz"
+        - name: "mem_state"   
+          width: "2"        
+          dir: "input" 
+          reset_value: "'bz"
+      transaction_vars:
+        - name: "enable_updatePC"  
+          type: "logic" # transaction_variable_type
+          isrand: "False"
+          iscompare: "False" 
+        - name: "enable_fetch"  
+          type: "logic" # transaction_variable_type
+          isrand: "False"
+          iscompare: "False"
+        - name: "enable_decode"  
+          type: "logic" # transaction_variable_type
+          isrand: "False"
+          iscompare: "False"
+        - name: "enable_execute"  
+          type: "logic" # transaction_variable_type
+          isrand: "False"
+          iscompare: "False" 
+        - name: "enable_writeback"  
+          type: "logic" # transaction_variable_type
+          isrand: "False"
+          iscompare: "False"
+        - name: "br_taken"  
+          type: "logic" # transaction_variable_type
+          isrand: "False"
+          iscompare: "False" 
+        - name: "bypass_alu_1"  
+          type: "logic" # transaction_variable_type
+          isrand: "False"
+          iscompare: "False"
+        - name: "bypass_alu_2"  
+          type: "logic" # transaction_variable_type
+          isrand: "False"
+          iscompare: "False"
+        - name: "bypass_mem_1"  
+          type: "logic" # transaction_variable_type
+          isrand: "False"
+          iscompare: "False"
+        - name: "bypass_mem_2"  
+          type: "logic" # transaction_variable_type
+          isrand: "False"
+          iscompare: "False"
+        - name: "mem_state"  
+          type: "logic [1:0]" # transaction_variable_type
+          isrand: "False"
+          iscompare: "False"
+#      transaction_constraints:
+#        - name: "constraint_body_name"
+#          value: "{ constraint; }"
+#      config_vars:
+#        - name: "config_variable_name"
+#          type: "config_variable_type"
+#          isrand: "True"
+#          value: "default_value"
+#      config_constraints:
+#        - name: "constraint_body_name"
+#          value: "{ constraint; }"
+#      dpi_define:
+#        name: "new_shared_object_name"
+#        files:
+#          - "myFirstIfFile.c"
+#          - "mySecondIfFile.c"
+#        comp_args: "-c -DPRINT32 -O2"
+#        link_args: "-shared"
+#        imports:
+#          - name: "c_function_name"
+#            c_return_type: "void"
+#            sv_return_type: "void"
+#            c_args: "(unsigned int variable1, unsigned int variable2)"
+#            sv_args: 
+#              - name: "variable1"
+#                type: "int unsigned"
+#                dir: "input"
+#              - name: "variable2"
+#                type: "int unsigned"
+#                dir: "input"
