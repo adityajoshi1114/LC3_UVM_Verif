@@ -1,0 +1,48 @@
+uvmf:
+  interfaces:
+    "memaccess_out":
+      clock: "clock"
+      reset: "reset"
+      reset_assertion_level: "True"
+      veloce_ready: "True"
+      transaction_vars:
+        - name: "DMem_addr"  
+          type: "logic [15:0]" # Address for memory operations
+          isrand: "False"
+          iscompare: "True"
+
+        - name: "DMem_din"  
+          type: "logic [15:0]" # Data written to memory
+          isrand: "False"
+          iscompare: "True"
+
+        - name: "DMem_rd"  
+          type: "bit" # 1 for read, 0 for write
+          isrand: "False"
+          iscompare: "True"
+
+        - name: "memout"  
+          type: "logic [15:0]" # Reflects DMem_dout contents asynchronously
+          isrand: "False"
+          iscompare: "True"
+
+      ports:
+        - name: "DMem_addr"   
+          width: "16"        
+          dir: "output" 
+          reset_value: "'bz"  # High impedance when mem_state = 3
+
+        - name: "DMem_din"   
+          width: "16"        
+          dir: "output" 
+          reset_value: "'bz"  # High impedance for stores when mem_state = 3
+
+        - name: "DMem_rd"   
+          width: "1"        
+          dir: "output" 
+          reset_value: "'bz"  # High impedance for mem_state = 3
+
+        - name: "memout"   
+          width: "16"        
+          dir: "output" 
+          reset_value: "'bz"  # Reflects DMem_dout asynchronously
