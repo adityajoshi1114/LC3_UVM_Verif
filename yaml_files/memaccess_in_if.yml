@@ -8,10 +8,10 @@ uvmf:
     "memaccess_in":
       clock: "clock"
       reset: "reset"
-      reset_assertion_level: "True"
+      reset_assertion_level: "False"
       ## Set this flag to disable generation of this interface
 #      existing_library_component : "True"
-      veloce_ready: "True"
+      veloce_ready: "False"
 #      parameters:
 #        - name: "IF_PARAMETER"
 #          type: "parameter_type"
