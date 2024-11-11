@@ -3,8 +3,8 @@ uvmf:
     "memaccess_out":
       clock: "clock"
       reset: "reset"
-      reset_assertion_level: "True"
-      veloce_ready: "True"
+      reset_assertion_level: "False"
+      veloce_ready: "False"
       transaction_vars:
         - name: "DMem_addr"  
           type: "logic [15:0]" # Address for memory operations
