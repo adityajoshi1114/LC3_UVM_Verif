@@ -32,7 +32,7 @@ uvmf:
 #      hvl_typedefs:
 #        - name: "typedef_name"
 #          type: "typedef_definition"
-       ports: # Specify the port direction from the perspective of the INITIATOR or MASTER
+      ports: # Specify the port direction from the perspective of the INITIATOR or MASTER
 #          Valid values for dir include input, output, and inout.
          - name: "enable_execute"   
            width: "1"        

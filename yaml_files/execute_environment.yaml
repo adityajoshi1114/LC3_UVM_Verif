@@ -4,7 +4,7 @@
 # given environment YAML file.
 
 uvmf:
-#  util_components:
+   util_components:
      "execute_predictor" :
        type: "predictor"
        analysis_exports :
@@ -20,8 +20,8 @@ uvmf:
 #        - name: "ENV_PARAMETER"
 #          type: "int"
 #          value: "120"
-  environments:
-    "execute" :
+   environments:
+     "execute" :
       ## Set this flag to disable generation of this environment
 #      existing_library_component : "True"
       ## Parameters for the environment
@@ -46,11 +46,11 @@ uvmf:
 #      qvip_subenvs:
 #        - name: "qvip_sub_environment_instance_name"
 #          type: "qvip_sub_environment_package"
-      agents :
-        - name: "agent_in" 
-          type: "execute_in"
-        - name: "agent_out" 
-          type: "execute_out"
+       agents :
+         - name: "agent_in" 
+           type: "execute_in"
+         - name: "agent_out" 
+           type: "execute_out"
 #          initiator_responder: "INITIATOR_or_RESPONDER"
 #          parameters:
 #            - name: "IF_PARAMETER"
