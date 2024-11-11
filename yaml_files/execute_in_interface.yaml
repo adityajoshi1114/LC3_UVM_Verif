@@ -49,6 +49,12 @@ uvmf:
          - name: "npc_in"   
            width: "16"        
            dir: "output"
+         - name: "VSR1"   
+           width: "16"        
+           dir: "output"
+         - name: "VSR2"   
+           width: "16"        
+           dir: "output"
          - name: "bypass_alu_1"   
            width: "1"        
            dir: "output"  
@@ -68,12 +74,52 @@ uvmf:
            width: "2"        
            dir: "output"  
       transaction_vars:
-        - name: "transaction_variable_name"  
+        - name: "E_ctrl"  
+          type: "bit [5:0]" # transaction_variable_type
+          isrand: "False"
+          iscompare: "True" 
+        - name: "bp_alu_1"  
           type: "bit" # transaction_variable_type
           isrand: "False"
           iscompare: "True" 
-        - name: "transaction_variable_name"  
+        - name: "bp_alu_2"  
           type: "bit" # transaction_variable_type
+          isrand: "False"
+          iscompare: "True" 
+        - name: "bp_mem_1"  
+          type: "bit" # transaction_variable_type
+          isrand: "False"
+          iscompare: "True"
+        - name: "bp_mem_2"  
+          type: "bit" # transaction_variable_type
+          isrand: "False"
+          iscompare: "True"  
+        - name: "Instr"  
+          type: "bit [15:0]" # transaction_variable_type
+          isrand: "False"
+          iscompare: "True" 
+        - name: "npc"  
+          type: "bit [15:0]" # transaction_variable_type
+          isrand: "False"
+          iscompare: "True"
+        - name: "mem_ctrl"  
+          type: "bit" # transaction_variable_type
+          isrand: "False"
+          iscompare: "True"  
+        - name: "w_ctrl"  
+          type: "bit [1:0]" # transaction_variable_type
+          isrand: "False"
+          iscompare: "True" 
+        - name: "Mem_bp"  
+          type: "bit [15:0]" # transaction_variable_type
+          isrand: "False"
+          iscompare: "True" 
+        - name: "vsr1"  
+          type: "bit [15:0]" # transaction_variable_type
+          isrand: "False"
+          iscompare: "True" 
+        - name: "vsr2"  
+          type: "bit [15:0]" # transaction_variable_type
           isrand: "False"
           iscompare: "True" 
 #      transaction_constraints:
