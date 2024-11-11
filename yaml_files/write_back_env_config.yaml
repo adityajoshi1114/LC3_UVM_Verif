@@ -1,0 +1,26 @@
+uvmf:
+  environments:
+    "write_back" :
+      agents :
+        - name: "write_back_in_agent"
+          type: "write_back_in"
+          initiator_responder: "INITIATOR"
+        - name: "write_back_out_agent"
+          type: "write_back_out"
+          initiator_responder: "INITIATOR"
+      analysis_components :
+        - name: "write_back_predictor"
+          type: "write_back_predictor"
+      scoreboards : 
+        - name: "write_back_scoreboard"
+          sb_type: "uvmf_in_order_race_scoreboard"
+          trans_type: "write_back_out_transaction"
+      tlm_connections :
+        - driver:   "write_back_in_agent.monitored_ap"
+          receiver: "write_back_predictor.observed_write_back_in"
+        - driver:   "write_back_out_agent.monitored_ap"
+          receiver: "write_back_scoreboard.actual_analysis_export"
+        - driver:   "write_back_predictor.pred_write_back_out"
+          receiver: "write_back_scoreboard.expected_analysis_export"
+      imports:
+        - name: "lc3_prediction_pkg"
