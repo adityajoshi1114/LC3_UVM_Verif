@@ -1,0 +1,30 @@
+uvmf:
+  interfaces:
+    "fetch_out":
+      clock: "clock"
+      reset: "reset"
+      reset_assertion_level: "False"    
+      veloce_ready: "False"       
+      ports: 
+        - name: "pc"   
+          width: "16"        
+          dir: "input" 
+        - name: "npc"   
+          width: "16"        
+          dir: "input" 
+        - name: "Imem_rd"   
+          width: "1"        
+          dir: "input"          
+      transaction_vars:
+        - name: "PC"
+          type: "logic [15:0]"
+          isrand: "False"
+          iscompare: "True" 
+        - name: "NPC"  
+          type: "logic [15:0]"
+          isrand: "False"
+          iscompare: "True" 
+        - name: "Imem_RD"  
+          type: "logic"
+          isrand: "False"
+          iscompare: "True" 

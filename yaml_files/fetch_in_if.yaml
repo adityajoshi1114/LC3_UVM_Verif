@@ -1,0 +1,38 @@
+uvmf:
+    interfaces:
+      "fetch_in":
+        clock: "clock"
+        reset: "reset"
+        reset_assertion_level: "False"    
+        veloce_ready: "False" 
+        ports: 
+          - name: "enable_updatePC"   
+            width: "1"        
+            dir: "output" 
+          - name: "enable_fetch"   
+            width: "1"        
+            dir: "output" 
+          - name: "taddr"   
+            width: "16"        
+            dir: "output"
+          - name: "br_taken"   
+            width: "1"        
+            dir: "output"             
+        transaction_vars:
+          - name: "Enable_updatePC"  
+            type: "logic"
+            isrand: "True"
+            iscompare: "True" 
+          - name: "Enable_fetch"  
+            type: "logic"
+            isrand: "True"
+            iscompare: "True" 
+          - name: "Taddr"  
+            type: "logic [15:0]"
+            isrand: "True"
+            iscompare: "True" 
+          - name: "Br_taken"  
+            type: "logic"
+            isrand: "True"
+            iscompare: "True" 
+          
