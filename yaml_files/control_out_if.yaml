@@ -8,7 +8,7 @@ uvmf:
     "control_out":
       clock: "clock"
       reset: "reset"
-      reset_assertion_level: "True"
+      reset_assertion_level: "False"
       ## Set this flag to disable generation of this interface
 #      existing_library_component : "True"
       veloce_ready: "False"
@@ -82,47 +82,47 @@ uvmf:
         - name: "enable_updatePC"  
           type: "logic" # transaction_variable_type
           isrand: "False"
-          iscompare: "False" 
+          iscompare: "True" 
         - name: "enable_fetch"  
           type: "logic" # transaction_variable_type
           isrand: "False"
-          iscompare: "False"
+          iscompare: "True"
         - name: "enable_decode"  
           type: "logic" # transaction_variable_type
           isrand: "False"
-          iscompare: "False"
+          iscompare: "True"
         - name: "enable_execute"  
           type: "logic" # transaction_variable_type
           isrand: "False"
-          iscompare: "False" 
+          iscompare: "True" 
         - name: "enable_writeback"  
           type: "logic" # transaction_variable_type
           isrand: "False"
-          iscompare: "False"
+          iscompare: "True"
         - name: "br_taken"  
           type: "logic" # transaction_variable_type
           isrand: "False"
-          iscompare: "False" 
+          iscompare: "True" 
         - name: "bypass_alu_1"  
           type: "logic" # transaction_variable_type
           isrand: "False"
-          iscompare: "False"
+          iscompare: "True"
         - name: "bypass_alu_2"  
           type: "logic" # transaction_variable_type
           isrand: "False"
-          iscompare: "False"
+          iscompare: "True"
         - name: "bypass_mem_1"  
           type: "logic" # transaction_variable_type
           isrand: "False"
-          iscompare: "False"
+          iscompare: "True"
         - name: "bypass_mem_2"  
           type: "logic" # transaction_variable_type
           isrand: "False"
-          iscompare: "False"
+          iscompare: "True"
         - name: "mem_state"  
           type: "logic [1:0]" # transaction_variable_type
           isrand: "False"
-          iscompare: "False"
+          iscompare: "True"
 #      transaction_constraints:
 #        - name: "constraint_body_name"
 #          value: "{ constraint; }"
