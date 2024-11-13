@@ -5,7 +5,7 @@
 
 uvmf:
   interfaces:
-    "execute_out":
+    "instruction_memory":
       clock: "clock"
       reset: "reset"
       reset_assertion_level: "False"
@@ -26,88 +26,83 @@ uvmf:
 #          value: "parameter_value"
 #      imports:
 #        - name: "name_of_package_to_be_imported"
-#      hdl_typedefs:
-#        - name: "typedef_name"
-#          type: "typedef_definition"       
+      hdl_typedefs:
+        - name: "reg_t"
+          type: "enum bit [2:0] {R0 = 0, R1 = 1, R2 = 2, R3 = 3, R4 = 4, R5 = 5, R6 = 6, R7 = 7}"
+        - name: "opcode_t"
+          type: "enum bit [3:0] {ADD = 4'b0001, AND = 4'b0101, NOT = 4'b1001, LD = 0010, LDR = 0110, LDI = 1010, LEA = 1110, ST = 0011, STR = 0111, STI = 1011, BR = 0000, JMP = 1100} "
+        - name: "nzp_t"
+          type: "enum bit [2:0] {Z = 010, NP = 101, P = 001, ZP = 011, N = 100, NZ = 110, NZP = 111}"
 #      hvl_typedefs:
 #        - name: "typedef_name"
 #          type: "typedef_definition"
       ports: # Specify the port direction from the perspective of the INITIATOR or MASTER
 #          Valid values for dir include input, output, and inout.
-         - name: "W_Control_out"   
-           width: "2"        
-           dir: "output" 
-         - name: "Mem_Control_out"   
-           width: "1"        
-           dir: "output"
-         - name: "aluout"   
-           width: "16"        
-           dir: "output"
-         - name: "pcout"   
-           width: "16"        
-           dir: "output"
-         - name: "dr"   
-           width: "3"        
-           dir: "output"
-         - name: "sr1"   
-           width: "3"        
-           dir: "output"
-         - name: "sr2"   
-           width: "3"        
-           dir: "output"
-         - name: "IR_Exec"   
-           width: "16"        
-           dir: "output" 
-         - name: "NZP"   
-           width: "3"        
-           dir: "output"
-         - name: "M_data"   
-           width: "16"        
-           dir: "output"
-         - name: "en_ex"   
-           width: "1"        
-           dir: "output"
+        - name: "PC"   
+          width: "16"        
+          dir: "output" 
+          reset_value: "'bz"
+        - name: "instrmem_rd"   
+          width: "1"        
+          dir: "output" 
+          reset_value: "'bz"
+        - name: "instr_dout"   
+          width: "16"        
+          dir: "input" 
+          reset_value: "'bz"
+        - name: "complete_instr"   
+          width: "1"        
+          dir: "input" 
+          reset_value: "'bz"
       transaction_vars:
-        - name: "alu_out"  
+        - name: "PC"  
           type: "bit [15:0]" # transaction_variable_type
           isrand: "False"
-          iscompare: "True"
-        - name: "w_ctrl"  
-          type: "bit [1:0]" # transaction_variable_type
-          isrand: "False"
-          iscompare: "True"
-        - name: "mem_ctrl"  
+          iscompare: "True" 
+        - name: "Imem_en"  
           type: "bit" # transaction_variable_type
           isrand: "False"
-          iscompare: "True" 
-        - name: "M_data"  
-          type: "bit [15:0]" # transaction_variable_type
+          iscompare: "True"
+        - name: "cmp_instr"  
+          type: "bit" # transaction_variable_type
           isrand: "False"
           iscompare: "True"
-        - name: "dest_reg"  
-          type: "bit [2:0]" # transaction_variable_type
-          isrand: "False"
+        - name: "opcode"  
+          type: "opcode_t" # transaction_variable_type
+          isrand: "True"
+          iscompare: "True"
+        - name: "src1"  
+          type: "reg_t" # transaction_variable_type
+          isrand: "True"
           iscompare: "True" 
-        - name: "src_reg1"  
-          type: "bit [2:0]" # transaction_variable_type
-          isrand: "False"
+        - name: "src2"  
+          type: "reg_t" # transaction_variable_type
+          isrand: "True"
           iscompare: "True" 
-        - name: "src_reg2"  
-          type: "bit [2:0]" # transaction_variable_type
-          isrand: "False"
+        - name: "dest"  
+          type: "reg_t" # transaction_variable_type
+          isrand: "True"
+          iscompare: "True" 
+        - name: "imm5"  
+          type: "bit [4:0]" # transaction_variable_type
+          isrand: "True"
+          iscompare: "True" 
+        - name: "PCoffset9"  
+          type: "bit [8:0]" # transaction_variable_type
+          isrand: "True"
+          iscompare: "True"
+        - name: "BaseR"  
+          type: "reg_t" # transaction_variable_type
+          isrand: "True"
+          iscompare: "True"
+        - name: "cnd_flags"  
+          type: "nzp_t" # transaction_variable_type
+          isrand: "True"
           iscompare: "True"  
-        - name: "IR_ex"  
+        - name: "Instr_Dout"  
           type: "bit [15:0]" # transaction_variable_type
           isrand: "False"
-          iscompare: "True"
-        - name: "nzp"  
-          type: "bit [2:0]" # transaction_variable_type
-          isrand: "False"
-          iscompare: "True"
-        - name: "pc_out"  
-          type: "bit [15:0]" # transaction_variable_type
-          isrand: "False"
-          iscompare: "True" 
+          iscompare: "True"   
 #      transaction_constraints:
 #        - name: "constraint_body_name"
 #          value: "{ constraint; }"
