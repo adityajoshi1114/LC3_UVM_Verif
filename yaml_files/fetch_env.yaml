@@ -1,4 +1,14 @@
+
 uvmf:
+  util_components:
+      "fetch_predictor" :  
+        type: "predictor"
+        analysis_exports :
+          - name: "analysis_export"
+            type: "fetch_in_transaction"
+        analysis_ports : 
+          - name: "analysis_port"
+            type: "fetch_out_transaction"
   environments:
     "fetch" :
       imports:
@@ -6,15 +16,15 @@ uvmf:
         - name: fetch_out_pkg  
         - name: lc3_prediction_pkg
       agents :
-        - name: "fetch_in_agent"
+        - name: "in_agent"
           type: "fetch_in"
-          initiator_responder: "INITIATOR"
-        - name: "fetch_out_agent"
+#          initiator_responder: "INITIATOR"
+        - name: "out_agent"
           type: "fetch_out"
-          initiator_responder: "RESPONDER"
+ #         initiator_responder: "RESPONDER"
       
       analysis_components :
-        - name: "Fetch_predictor"
+        - name: "predictor"
           type: "fetch_predictor"
 
       scoreboards : 
@@ -24,16 +34,17 @@ uvmf:
 
 
       tlm_connections :
-        - driver:   "fetch_in_agent.monitored_ap"
-          receiver: "Fetch_predictor.analysis_export"
-
-        - driver:   "Fetch_predictor.analysis_port"
+        - driver:   "in_agent.monitored_ap"
+          receiver: "predictor.analysis_export"
+          validate: "True"
+        - driver:   "predictor.analysis_port"
           receiver: "Fetch_Scoreboard.expected_analysis_export"
-
-        - driver:   "fetch_out_agent.monitored_ap"
+          validate: "True"
+        - driver:   "out_agent.monitored_ap"
           receiver: "Fetch_Scoreboard.actual_analysis_export"
-
+          validate: "True"
       imports:
         - name: lc3_prediction_pkg
-  
+        - name: "fetch_in_pkg"
+        - name: "fetch_out_pkg"
   
