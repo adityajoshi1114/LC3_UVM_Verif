@@ -54,10 +54,6 @@ uvmf:
           width: "16"        
           dir: "output" 
           reset_value: "'bz"
-        - name: "D_macc"   
-          width: "1"        
-          dir: "output" 
-          reset_value: "'bz"
       transaction_vars:
         - name: "complete_data"  
           type: "logic" # transaction_variable_type
@@ -77,10 +73,6 @@ uvmf:
           iscompare: "True"
         - name: "Data_addr"  
           type: "logic [15:0]" # transaction_variable_type
-          isrand: "False"
-          iscompare: "True" 
-        - name: "D_macc"  
-          type: "logic" # transaction_variable_type
           isrand: "False"
           iscompare: "True"
 #      transaction_constraints:
