@@ -45,10 +45,10 @@ uvmf:
 #        - name: "qvip_sub_environment_instance_name"
 #          type: "qvip_sub_environment_package"
       agents :
-        - name: "control_in_agent" 
+        - name: "agent_in" 
           type: "control_in"
           initiator_responder: "INITIATOR"
-        - name: "control_out_agent" 
+        - name: "agent_out" 
           type: "control_out"
           initiator_responder: "RESPONDER"
 #          parameters:
@@ -97,10 +97,10 @@ uvmf:
 #          When connecting to expected side of UVMF scoreboards, receiver analysis_export_name is expected_analysis_export
 #          When connecting to actual side of UVMF scoreboards, receiver analysis_export_name is actual_analysis_export
       tlm_connections :
-        - driver:   "control_in_agent.monitored_ap"
+        - driver:   "agent_in.monitored_ap"
           receiver: "predictor.agent_in"
           validate: "True"
-        - driver:   "control_out_agent.monitored_ap"
+        - driver:   "agent_out.monitored_ap"
           receiver: "control_scoreboard.actual_analysis_export"
           validate: "True"
         - driver:   "predictor.pred_to_scbd"
