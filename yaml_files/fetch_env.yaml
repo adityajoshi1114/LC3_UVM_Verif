@@ -4,10 +4,10 @@ uvmf:
       "fetch_predictor" :  
         type: "predictor"
         analysis_exports :
-          - name: "analysis_export"
+          - name: "fetch_in_ae"
             type: "fetch_in_transaction"
         analysis_ports : 
-          - name: "analysis_port"
+          - name: "fetch_out_ap"
             type: "fetch_out_transaction"
   environments:
     "fetch" :
@@ -43,8 +43,4 @@ uvmf:
         - driver:   "out_agent.monitored_ap"
           receiver: "Fetch_Scoreboard.actual_analysis_export"
           validate: "True"
-      imports:
-        - name: lc3_prediction_pkg
-        - name: "fetch_in_pkg"
-        - name: "fetch_out_pkg"
   

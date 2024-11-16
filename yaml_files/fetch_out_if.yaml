@@ -5,7 +5,10 @@ uvmf:
       reset: "reset"
       reset_assertion_level: "False"    
       veloce_ready: "False"       
-      ports: 
+      ports:
+        - name: "enable_fetch"
+          width: "1"
+          dir: "input"
         - name: "pc"   
           width: "16"        
           dir: "input" 
