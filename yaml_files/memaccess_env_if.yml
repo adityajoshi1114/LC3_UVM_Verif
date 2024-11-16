@@ -3,18 +3,18 @@ uvmf:
     "memaccess_predictor":
       type: "predictor"
       analysis_exports:
-      - name: "from_in_agent"
+      - name: "analysis_export"
         type: "memaccess_in_transaction"
       analysis_ports:
-      - name: "pred_to_scrbd"
+      - name: "analysis_export"
         type: "memaccess_out_transaction"     
   environments:
     "memaccess":
       agents:
-      - initiator_responder: "INITIATOR"
+     # - initiator_responder: "INITIATOR"
         name: "memaccess_in_agent"
         type: "memaccess_in"
-      - initiator_responder: "RESPONDER"
+     # - initiator_responder: "RESPONDER"
         name: "memaccess_out_agent"
         type: "memaccess_out"
       analysis_components:
