@@ -78,7 +78,7 @@ uvmf:
 #      ## will be parsing
        scoreboards : 
          - name: "scoreboard"
-           sb_type: "uvmf_in_order_race_scoreboard"
+           sb_type: "uvmf_in_order_scoreboard"
            trans_type: "execute_out_transaction"
 #          parameters:
 #            - name: "SB_PARAMETER_NAME"

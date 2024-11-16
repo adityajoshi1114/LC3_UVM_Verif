@@ -5,7 +5,7 @@
 
 uvmf:
   interfaces:
-    "execute_out":
+    "data_memory":
       clock: "clock"
       reset: "reset"
       reset_assertion_level: "False"
@@ -28,83 +28,61 @@ uvmf:
 #        - name: "name_of_package_to_be_imported"
 #      hdl_typedefs:
 #        - name: "typedef_name"
-#          type: "typedef_definition"       
+#          type: "typedef_definition"  
 #      hvl_typedefs:
 #        - name: "typedef_name"
 #          type: "typedef_definition"
       ports: # Specify the port direction from the perspective of the INITIATOR or MASTER
 #          Valid values for dir include input, output, and inout.
-         - name: "W_Control_out"   
-           width: "2"        
-           dir: "output" 
-         - name: "Mem_Control_out"   
-           width: "1"        
-           dir: "output"
-         - name: "aluout"   
-           width: "16"        
-           dir: "output"
-         - name: "pcout"   
-           width: "16"        
-           dir: "output"
-         - name: "dr"   
-           width: "3"        
-           dir: "output"
-         - name: "sr1"   
-           width: "3"        
-           dir: "output"
-         - name: "sr2"   
-           width: "3"        
-           dir: "output"
-         - name: "IR_Exec"   
-           width: "16"        
-           dir: "output" 
-         - name: "NZP"   
-           width: "3"        
-           dir: "output"
-         - name: "M_data"   
-           width: "16"        
-           dir: "output"
+        - name: "complete_data"   
+          width: "1"        
+          dir: "input" 
+          reset_value: "'bz"
+        - name: "Data_dout"   
+          width: "16"        
+          dir: "input" 
+          reset_value: "'bz"
+        - name: "Data_din"   
+          width: "16"        
+          dir: "output" 
+          reset_value: "'bz"
+        - name: "Data_rd"   
+          width: "1"        
+          dir: "output" 
+          reset_value: "'bz"
+        - name: "Data_addr"   
+          width: "16"        
+          dir: "output" 
+          reset_value: "'bz"
+        - name: "D_macc"   
+          width: "1"        
+          dir: "output" 
+          reset_value: "'bz"
       transaction_vars:
-        - name: "alu_out"  
-          type: "bit [15:0]" # transaction_variable_type
-          isrand: "False"
-          iscompare: "True"
-        - name: "w_ctrl"  
-          type: "bit [1:0]" # transaction_variable_type
-          isrand: "False"
-          iscompare: "True"
-        - name: "mem_ctrl"  
-          type: "bit" # transaction_variable_type
+        - name: "complete_data"  
+          type: "logic" # transaction_variable_type
           isrand: "False"
           iscompare: "True" 
-        - name: "M_data"  
-          type: "bit [15:0]" # transaction_variable_type
+        - name: "Data_dout"  
+          type: "logic [15:0]" # transaction_variable_type
           isrand: "False"
           iscompare: "True"
-        - name: "dest_reg"  
-          type: "bit [2:0]" # transaction_variable_type
-          isrand: "False"
-          iscompare: "True" 
-        - name: "src_reg1"  
-          type: "bit [2:0]" # transaction_variable_type
-          isrand: "False"
-          iscompare: "True" 
-        - name: "src_reg2"  
-          type: "bit [2:0]" # transaction_variable_type
-          isrand: "False"
-          iscompare: "True"  
-        - name: "IR_ex"  
-          type: "bit [15:0]" # transaction_variable_type
+        - name: "Data_din"  
+          type: "logic [15:0]" # transaction_variable_type
           isrand: "False"
           iscompare: "True"
-        - name: "nzp"  
-          type: "bit [2:0]" # transaction_variable_type
-          isrand: "False"
+        - name: "Data_rd"  
+          type: "logic" # transaction_variable_type
+          isrand: "True"
           iscompare: "True"
-        - name: "pc_out"  
-          type: "bit [15:0]" # transaction_variable_type
+        - name: "Data_addr"  
+          type: "logic [15:0]" # transaction_variable_type
           isrand: "False"
           iscompare: "True" 
+        - name: "D_macc"  
+          type: "logic" # transaction_variable_type
+          isrand: "False"
+          iscompare: "True"
 #      transaction_constraints:
 #        - name: "constraint_body_name"
 #          value: "{ constraint; }"
