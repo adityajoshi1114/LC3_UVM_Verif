@@ -9,6 +9,7 @@ needs:
 
 src:
 # pragma uvmf custom src_additional begin
+  - ../lc3_prediction_pkg/lc3_prediction_pkg.sv
 # pragma uvmf custom src_additional end
   - write_back_env_pkg.sv
 # pragma uvmf custom extra_src begin
