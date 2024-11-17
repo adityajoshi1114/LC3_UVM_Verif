@@ -25,7 +25,7 @@ uvmf:
 #      hvl_typedefs:
 #        - name: "typedef_name"
 #          type: "typedef_definition"
-       ports:
+      ports:
         - name: "enable_writeback"
           width: "1"
           dir: "output"

@@ -8,7 +8,7 @@ uvmf:
        analysis_ports : 
          - name: "pred_write_back_out"
            type: "write_back_out_transaction"
-  environments:
+   environments:
     "write_back" :
       imports:
         - name: "lc3_prediction_pkg"
