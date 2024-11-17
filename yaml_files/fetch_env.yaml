@@ -35,9 +35,9 @@ uvmf:
 
       tlm_connections :
         - driver:   "in_agent.monitored_ap"
-          receiver: "predictor.analysis_export"
+          receiver: "predictor.fetch_in_ae"
           validate: "True"
-        - driver:   "predictor.analysis_port"
+        - driver:   "predictor.fetch_out_ap"
           receiver: "Fetch_Scoreboard.expected_analysis_export"
           validate: "True"
         - driver:   "out_agent.monitored_ap"
