@@ -11,12 +11,10 @@ uvmf:
   environments:
     "memaccess":
       agents:
-     # - initiator_responder: "INITIATOR"
-        name: "agent_in"
-        type: "memaccess_in"
-     # - initiator_responder: "RESPONDER"
-        name: "agent_out"
-        type: "memaccess_out"
+        - name: "agent_in"
+          type: "memaccess_in"
+        - name: "agent_out"
+          type: "memaccess_out"
       analysis_components:
       - name: "predictor"
        # parameters: []
