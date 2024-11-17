@@ -1,0 +1,56 @@
+uvmf:
+  environments:
+    LC3:
+      agents:
+      - initiator_responder: RESPONDER
+        name: Instruction
+        type: instruction_memory
+      - initiator_responder: RESPONDER
+        name: Data
+        type: data_memory
+      analysis_components: []
+      analysis_exports: []
+      analysis_ports: []
+      config_constraints: []
+      config_vars: []
+      existing_library_component: 'True'
+      hvl_pkg_parameters: []
+      imports:
+      - name: fetch_env_pkg
+      - name: decode_env_pkg
+      - name: execute_env_pkg
+      - name: write_back_env_pkg
+      - name: control_env_pkg
+      - name: memaccess_env_pkg
+      - name: instr_mem_pkg
+      - name: data_mem_pkg
+      non_uvmf_components: []
+      parameters: []
+      qvip_memory_agents: []
+      scoreboards: []
+      subenvs:
+      - name: fe_env
+        parameters: []
+        reg_block_instance_name: fe_env_rm
+        type: fetch
+      - name: de_env
+        parameters: []
+        reg_block_instance_name: de_env_rm
+        type: decode
+      - name: ex_env
+        parameters: []
+        reg_block_instance_name: ex_env_rm
+        type: execute
+      - name: wb_env
+        parameters: []
+        reg_block_instance_name: wb_env_rm
+        type: write_back
+      - name: ctrl_env
+        parameters: []
+        reg_block_instance_name: ctrl_env_rm
+        type: control
+      - name: memacc_env
+        parameters: []
+        reg_block_instance_name: memacc_env_rm
+        type: memaccess
+      tlm_connections: []

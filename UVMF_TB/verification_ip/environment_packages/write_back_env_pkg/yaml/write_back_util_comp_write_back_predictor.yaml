@@ -1,0 +1,11 @@
+uvmf:
+  util_components:
+    write_back_predictor:
+      analysis_exports:
+      - name: observed_write_back_in
+        type: write_back_in_transaction
+      analysis_ports:
+      - name: pred_write_back_out
+        type: write_back_out_transaction
+      existing_library_component: 'True'
+      type: predictor

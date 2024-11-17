@@ -1,0 +1,74 @@
+uvmf:
+  interfaces:
+    decode_out:
+      clock: clock
+      config_constraints: []
+      config_vars: []
+      existing_library_component: 'True'
+      gen_inbound_streaming_driver: 'False'
+      hdl_pkg_parameters: []
+      hdl_typedefs: []
+      hvl_pkg_parameters: []
+      hvl_typedefs: []
+      parameters: []
+      ports:
+      - dir: input
+        name: enable_decode
+        reset_value: '''b0'
+        width: '1'
+      - dir: input
+        name: W_Control
+        reset_value: '''b0'
+        width: '2'
+      - dir: input
+        name: Mem_Control
+        reset_value: '''b0'
+        width: '1'
+      - dir: input
+        name: E_Control
+        reset_value: '''b0'
+        width: '6'
+      - dir: input
+        name: IR
+        reset_value: '''b0'
+        width: '16'
+      - dir: input
+        name: npc_out
+        reset_value: '''b0'
+        width: '16'
+      reset: reset
+      reset_assertion_level: 'False'
+      transaction_constraints: []
+      transaction_vars:
+      - comment: ''
+        iscompare: 'True'
+        isrand: 'False'
+        name: W_Control
+        type: logic [1:0]
+        unpacked_dimension: ''
+      - comment: ''
+        iscompare: 'True'
+        isrand: 'False'
+        name: Mem_Control
+        type: logic
+        unpacked_dimension: ''
+      - comment: ''
+        iscompare: 'True'
+        isrand: 'False'
+        name: E_Control
+        type: logic [5:0]
+        unpacked_dimension: ''
+      - comment: ''
+        iscompare: 'True'
+        isrand: 'False'
+        name: IR
+        type: logic [15:0]
+        unpacked_dimension: ''
+      - comment: ''
+        iscompare: 'True'
+        isrand: 'False'
+        name: npc_out
+        type: logic [15:0]
+        unpacked_dimension: ''
+      use_dpi_link: 'False'
+      veloce_ready: 'False'

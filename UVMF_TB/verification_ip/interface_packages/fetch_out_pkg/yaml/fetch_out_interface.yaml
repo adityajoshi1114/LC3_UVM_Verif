@@ -1,0 +1,54 @@
+uvmf:
+  interfaces:
+    fetch_out:
+      clock: clock
+      config_constraints: []
+      config_vars: []
+      existing_library_component: 'True'
+      gen_inbound_streaming_driver: 'False'
+      hdl_pkg_parameters: []
+      hdl_typedefs: []
+      hvl_pkg_parameters: []
+      hvl_typedefs: []
+      parameters: []
+      ports:
+      - dir: input
+        name: enable_fetch
+        reset_value: '''b0'
+        width: '1'
+      - dir: input
+        name: pc
+        reset_value: '''b0'
+        width: '16'
+      - dir: input
+        name: npc
+        reset_value: '''b0'
+        width: '16'
+      - dir: input
+        name: Imem_rd
+        reset_value: '''b0'
+        width: '1'
+      reset: reset
+      reset_assertion_level: 'False'
+      transaction_constraints: []
+      transaction_vars:
+      - comment: ''
+        iscompare: 'True'
+        isrand: 'False'
+        name: PC
+        type: logic [15:0]
+        unpacked_dimension: ''
+      - comment: ''
+        iscompare: 'True'
+        isrand: 'False'
+        name: NPC
+        type: logic [15:0]
+        unpacked_dimension: ''
+      - comment: ''
+        iscompare: 'True'
+        isrand: 'False'
+        name: Imem_RD
+        type: logic
+        unpacked_dimension: ''
+      use_dpi_link: 'False'
+      veloce_ready: 'False'

@@ -1,0 +1,70 @@
+uvmf:
+  interfaces:
+    data_memory:
+      clock: clock
+      config_constraints: []
+      config_vars: []
+      existing_library_component: 'True'
+      gen_inbound_streaming_driver: 'False'
+      hdl_pkg_parameters: []
+      hdl_typedefs: []
+      hvl_pkg_parameters: []
+      hvl_typedefs: []
+      parameters: []
+      ports:
+      - dir: input
+        name: complete_data
+        reset_value: '''bz'
+        width: '1'
+      - dir: input
+        name: Data_dout
+        reset_value: '''bz'
+        width: '16'
+      - dir: output
+        name: Data_din
+        reset_value: '''bz'
+        width: '16'
+      - dir: output
+        name: Data_rd
+        reset_value: '''bz'
+        width: '1'
+      - dir: output
+        name: Data_addr
+        reset_value: '''bz'
+        width: '16'
+      reset: reset
+      reset_assertion_level: 'False'
+      transaction_constraints: []
+      transaction_vars:
+      - comment: ''
+        iscompare: 'True'
+        isrand: 'False'
+        name: complete_data
+        type: logic
+        unpacked_dimension: ''
+      - comment: ''
+        iscompare: 'True'
+        isrand: 'False'
+        name: Data_dout
+        type: logic [15:0]
+        unpacked_dimension: ''
+      - comment: ''
+        iscompare: 'True'
+        isrand: 'False'
+        name: Data_din
+        type: logic [15:0]
+        unpacked_dimension: ''
+      - comment: ''
+        iscompare: 'True'
+        isrand: 'True'
+        name: Data_rd
+        type: logic
+        unpacked_dimension: ''
+      - comment: ''
+        iscompare: 'True'
+        isrand: 'False'
+        name: Data_addr
+        type: logic [15:0]
+        unpacked_dimension: ''
+      use_dpi_link: 'False'
+      veloce_ready: 'False'

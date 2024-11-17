@@ -1,0 +1,11 @@
+uvmf:
+  util_components:
+    control_predictor:
+      analysis_exports:
+      - name: agent_in
+        type: control_in_transaction
+      analysis_ports:
+      - name: pred_to_scbd
+        type: control_out_transaction
+      existing_library_component: 'True'
+      type: predictor

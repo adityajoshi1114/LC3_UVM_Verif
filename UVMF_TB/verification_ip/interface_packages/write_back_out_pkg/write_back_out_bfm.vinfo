@@ -1,0 +1,6 @@
+@use $UVMF_HOME/uvmf_base_pkg/uvmf_base_pkg_hdl.vinfo
+@use write_back_out_pkg_hdl.vinfo
++incdir+@vinfodir
+src/write_back_out_if.sv
+src/write_back_out_driver_bfm.sv
+src/write_back_out_monitor_bfm.sv

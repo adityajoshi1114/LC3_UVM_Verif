@@ -30,9 +30,9 @@ uvmf:
        ## Underscores, _'s, must be used instead of dots, .'s, for delimiting
        ## environment hierarchy.
       active_passive:   
-        - bfm_name: "instruction_memory"
+        - bfm_name: "Instruction"
           value: "ACTIVE"
-        - bfm_name: "data_memory"
+        - bfm_name: "Data"
           value: "ACTIVE"
 #      interface_params:
 #        - bfm_name: "agent_name"

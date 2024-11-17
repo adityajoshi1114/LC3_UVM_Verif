@@ -1,0 +1,17 @@
+
+src:
+# pragma uvmf custom src_additional begin
+# pragma uvmf custom src_additional end
+# pragma uvmf custom dut_compile_info begin
+  - ./verilog/data_defs.v
+  - ./verilog/TopLevelLC3.v
+  - ./verilog/Controller_Pipeline.v
+  - ./verilog/Decode_Pipelined.v
+  - ./verilog/Execute.v
+  - ./verilog/Fetch.v
+  - ./verilog/Mem_Access.v
+  - ./verilog/WriteBack.v
+# pragma uvmf custom dut_compile_info end
+
+# pragma uvmf custom compile_additional begin
+# pragma uvmf custom compile_additional end

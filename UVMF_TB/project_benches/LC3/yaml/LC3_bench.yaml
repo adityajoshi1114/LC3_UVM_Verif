@@ -1,0 +1,42 @@
+uvmf:
+  benches:
+    LC3:
+      active_passive:
+      - bfm_name: fe_env_in_agent
+        value: PASSIVE
+      - bfm_name: fe_env_out_agent
+        value: PASSIVE
+      - bfm_name: de_env_agent_in
+        value: PASSIVE
+      - bfm_name: de_env_agent_out
+        value: PASSIVE
+      - bfm_name: ex_env_agent_in
+        value: PASSIVE
+      - bfm_name: ex_env_agent_out
+        value: PASSIVE
+      - bfm_name: wb_env_agent_in
+        value: PASSIVE
+      - bfm_name: wb_env_agent_out
+        value: PASSIVE
+      - bfm_name: ctrl_env_agent_in
+        value: PASSIVE
+      - bfm_name: ctrl_env_agent_out
+        value: PASSIVE
+      - bfm_name: memacc_env_agent_in
+        value: PASSIVE
+      - bfm_name: memacc_env_agent_out
+        value: PASSIVE
+      - bfm_name: Instruction
+        value: ACTIVE
+      - bfm_name: Data
+        value: ACTIVE
+      active_passive_default: PASSIVE
+      clock_half_period: 5ns
+      clock_phase_offset: 20ns
+      existing_library_component: 'True'
+      interface_params: []
+      reset_assertion_level: 'False'
+      reset_duration: 250ns
+      top_env: LC3
+      use_dpi_link: 'False'
+      veloce_ready: 'False'

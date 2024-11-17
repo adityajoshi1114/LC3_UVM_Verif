@@ -1,0 +1,60 @@
+uvmf:
+  interfaces:
+    fetch_in:
+      clock: clock
+      config_constraints: []
+      config_vars: []
+      existing_library_component: 'True'
+      gen_inbound_streaming_driver: 'False'
+      hdl_pkg_parameters: []
+      hdl_typedefs: []
+      hvl_pkg_parameters: []
+      hvl_typedefs: []
+      parameters: []
+      ports:
+      - dir: output
+        name: enable_updatePC
+        reset_value: '''b0'
+        width: '1'
+      - dir: output
+        name: enable_fetch
+        reset_value: '''b0'
+        width: '1'
+      - dir: output
+        name: taddr
+        reset_value: '''b0'
+        width: '16'
+      - dir: output
+        name: br_taken
+        reset_value: '''b0'
+        width: '1'
+      reset: reset
+      reset_assertion_level: 'False'
+      transaction_constraints: []
+      transaction_vars:
+      - comment: ''
+        iscompare: 'True'
+        isrand: 'True'
+        name: Enable_updatePC
+        type: logic
+        unpacked_dimension: ''
+      - comment: ''
+        iscompare: 'True'
+        isrand: 'True'
+        name: Enable_fetch
+        type: logic
+        unpacked_dimension: ''
+      - comment: ''
+        iscompare: 'True'
+        isrand: 'True'
+        name: Taddr
+        type: logic [15:0]
+        unpacked_dimension: ''
+      - comment: ''
+        iscompare: 'True'
+        isrand: 'True'
+        name: Br_taken
+        type: logic
+        unpacked_dimension: ''
+      use_dpi_link: 'False'
+      veloce_ready: 'False'

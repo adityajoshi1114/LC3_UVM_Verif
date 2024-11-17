@@ -1,0 +1,124 @@
+uvmf:
+  interfaces:
+    execute_out:
+      clock: clock
+      config_constraints: []
+      config_vars: []
+      existing_library_component: 'True'
+      gen_inbound_streaming_driver: 'False'
+      hdl_pkg_parameters: []
+      hdl_typedefs: []
+      hvl_pkg_parameters: []
+      hvl_typedefs: []
+      parameters: []
+      ports:
+      - dir: output
+        name: W_Control_out
+        reset_value: '''b0'
+        width: '2'
+      - dir: output
+        name: Mem_Control_out
+        reset_value: '''b0'
+        width: '1'
+      - dir: output
+        name: aluout
+        reset_value: '''b0'
+        width: '16'
+      - dir: output
+        name: pcout
+        reset_value: '''b0'
+        width: '16'
+      - dir: output
+        name: dr
+        reset_value: '''b0'
+        width: '3'
+      - dir: output
+        name: sr1
+        reset_value: '''b0'
+        width: '3'
+      - dir: output
+        name: sr2
+        reset_value: '''b0'
+        width: '3'
+      - dir: output
+        name: IR_Exec
+        reset_value: '''b0'
+        width: '16'
+      - dir: output
+        name: NZP
+        reset_value: '''b0'
+        width: '3'
+      - dir: output
+        name: M_data
+        reset_value: '''b0'
+        width: '16'
+      - dir: output
+        name: en_ex
+        reset_value: '''b0'
+        width: '1'
+      reset: reset
+      reset_assertion_level: 'False'
+      transaction_constraints: []
+      transaction_vars:
+      - comment: ''
+        iscompare: 'True'
+        isrand: 'False'
+        name: alu_out
+        type: bit [15:0]
+        unpacked_dimension: ''
+      - comment: ''
+        iscompare: 'True'
+        isrand: 'False'
+        name: w_ctrl
+        type: bit [1:0]
+        unpacked_dimension: ''
+      - comment: ''
+        iscompare: 'True'
+        isrand: 'False'
+        name: mem_ctrl
+        type: bit
+        unpacked_dimension: ''
+      - comment: ''
+        iscompare: 'True'
+        isrand: 'False'
+        name: M_data
+        type: bit [15:0]
+        unpacked_dimension: ''
+      - comment: ''
+        iscompare: 'True'
+        isrand: 'False'
+        name: dest_reg
+        type: bit [2:0]
+        unpacked_dimension: ''
+      - comment: ''
+        iscompare: 'True'
+        isrand: 'False'
+        name: src_reg1
+        type: bit [2:0]
+        unpacked_dimension: ''
+      - comment: ''
+        iscompare: 'True'
+        isrand: 'False'
+        name: src_reg2
+        type: bit [2:0]
+        unpacked_dimension: ''
+      - comment: ''
+        iscompare: 'True'
+        isrand: 'False'
+        name: IR_ex
+        type: bit [15:0]
+        unpacked_dimension: ''
+      - comment: ''
+        iscompare: 'True'
+        isrand: 'False'
+        name: nzp
+        type: bit [2:0]
+        unpacked_dimension: ''
+      - comment: ''
+        iscompare: 'True'
+        isrand: 'False'
+        name: pc_out
+        type: bit [15:0]
+        unpacked_dimension: ''
+      use_dpi_link: 'False'
+      veloce_ready: 'False'

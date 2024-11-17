@@ -1,0 +1,110 @@
+uvmf:
+  interfaces:
+    write_back_in:
+      clock: clock
+      config_constraints: []
+      config_vars: []
+      existing_library_component: 'True'
+      gen_inbound_streaming_driver: 'False'
+      hdl_pkg_parameters: []
+      hdl_typedefs: []
+      hvl_pkg_parameters: []
+      hvl_typedefs: []
+      parameters: []
+      ports:
+      - dir: output
+        name: enable_writeback
+        reset_value: '''b0'
+        width: '1'
+      - dir: output
+        name: aluout
+        reset_value: '''b0'
+        width: '16'
+      - dir: output
+        name: memout
+        reset_value: '''b0'
+        width: '16'
+      - dir: output
+        name: sr1
+        reset_value: '''b0'
+        width: '3'
+      - dir: output
+        name: sr2
+        reset_value: '''b0'
+        width: '3'
+      - dir: output
+        name: dr
+        reset_value: '''b0'
+        width: '3'
+      - dir: output
+        name: npc
+        reset_value: '''b0'
+        width: '16'
+      - dir: output
+        name: pcout
+        reset_value: '''b0'
+        width: '16'
+      - dir: output
+        name: W_control
+        reset_value: '''b0'
+        width: '2'
+      reset: reset
+      reset_assertion_level: 'False'
+      transaction_constraints: []
+      transaction_vars:
+      - comment: ''
+        iscompare: 'True'
+        isrand: 'False'
+        name: npc
+        type: bit [15:0]
+        unpacked_dimension: ''
+      - comment: ''
+        iscompare: 'True'
+        isrand: 'False'
+        name: W_control
+        type: bit [1:0]
+        unpacked_dimension: ''
+      - comment: ''
+        iscompare: 'True'
+        isrand: 'False'
+        name: aluout
+        type: bit [15:0]
+        unpacked_dimension: ''
+      - comment: ''
+        iscompare: 'True'
+        isrand: 'False'
+        name: pcout
+        type: bit [15:0]
+        unpacked_dimension: ''
+      - comment: ''
+        iscompare: 'True'
+        isrand: 'False'
+        name: memout
+        type: bit [15:0]
+        unpacked_dimension: ''
+      - comment: ''
+        iscompare: 'True'
+        isrand: 'False'
+        name: enable_writeback
+        type: bit
+        unpacked_dimension: ''
+      - comment: ''
+        iscompare: 'True'
+        isrand: 'False'
+        name: dr
+        type: bit [2:0]
+        unpacked_dimension: ''
+      - comment: ''
+        iscompare: 'True'
+        isrand: 'False'
+        name: sr1
+        type: bit [2:0]
+        unpacked_dimension: ''
+      - comment: ''
+        iscompare: 'True'
+        isrand: 'False'
+        name: sr2
+        type: bit [2:0]
+        unpacked_dimension: ''
+      use_dpi_link: 'False'
+      veloce_ready: 'False'

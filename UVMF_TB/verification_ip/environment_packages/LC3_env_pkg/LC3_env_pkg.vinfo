@@ -1,0 +1,11 @@
+@use $UVMF_HOME/uvmf_base_pkg/uvmf_base_pkg.vinfo
+@use $UVMF_VIP_LIBRARY_HOME/interface_packages/instruction_memory_pkg/instruction_memory_pkg.vinfo
+@use $UVMF_VIP_LIBRARY_HOME/interface_packages/data_memory_pkg/data_memory_pkg.vinfo
+@use $UVMF_VIP_LIBRARY_HOME/environment_packages/fe_env_pkg/fe_env_pkg.vinfo
+@use $UVMF_VIP_LIBRARY_HOME/environment_packages/de_env_pkg/de_env_pkg.vinfo
+@use $UVMF_VIP_LIBRARY_HOME/environment_packages/ex_env_pkg/ex_env_pkg.vinfo
+@use $UVMF_VIP_LIBRARY_HOME/environment_packages/wb_env_pkg/wb_env_pkg.vinfo
+@use $UVMF_VIP_LIBRARY_HOME/environment_packages/ctrl_env_pkg/ctrl_env_pkg.vinfo
+@use $UVMF_VIP_LIBRARY_HOME/environment_packages/memacc_env_pkg/memacc_env_pkg.vinfo
++incdir+@vinfodir
+LC3_env_pkg.sv
