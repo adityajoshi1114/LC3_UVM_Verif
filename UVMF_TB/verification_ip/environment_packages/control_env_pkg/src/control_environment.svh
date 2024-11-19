@@ -36,7 +36,7 @@ class control_environment  extends uvmf_environment_base #(
                 ) predictor_t;
   predictor_t predictor;
 
-  typedef uvmf_in_order_control_scoreboard #(.T(control_out_transaction))  control_scoreboard_t;
+  typedef uvmf_in_order_race_scoreboard #(.T(control_out_transaction))  control_scoreboard_t;
   control_scoreboard_t control_scoreboard;
 
 

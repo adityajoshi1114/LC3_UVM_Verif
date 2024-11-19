@@ -126,13 +126,8 @@ end
   initial begin                                                                             
     @go;                                                                                   
     forever begin                                                                        
-      @(posedge clock_i);  
       monitored_trans = new("monitored_trans");
       do_monitor( );
-                                                                 
- 
-      proxy.notify_transaction( monitored_trans ); 
- 
     end                                                                                    
   end                                                                                       
 
@@ -194,12 +189,25 @@ end
     // task should return when a complete transfer has been observed.  Once this task is
     // exited with captured values, it is then called again to wait for and observe 
     // the next transfer. One clock cycle is consumed between calls to do_monitor.
-    monitored_trans.start_time = $time;
-    @(posedge clock_i);
-    @(posedge clock_i);
-    @(posedge clock_i);
-    @(posedge clock_i);
-    monitored_trans.end_time = $time;
+    if (enable_execute_i) begin // If enable is high 
+      monitored_trans.start_time = $time;
+      @(negedge clock_i);    // Capture values at negedge
+      monitored_trans.alu_out = aluout_i;
+      monitored_trans.w_ctrl  =  W_Control_out_i;
+      monitored_trans.mem_ctrl  =  Mem_Control_out_i;
+      monitored_trans.M_data  =  M_data_i;
+      monitored_trans.dest_reg  =  dr_i;
+      monitored_trans.src_reg1  =  sr1_i;
+      monitored_trans.src_reg2  =  sr2_i;
+      monitored_trans.IR_ex = IR_Exec_i;
+      monitored_trans.nzp = NZP_i;
+      monitored_trans.pc_out  =  pcout_i;
+      @(posedge clock_i);     // Move to end of transaction
+      monitored_trans.end_time  = $time;
+      proxy.notify_transaction( monitored_trans ); 
+    end else begin 
+      @(posedge clock_i);
+    end
     // pragma uvmf custom do_monitor end
   endtask         
   

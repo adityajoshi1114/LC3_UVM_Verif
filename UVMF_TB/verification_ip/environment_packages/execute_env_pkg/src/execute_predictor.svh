@@ -93,9 +93,33 @@ class execute_predictor #(
     // Construct one of each output transaction type.
     execute_out_ap_output_transaction = execute_out_ap_output_transaction_t::type_id::create("execute_out_ap_output_transaction");
     //  UVMF_CHANGE_ME: Implement predictor model here.  
-    `uvm_info("UNIMPLEMENTED_PREDICTOR_MODEL", "******************************************************************************************************",UVM_NONE)
-    `uvm_info("UNIMPLEMENTED_PREDICTOR_MODEL", "UVMF_CHANGE_ME: The execute_predictor::write_execute_in_ae function needs to be completed with DUT prediction model",UVM_NONE)
-    `uvm_info("UNIMPLEMENTED_PREDICTOR_MODEL", "******************************************************************************************************",UVM_NONE)
+    execute_model(
+      // Inputs
+      .E_Control(t.E_ctrl), 
+      .bypass_alu_1(t.bp_alu_1), 
+      .bypass_alu_2(t.bp_alu_2), 
+      .bypass_mem_1(t.bp_mem_1), 
+      .bypass_mem_2(t.bp_mem_2), 
+      .enable_execute(1),
+      .IR(t.Instr), 
+      .npc_in(t.npc), 
+      .Mem_Control_in(t.mem_ctrl), 
+      .W_Control_in(t.w_ctrl), 
+      .Mem_Bypass_Val(t.Mem_bp), 
+      .VSR1(t.vsr1), 
+      .VSR2(t.vsr2),
+      // Outputs
+      .aluout(execute_out_ap_output_transaction.alu_out),
+      .W_Control_out(execute_out_ap_output_transaction.w_ctrl),
+      .Mem_Control_out(execute_out_ap_output_transaction.mem_ctrl),
+      .M_Data(execute_out_ap_output_transaction.M_data),
+      .dr(execute_out_ap_output_transaction.dest_reg),
+      .sr1(execute_out_ap_output_transaction.src_reg1),
+      .sr2(execute_out_ap_output_transaction.src_reg2),
+      .IR_Exec(execute_out_ap_output_transaction.IR_ex),
+      .NZP(execute_out_ap_output_transaction.nzp),
+      .pcout(execute_out_ap_output_transaction.pc_out)
+    );
  
     // Code for sending output transaction out through execute_out_ap
     // Please note that each broadcasted transaction should be a different object than previously 
