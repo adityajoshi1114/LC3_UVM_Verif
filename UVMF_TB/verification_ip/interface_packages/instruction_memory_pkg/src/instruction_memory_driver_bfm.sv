@@ -259,18 +259,21 @@ bit first_transfer=1;
        //    Responder inout signals
     
 
-  @(posedge clock_i);
   if (!first_transfer) begin
     // Perform transfer response here.   
     // Reply using data recieved in the responder_trans.
     @(posedge clock_i);
+    instr_dout_o <= responder_trans.Instr_Dout;
+    complete_instr_o <= 1'b1;
     // Reply using data recieved in the transaction handle.
-    @(posedge clock_i);
+    @(negedge clock_i);
+    responder_trans.PC = PC_i;
   end
     // Wait for next transfer then gather info from intiator about the transfer.
     // Place the data into the responder_trans handle.
-    @(posedge clock_i);
-    @(posedge clock_i);
+    wait (reset_i);          // Wait for reset 
+    wait (instrmem_rd_i);    // Wait for enable 
+    responder_trans.PC = PC_i;
     first_transfer = 0;
   endtask
 // pragma uvmf custom respond_and_wait_for_next_transfer end

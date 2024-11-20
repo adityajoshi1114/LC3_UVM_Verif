@@ -20,6 +20,8 @@ class instruction_memory_responder_sequence
   `uvm_object_utils( instruction_memory_responder_sequence )
 
   // pragma uvmf custom class_item_additional begin
+    // Memory Model ( to ensure that an instruction that stalls the pipeline and hence the PC does not lead to the design getting new instruction in return)
+    // If address is less than 3000 then stop the simulation 
   // pragma uvmf custom class_item_additional end
 
   function new(string name = "instruction_memory_responder_sequence");
