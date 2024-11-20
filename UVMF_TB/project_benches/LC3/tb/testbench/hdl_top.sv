@@ -50,6 +50,8 @@ import uvmf_base_pkg_hdl::*;
 // pragma uvmf custom reset_generator end
 
   // pragma uvmf custom module_item_additional begin
+   tri [15:0] PC, Instr, data_addr, data_o, data_i;
+   tri  Imem_en, Dmem_en, cmp_i, cmp_d; 
   // pragma uvmf custom module_item_additional end
 
   // Instantiate the signal bundle, monitor bfm and driver bfm for each interface.
@@ -118,12 +120,12 @@ import uvmf_base_pkg_hdl::*;
      );
   instruction_memory_if  Instruction_bus(
      // pragma uvmf custom Instruction_bus_connections begin
-     .clock(clk), .reset(rst)
+     .clock(clk), .reset(rst), .PC(PC), .instrmem_rd(Imem_en), .instr_dout(Instr), .complete_instr(cmp_i)
      // pragma uvmf custom Instruction_bus_connections end
      );
   data_memory_if  Data_bus(
      // pragma uvmf custom Data_bus_connections begin
-     .clock(clk), .reset(rst)
+     .clock(clk), .reset(rst), .complete_data(cmp_d), .Data_dout(data_o), .Data_din(data_i), .Data_rd(Dmem_en), .Data_addr(data_addr)
      // pragma uvmf custom Data_bus_connections end
      );
   fetch_in_monitor_bfm  fe_env_in_agent_mon_bfm(fe_env_in_agent_bus);
@@ -147,8 +149,9 @@ import uvmf_base_pkg_hdl::*;
   // UVMF_CHANGE_ME : Add DUT and connect to signals in _bus interfaces listed above
   // Instantiate your DUT here
   // These DUT's instantiated to show verilog and vhdl instantiation
-  //verilog_dut         dut_verilog(   .clk(clk), .rst(rst), .in_signal(vhdl_to_verilog_signal), .out_signal(verilog_to_vhdl_signal));
-  //vhdl_dut            dut_vhdl   (   .clk(clk), .rst(rst), .in_signal(verilog_to_vhdl_signal), .out_signal(vhdl_to_verilog_signal));
+   LC3    LC3_inst (	.clock(clk), .reset(rst), .pc(PC), .instrmem_rd(Imem_en), .Instr_dout(Instr), .Data_addr(data_addr), .complete_instr(cmp_i), .complete_data(cmp_d),  
+				         .Data_din(data_i), .Data_dout(data_o), .Data_rd(Dmem_en)			
+			          );
   // pragma uvmf custom dut_instantiation end
 
   initial begin      import uvm_pkg::uvm_config_db;

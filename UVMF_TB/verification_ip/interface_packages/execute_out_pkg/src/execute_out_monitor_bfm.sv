@@ -189,7 +189,7 @@ end
     // task should return when a complete transfer has been observed.  Once this task is
     // exited with captured values, it is then called again to wait for and observe 
     // the next transfer. One clock cycle is consumed between calls to do_monitor.
-    if (enable_execute_i) begin // If enable is high 
+    if (en_ex_i) begin // If enable is high 
       monitored_trans.start_time = $time;
       @(negedge clock_i);    // Capture values at negedge
       monitored_trans.alu_out = aluout_i;
