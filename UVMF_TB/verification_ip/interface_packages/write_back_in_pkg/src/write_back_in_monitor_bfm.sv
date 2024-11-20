@@ -187,11 +187,22 @@ end
     // task should return when a complete transfer has been observed.  Once this task is
     // exited with captured values, it is then called again to wait for and observe 
     // the next transfer. One clock cycle is consumed between calls to do_monitor.
+    
     monitored_trans.start_time = $time;
+
+    while(enable_writeback_i !== 1'b1) 
     @(posedge clock_i);
-    @(posedge clock_i);
-    @(posedge clock_i);
-    @(posedge clock_i);
+
+    monitored_trans.enable_writeback=enable_writeback_i;	
+    monitored_trans.aluout = aluout_i;
+    monitored_trans.memout = memout_i;
+    monitored_trans.sr1 = sr1_i;
+    monitored_trans.sr2 = sr2_i;
+    monitored_trans.dr = dr_i;
+    monitored_trans.npc = npc_i;
+    monitored_trans.pcout = pcout_i;
+    monitored_trans.W_control = W_control_i;
+
     monitored_trans.end_time = $time;
     // pragma uvmf custom do_monitor end
   endtask         
@@ -201,4 +212,3 @@ endinterface
 
 // pragma uvmf custom external begin
 // pragma uvmf custom external end
-
