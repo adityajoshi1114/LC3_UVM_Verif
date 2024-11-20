@@ -63,6 +63,7 @@ class write_back_predictor #(
 
 
   // pragma uvmf custom class_item_additional begin
+  bit write_back_model_return_type;
   // pragma uvmf custom class_item_additional end
 
   // FUNCTION: new
@@ -93,10 +94,27 @@ class write_back_predictor #(
     // Construct one of each output transaction type.
     pred_write_back_out_output_transaction = pred_write_back_out_output_transaction_t::type_id::create("pred_write_back_out_output_transaction");
     //  UVMF_CHANGE_ME: Implement predictor model here.  
-    `uvm_info("UNIMPLEMENTED_PREDICTOR_MODEL", "******************************************************************************************************",UVM_NONE)
-    `uvm_info("UNIMPLEMENTED_PREDICTOR_MODEL", "UVMF_CHANGE_ME: The write_back_predictor::write_observed_write_back_in function needs to be completed with DUT prediction model",UVM_NONE)
-    `uvm_info("UNIMPLEMENTED_PREDICTOR_MODEL", "******************************************************************************************************",UVM_NONE)
- 
+    //`uvm_info("UNIMPLEMENTED_PREDICTOR_MODEL", "******************************************************************************************************",UVM_NONE)
+    //`uvm_info("UNIMPLEMENTED_PREDICTOR_MODEL", "UVMF_CHANGE_ME: The write_back_predictor::write_observed_write_back_in function needs to be completed with DUT prediction model",UVM_NONE)
+    //`uvm_info("UNIMPLEMENTED_PREDICTOR_MODEL", "******************************************************************************************************",UVM_NONE)
+
+    if(t.enable_writeback) begin
+    write_back_model_return_type = writeback_model (
+              t.aluout,
+              t.W_control,
+              t.npc, 
+							t.pcout, 
+							t.memout, 
+							t.enable_writeback, 
+							t.sr1, 
+							t.sr2, 
+							t.dr, 
+              pred_write_back_out_output_transaction.VSR1, 
+							pred_write_back_out_output_transaction.VSR2, 
+							pred_write_back_out_output_transaction.psr
+    ); 
+    end
+
     // Code for sending output transaction out through pred_write_back_out
     // Please note that each broadcasted transaction should be a different object than previously 
     // broadcasted transactions.  Creation of a different object is done by constructing the transaction 
