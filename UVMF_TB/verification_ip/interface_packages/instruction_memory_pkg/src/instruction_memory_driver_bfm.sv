@@ -262,6 +262,9 @@ bit first_transfer=1;
   if (!first_transfer) begin
     // Perform transfer response here.   
     // Reply using data recieved in the responder_trans.
+    // IF the previously sent instruction stalled the pipeline then wait for fetch
+    // to be enabled again i.e Imem read to be enabled again
+    wait (instrmem_rd_i);    // Wait for enable 
     @(posedge clock_i);
     instr_dout_o <= responder_trans.Instr_Dout;
     complete_instr_o <= 1'b1;
@@ -271,7 +274,7 @@ bit first_transfer=1;
   end
     // Wait for next transfer then gather info from intiator about the transfer.
     // Place the data into the responder_trans handle.
-    wait (reset_i);          // Wait for reset 
+    wait (!reset_i);         // Wait for reset 
     wait (instrmem_rd_i);    // Wait for enable 
     responder_trans.PC = PC_i;
     first_transfer = 0;

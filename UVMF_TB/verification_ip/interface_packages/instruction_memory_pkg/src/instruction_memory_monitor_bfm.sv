@@ -112,13 +112,8 @@ end
   initial begin                                                                             
     @go;                                                                                   
     forever begin                                                                        
-      @(posedge clock_i);  
       monitored_trans = new("monitored_trans");
-      do_monitor( );
-                                                                 
- 
-      proxy.notify_transaction( monitored_trans ); 
- 
+      do_monitor( ); 
     end                                                                                    
   end                                                                                       
 
@@ -175,12 +170,19 @@ end
     // task should return when a complete transfer has been observed.  Once this task is
     // exited with captured values, it is then called again to wait for and observe 
     // the next transfer. One clock cycle is consumed between calls to do_monitor.
-    monitored_trans.start_time = $time;
-    @(posedge clock_i);
-    @(posedge clock_i);
-    @(posedge clock_i);
-    @(posedge clock_i);
-    monitored_trans.end_time = $time;
+    if (instrmem_rd_i) begin // If enable is high
+      monitored_trans.start_time = $time;
+      @(negedge clock_i);   // Capture values at negedge
+      monitored_trans.PC  = PC_i;
+      monitored_trans.Imem_en = instrmem_rd_i;
+      monitored_trans.Instr_Dout  = instr_dout_i;
+      monitored_trans.cmp_instr = complete_instr_i;
+      @(posedge clock_i);   // Move to end of transaction
+      proxy.notify_transaction( monitored_trans ); 
+      monitored_trans.end_time = $time;
+    end else begin 
+      @(posedge clock_i);
+    end
     // pragma uvmf custom do_monitor end
   endtask         
   
