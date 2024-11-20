@@ -63,6 +63,7 @@ class decode_predictor #(
 
 
   // pragma uvmf custom class_item_additional begin
+    bit decode_model_return_type;
   // pragma uvmf custom class_item_additional end
 
   // FUNCTION: new
@@ -93,10 +94,22 @@ class decode_predictor #(
     // Construct one of each output transaction type.
     predictor_decode_out_output_transaction = predictor_decode_out_output_transaction_t::type_id::create("predictor_decode_out_output_transaction");
     //  UVMF_CHANGE_ME: Implement predictor model here.  
-    `uvm_info("UNIMPLEMENTED_PREDICTOR_MODEL", "******************************************************************************************************",UVM_NONE)
-    `uvm_info("UNIMPLEMENTED_PREDICTOR_MODEL", "UVMF_CHANGE_ME: The decode_predictor::write_observed_decode_in function needs to be completed with DUT prediction model",UVM_NONE)
-    `uvm_info("UNIMPLEMENTED_PREDICTOR_MODEL", "******************************************************************************************************",UVM_NONE)
- 
+    //`uvm_info("UNIMPLEMENTED_PREDICTOR_MODEL", "******************************************************************************************************",UVM_NONE)
+    //`uvm_info("UNIMPLEMENTED_PREDICTOR_MODEL", "UVMF_CHANGE_ME: The decode_predictor::write_observed_decode_in function needs to be completed with DUT prediction model",UVM_NONE)
+    //`uvm_info("UNIMPLEMENTED_PREDICTOR_MODEL", "******************************************************************************************************",UVM_NONE)
+
+    if(t.enable_decode) begin
+    decode_model_return_type = decode_model (
+              t.instr,
+              t.npc,
+              predictor_decode_out_output_transaction.IR,
+              predictor_decode_out_output_transaction.npc_out,
+              predictor_decode_out_output_transaction.E_Control,
+              predictor_decode_out_output_transaction.W_Control,
+              predictor_decode_out_output_transaction.Mem_Control
+    ); 
+    end
+
     // Code for sending output transaction out through predictor_decode_out
     // Please note that each broadcasted transaction should be a different object than previously 
     // broadcasted transactions.  Creation of a different object is done by constructing the transaction 
