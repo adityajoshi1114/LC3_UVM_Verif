@@ -106,7 +106,7 @@ class memaccess_predictor #(
       .DMem_din(pred_to_scrbd_output_transaction.DMem_din), 
       .memout(pred_to_scrbd_output_transaction.memout), 
       .DMem_rd(pred_to_scrbd_output_transaction.DMem_rd)
-    )
+    );
     if(check_flag) begin
       `uvm_error("PRED", {"Invalid input trans: ", t.convert2string()})
       `uvm_error("PRED", {"Invalid expected output trans: ", pred_to_scrbd_output_transaction.convert2string()})
