@@ -110,7 +110,7 @@ end
   initial begin                                                                             
     @go;                                                                                   
     forever begin                                                                        
-      @(posedge clock_i);  
+      //@(posedge clock_i);  
       monitored_trans = new("monitored_trans");
       do_monitor( );
                                                                  
@@ -165,12 +165,16 @@ end
     // the next transfer. One clock cycle is consumed between calls to do_monitor.
     
     
-    monitored_trans.start_time = $time;
+    
      while(enable_decode_i !== 1'b1) 
       @(posedge clock_i);
+      monitored_trans.start_time = $time;
+      
       monitored_trans.enable_decode = enable_decode_i;
       monitored_trans.instr = Instr_dout_i;
       monitored_trans.npc = npc_in_i;
+
+    @(posedge clock_i);
     monitored_trans.end_time = $time;
     
     // pragma uvmf custom do_monitor end
