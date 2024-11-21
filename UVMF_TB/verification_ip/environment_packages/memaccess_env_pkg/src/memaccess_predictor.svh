@@ -87,6 +87,7 @@ class memaccess_predictor #(
   // This function performs prediction of DUT output values based on DUT input, configuration and state
   virtual function void write_from_in_agent(memaccess_in_transaction t);
     // pragma uvmf custom from_in_agent_predictor begin
+    bit checker_flag;
     from_in_agent_debug = t;
     `uvm_info("PRED", "Transaction Received through from_in_agent", UVM_MEDIUM)
     `uvm_info("PRED", {"            Data: ",t.convert2string()}, UVM_FULL)
@@ -107,7 +108,7 @@ class memaccess_predictor #(
       .memout(pred_to_scrbd_output_transaction.memout), 
       .DMem_rd(pred_to_scrbd_output_transaction.DMem_rd)
     );
-    if(check_flag) begin
+    if(checker_flag) begin
       `uvm_error("PRED", {"Invalid input trans: ", t.convert2string()})
       `uvm_error("PRED", {"Invalid expected output trans: ", pred_to_scrbd_output_transaction.convert2string()})
     end
