@@ -176,7 +176,7 @@ end
       monitored_trans.PC                <= pc_i;
       monitored_trans.NPC               <= npc_i;
       monitored_trans.Imem_RD           <= Imem_rd_i;
-      monitored_trans.enable_fetch_out  <= enable_fetch_i;
+
       @(posedge clock_i);
       monitored_trans.end_time = $time;
       // pragma uvmf custom do_monitor end
