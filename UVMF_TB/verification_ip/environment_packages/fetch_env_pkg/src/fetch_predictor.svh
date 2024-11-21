@@ -93,10 +93,27 @@ class fetch_predictor #(
     // Construct one of each output transaction type.
     fetch_out_ap_output_transaction = fetch_out_ap_output_transaction_t::type_id::create("fetch_out_ap_output_transaction");
     //  UVMF_CHANGE_ME: Implement predictor model here.  
-    `uvm_info("UNIMPLEMENTED_PREDICTOR_MODEL", "******************************************************************************************************",UVM_NONE)
-    `uvm_info("UNIMPLEMENTED_PREDICTOR_MODEL", "UVMF_CHANGE_ME: The fetch_predictor::write_fetch_in_ae function needs to be completed with DUT prediction model",UVM_NONE)
-    `uvm_info("UNIMPLEMENTED_PREDICTOR_MODEL", "******************************************************************************************************",UVM_NONE)
+    //`uvm_info("UNIMPLEMENTED_PREDICTOR_MODEL", "******************************************************************************************************",UVM_NONE)
+    //`uvm_info("UNIMPLEMENTED_PREDICTOR_MODEL", "UVMF_CHANGE_ME: The fetch_predictor::write_fetch_in_ae function needs to be completed with DUT prediction model",UVM_NONE)
+    //`uvm_info("UNIMPLEMENTED_PREDICTOR_MODEL", "******************************************************************************************************",UVM_NONE)
  
+
+    if(t.Enable_fetch) 
+    begin
+      decode_model_return_type = decode_model (
+                t.Enable_updatePC,
+                t.Enable_fetch,
+                t.Br_taken,
+                t.Taddr,
+                fetch_out_ap_output_transaction.NPC,
+                fetch_out_ap_output_transaction.PC,
+                fetch_out_ap_output_transaction.Imem_RD
+      ); 
+    end
+
+
+
+
     // Code for sending output transaction out through fetch_out_ap
     // Please note that each broadcasted transaction should be a different object than previously 
     // broadcasted transactions.  Creation of a different object is done by constructing the transaction 
