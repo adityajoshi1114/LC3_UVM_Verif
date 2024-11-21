@@ -56,6 +56,7 @@
 import uvmf_base_pkg_hdl::*;
 import memaccess_in_pkg_hdl::*;
 import memaccess_in_pkg::*;
+`include "src/memaccess_in_macros.svh"
 
 interface memaccess_in_driver_bfm 
   (memaccess_in_if bus);
@@ -139,7 +140,7 @@ end
        M_Control_o <= 'b0;
        mem_state_o <= 'b0;
        // INITIATOR mode output signals
-       DMem_dout_o <= 'bz;
+       DMem_dout_o <= 'b0;
        // Bi-directional signals
  
      end    

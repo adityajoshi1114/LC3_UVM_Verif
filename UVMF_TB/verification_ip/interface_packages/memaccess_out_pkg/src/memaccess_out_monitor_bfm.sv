@@ -168,10 +168,15 @@ end
     // exited with captured values, it is then called again to wait for and observe 
     // the next transfer. One clock cycle is consumed between calls to do_monitor.
     monitored_trans.start_time = $time;
-    @(posedge clock_i);
-    @(posedge clock_i);
-    @(posedge clock_i);
-    @(posedge clock_i);
+    // @(posedge clock_i);
+    // @(posedge clock_i);
+    // @(posedge clock_i);
+    // @(posedge clock_i);
+    while(reset_i) @(posedge clock_i);
+    monitored_trans.DMem_addr = DMem_addr_i;
+    monitored_trans.DMem_din = DMem_din_i;
+    monitored_trans.mem_out = memout_i;
+    monitored_trans.DMem_rd = DMem_rd_i;
     monitored_trans.end_time = $time;
     // pragma uvmf custom do_monitor end
   endtask         

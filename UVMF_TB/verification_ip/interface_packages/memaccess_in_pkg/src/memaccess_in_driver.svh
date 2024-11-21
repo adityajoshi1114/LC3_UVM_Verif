@@ -57,6 +57,7 @@ class memaccess_in_driver   extends uvmf_driver_base #(
       bfm.respond_and_wait_for_next_transfer( txn );
     end else begin    
       // Initiate a transfer and get response
+      `uvm_info("DRV", "Started", UVM_NONE)
       bfm.initiate_and_get_response( txn );
     end
 // pragma uvmf custom access end

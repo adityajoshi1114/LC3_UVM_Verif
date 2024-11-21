@@ -91,13 +91,13 @@ end
 
   // INITIATOR mode output signals
   tri [15:0] DMem_addr_i;
-  reg [15:0] DMem_addr_o = 'bz;
+  reg [15:0] DMem_addr_o = 'b0;
   tri [15:0] DMem_din_i;
-  reg [15:0] DMem_din_o = 'bz;
+  reg [15:0] DMem_din_o = 'b0;
   tri  DMem_rd_i;
-  reg  DMem_rd_o = 'bz;
+  reg  DMem_rd_o = 'b0;
   tri [15:0] memout_i;
-  reg [15:0] memout_o = 'bz;
+  reg [15:0] memout_o = 'b0;
 
   // Bi-directional signals
   
@@ -131,10 +131,10 @@ end
      begin
        // RESPONDER mode output signals
        // INITIATOR mode output signals
-       DMem_addr_o <= 'bz;
-       DMem_din_o <= 'bz;
-       DMem_rd_o <= 'bz;
-       memout_o <= 'bz;
+       DMem_addr_o <= 'b0;
+       DMem_din_o <= 'b0;
+       DMem_rd_o <= 'b0;
+       memout_o <= 'b0;
        // Bi-directional signals
  
      end    
