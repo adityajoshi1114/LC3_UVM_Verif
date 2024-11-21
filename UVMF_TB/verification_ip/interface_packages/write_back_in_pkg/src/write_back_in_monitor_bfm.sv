@@ -122,7 +122,7 @@ end
   initial begin                                                                             
     @go;                                                                                   
     forever begin                                                                        
-      @(posedge clock_i);  
+      //@(posedge clock_i);  
       monitored_trans = new("monitored_trans");
       do_monitor( );
                                                                  
@@ -188,10 +188,11 @@ end
     // exited with captured values, it is then called again to wait for and observe 
     // the next transfer. One clock cycle is consumed between calls to do_monitor.
     
-    monitored_trans.start_time = $time;
+    
 
     while(enable_writeback_i !== 1'b1) 
     @(posedge clock_i);
+    monitored_trans.start_time = $time;
 
     monitored_trans.enable_writeback=enable_writeback_i;	
     monitored_trans.aluout = aluout_i;
@@ -203,6 +204,7 @@ end
     monitored_trans.pcout = pcout_i;
     monitored_trans.W_control = W_control_i;
 
+    @(posedge clock_i);
     monitored_trans.end_time = $time;
     // pragma uvmf custom do_monitor end
   endtask         
