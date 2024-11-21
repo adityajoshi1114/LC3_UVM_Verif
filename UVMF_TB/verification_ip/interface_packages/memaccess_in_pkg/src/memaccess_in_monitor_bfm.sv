@@ -180,10 +180,10 @@ end
     // pragma uvmf custom do_monitor end
     while (reset_i === 1'b1) @(posedge clock_i);
     monitored_trans.mem_state = mem_state_i;  
-    monitored_trans.m_control = M_Control_i;  
-    monitored_trans.m_data = M_Data_i;  
-    monitored_trans.m_addr = M_Addr_i;  
-    monitored_trans.dmem_dout = DMem_dout_i; 
+    monitored_trans.M_Control = M_Control_i;  
+    monitored_trans.M_Data = M_Data_i;  
+    monitored_trans.M_Addr = M_Addr_i;  
+    monitored_trans.DMem_dout = DMem_dout_i; 
     monitored_trans.end_time  = $time;
     proxy.notify_transaction( monitored_trans );
   endtask         
