@@ -89,27 +89,27 @@ end
 
   // INITIATOR mode input signals
   tri  enable_updatePC_i;
-  reg  enable_updatePC_o = 'bz;
+  reg  enable_updatePC_o = 'b0;
   tri  enable_fetch_i;
-  reg  enable_fetch_o = 'bz;
+  reg  enable_fetch_o = 'b0;
   tri  enable_decode_i;
-  reg  enable_decode_o = 'bz;
+  reg  enable_decode_o = 'b0;
   tri  enable_execute_i;
-  reg  enable_execute_o = 'bz;
+  reg  enable_execute_o = 'b0;
   tri  enable_writeback_i;
-  reg  enable_writeback_o = 'bz;
+  reg  enable_writeback_o = 'b0;
   tri  br_taken_i;
-  reg  br_taken_o = 'bz;
+  reg  br_taken_o = 'b0;
   tri  bypass_alu_1_i;
-  reg  bypass_alu_1_o = 'bz;
+  reg  bypass_alu_1_o = 'b0;
   tri  bypass_alu_2_i;
-  reg  bypass_alu_2_o = 'bz;
+  reg  bypass_alu_2_o = 'b0;
   tri  bypass_mem_1_i;
-  reg  bypass_mem_1_o = 'bz;
+  reg  bypass_mem_1_o = 'b0;
   tri  bypass_mem_2_i;
-  reg  bypass_mem_2_o = 'bz;
+  reg  bypass_mem_2_o = 'b0;
   tri [1:0] mem_state_i;
-  reg [1:0] mem_state_o = 'bz;
+  reg [1:0] mem_state_o = 'b0;
 
   // INITIATOR mode output signals
 
@@ -158,17 +158,17 @@ end
   always @( negedge reset_i )
      begin
        // RESPONDER mode output signals
-       enable_updatePC_o <= 'bz;
-       enable_fetch_o <= 'bz;
-       enable_decode_o <= 'bz;
-       enable_execute_o <= 'bz;
-       enable_writeback_o <= 'bz;
-       br_taken_o <= 'bz;
-       bypass_alu_1_o <= 'bz;
-       bypass_alu_2_o <= 'bz;
-       bypass_mem_1_o <= 'bz;
-       bypass_mem_2_o <= 'bz;
-       mem_state_o <= 'bz;
+       enable_updatePC_o <= 'b0;
+       enable_fetch_o <= 'b0;
+       enable_decode_o <= 'b0;
+       enable_execute_o <= 'b0;
+       enable_writeback_o <= 'b0;
+       br_taken_o <= 'b0;
+       bypass_alu_1_o <= 'b0;
+       bypass_alu_2_o <= 'b0;
+       bypass_mem_1_o <= 'b0;
+       bypass_mem_2_o <= 'b0;
+       mem_state_o <= 'b0;
        // INITIATOR mode output signals
        // Bi-directional signals
  
