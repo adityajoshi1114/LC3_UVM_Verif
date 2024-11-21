@@ -89,17 +89,17 @@ end
 
   // INITIATOR mode input signals
   tri  complete_data_i;
-  reg  complete_data_o = 'bz;
+  reg  complete_data_o = 'b0;
   tri [15:0] Data_dout_i;
-  reg [15:0] Data_dout_o = 'bz;
+  reg [15:0] Data_dout_o = 'b0;
 
   // INITIATOR mode output signals
   tri [15:0] Data_din_i;
-  reg [15:0] Data_din_o = 'bz;
+  reg [15:0] Data_din_o = 'b0;
   tri  Data_rd_i;
-  reg  Data_rd_o = 'bz;
+  reg  Data_rd_o = 'b0;
   tri [15:0] Data_addr_i;
-  reg [15:0] Data_addr_o = 'bz;
+  reg [15:0] Data_addr_o = 'b0;
 
   // Bi-directional signals
   
