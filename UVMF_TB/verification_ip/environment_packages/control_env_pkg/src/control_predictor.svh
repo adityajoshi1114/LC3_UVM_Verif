@@ -102,6 +102,26 @@ class control_predictor #(
     // broadcasted transactions.  Creation of a different object is done by constructing the transaction 
     // using either new() or create().  Broadcasting a transaction object more than once to either the 
     // same subscriber or multiple subscribers will result in unexpected and incorrect behavior.
+    controller_model(
+    .complete_data(t.complete_data),
+    .complete_instr(t.complete_instr),
+    .IR(t.IR),
+    .psr(t.psr),
+    .IR_Exec(t.IR_Exec),
+    .IMem_dout(t.IMem_dout),
+    .NZP(t.NZP),
+    .enable_updatePC(pred_to_scbd_output_transaction.enable_updatePC),
+    .enable_fetch(pred_to_scbd_output_transaction.enable_fetch),
+    .enable_decode(pred_to_scbd_output_transaction.enable_decode),
+    .enable_execute(pred_to_scbd_output_transaction.enable_execute),
+    .enable_writeback(pred_to_scbd_output_transaction.enable_writeback),
+    .bypass_alu_1(pred_to_scbd_output_transaction.bypass_alu_1),
+    .bypass_alu_2(pred_to_scbd_output_transaction.bypass_alu_2),
+    .bypass_mem_1(pred_to_scbd_output_transaction.bypass_mem_1),
+    .bypass_mem_2(pred_to_scbd_output_transaction.bypass_mem_2),
+    .mem_state(pred_to_scbd_output_transaction.mem_state),
+    .br_taken(pred_to_scbd_output_transaction.br_taken)
+    );
     pred_to_scbd.write(pred_to_scbd_output_transaction);
     // pragma uvmf custom agent_in_predictor end
   endfunction
