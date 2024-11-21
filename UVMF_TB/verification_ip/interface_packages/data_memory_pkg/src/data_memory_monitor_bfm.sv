@@ -173,8 +173,11 @@ end
     // the next transfer. One clock cycle is consumed between calls to do_monitor.
     monitored_trans.start_time = $time;
     @(posedge clock_i);
-    @(posedge clock_i);
-    @(posedge clock_i);
+    monitored_trans.complete_data = complete_data_i;
+    monitored_trans.Data_dout = Data_dout_i;
+    monitored_trans.Data_din = Data_din_i;
+    monitored_trans.Data_rd = Data_rd_i;
+    monitored_trans.Data_addr = Data_addr_i;
     @(posedge clock_i);
     monitored_trans.end_time = $time;
     // pragma uvmf custom do_monitor end
