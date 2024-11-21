@@ -117,7 +117,10 @@ end
       do_monitor( );
                                                                  
  
-      proxy.notify_transaction( monitored_trans ); 
+      if(enable_fetch_i != 1'b1) 
+      begin
+        proxy.notify_transaction( monitored_trans ); 
+      end
  
     end                                                                                    
   end                                                                                       
@@ -166,17 +169,21 @@ end
     // task should return when a complete transfer has been observed.  Once this task is
     // exited with captured values, it is then called again to wait for and observe 
     // the next transfer. One clock cycle is consumed between calls to do_monitor.
-    monitored_trans.start_time = $time;
-    @(posedge clock_i);
-    @(posedge clock_i);
-    @(posedge clock_i);
-    @(posedge clock_i);
-    monitored_trans.end_time = $time;
-    // pragma uvmf custom do_monitor end
-  endtask         
-  
- 
-endinterface
+    while(enable_fetch_i != 1'b1)
+    begin
+      monitored_trans.start_time = $time;
+      @(posedge clock_i);
+      monitored_trans.PC                <= pc_i;
+      monitored_trans.NPC               <= npc_i;
+      monitored_trans.Imem_RD           <= Imem_rd_i;
+      monitored_trans.enable_fetch_out  <= enable_fetch_i;
+      @(posedge clock_i);
+      monitored_trans.end_time = $time;
+      // pragma uvmf custom do_monitor end
+    end
+  endtask
+          
+  endinterface
 
 // pragma uvmf custom external begin
 // pragma uvmf custom external end
