@@ -181,10 +181,22 @@ end
     // the next transfer. One clock cycle is consumed between calls to do_monitor.
     monitored_trans.start_time = $time;
     @(posedge clock_i);
-    @(posedge clock_i);
-    @(posedge clock_i);
+    monitored_trans.complete_data = complete_data_i;
+    monitored_trans.complete_instr = complete_instr_i;
+    monitored_trans.IR = IR_i;
+    monitored_trans.NZP = NZP_i;
+    monitored_trans.psr = psr_i;
+    monitored_trans.IR_Exec = IR_Exec_i;
+    monitored_trans.IMem_dout = IMem_dout_i;
     @(posedge clock_i);
     monitored_trans.end_time = $time;
+    proxy.notify_transaction( monitored_trans ); 
+
+
+    // @(posedge clock_i);
+    // @(posedge clock_i);
+    // @(posedge clock_i);
+
     // pragma uvmf custom do_monitor end
   endtask         
   
