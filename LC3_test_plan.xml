@@ -1,0 +1,988 @@
+<?xml version="1.0"?>
+<?mso-application progid="Excel.Sheet"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+ xmlns:o="urn:schemas-microsoft-com:office:office"
+ xmlns:x="urn:schemas-microsoft-com:office:excel"
+ xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+ xmlns:html="http://www.w3.org/TR/REC-html40">
+ <DocumentProperties xmlns="urn:schemas-microsoft-com:office:office">
+  <Author>Allan Crone</Author>
+  <LastAuthor>Aleesha Jiwani</LastAuthor>
+  <Created>2006-10-02T07:59:43Z</Created>
+  <LastSaved>2024-11-22T01:21:19Z</LastSaved>
+  <Company>Mentor Graphics</Company>
+  <Version>15.00</Version>
+ </DocumentProperties>
+ <OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office">
+  <AllowPNG/>
+ </OfficeDocumentSettings>
+ <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
+  <WindowHeight>7155</WindowHeight>
+  <WindowWidth>20490</WindowWidth>
+  <WindowTopX>0</WindowTopX>
+  <WindowTopY>0</WindowTopY>
+  <TabRatio>416</TabRatio>
+  <ProtectStructure>False</ProtectStructure>
+  <ProtectWindows>False</ProtectWindows>
+ </ExcelWorkbook>
+ <Styles>
+  <Style ss:ID="Default" ss:Name="Normal">
+   <Alignment ss:Vertical="Bottom"/>
+   <Borders/>
+   <Font ss:FontName="Arial"/>
+   <Interior/>
+   <NumberFormat/>
+   <Protection/>
+  </Style>
+  <Style ss:ID="s62">
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
+   </Borders>
+  </Style>
+  <Style ss:ID="s63">
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
+   </Borders>
+   <NumberFormat ss:Format="@"/>
+  </Style>
+  <Style ss:ID="s64">
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
+   </Borders>
+   <Font ss:FontName="Arial" x:Family="Swiss" ss:Size="16" ss:Bold="1"
+    ss:Italic="1" ss:Underline="Single"/>
+   <NumberFormat ss:Format="@"/>
+  </Style>
+  <Style ss:ID="s65">
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
+   </Borders>
+   <Font ss:FontName="Arial" x:Family="Swiss" ss:Size="14" ss:Bold="1"/>
+   <Interior ss:Color="#99CCFF" ss:Pattern="Solid"/>
+   <NumberFormat ss:Format="@"/>
+  </Style>
+  <Style ss:ID="s66">
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
+   </Borders>
+   <Font ss:FontName="Arial" x:Family="Swiss" ss:Size="14" ss:Bold="1"/>
+   <Interior ss:Color="#99CCFF" ss:Pattern="Solid"/>
+  </Style>
+  <Style ss:ID="s67">
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
+   </Borders>
+   <Font ss:FontName="Arial" x:Family="Swiss" ss:Bold="1"/>
+   <Interior ss:Color="#CCFFFF" ss:Pattern="Solid"/>
+   <NumberFormat ss:Format="@"/>
+  </Style>
+  <Style ss:ID="s68">
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
+   </Borders>
+   <Font ss:FontName="Arial"/>
+   <Interior ss:Color="#CCFFFF" ss:Pattern="Solid"/>
+  </Style>
+  <Style ss:ID="s69">
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
+   </Borders>
+   <Font ss:FontName="Arial" x:Family="Swiss" ss:Bold="1"/>
+   <Interior ss:Color="#CCFFFF" ss:Pattern="Solid"/>
+  </Style>
+  <Style ss:ID="s70">
+   <Alignment ss:Vertical="Top" ss:WrapText="1"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
+   </Borders>
+   <Font ss:FontName="Arial"/>
+   <Interior ss:Color="#CCFFFF" ss:Pattern="Solid"/>
+   <NumberFormat ss:Format="@"/>
+  </Style>
+  <Style ss:ID="s71">
+   <Alignment ss:Vertical="Top" ss:WrapText="1"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
+   </Borders>
+   <Font ss:FontName="Arial"/>
+   <Interior ss:Color="#CCFFFF" ss:Pattern="Solid"/>
+   <NumberFormat/>
+  </Style>
+  <Style ss:ID="s72">
+   <Alignment ss:Vertical="Bottom" ss:WrapText="1"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
+   </Borders>
+  </Style>
+  <Style ss:ID="s73">
+   <Alignment ss:Vertical="Top" ss:WrapText="1"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
+   </Borders>
+   <Font ss:FontName="Arial" x:Family="Swiss"/>
+  </Style>
+  <Style ss:ID="s74">
+   <Alignment ss:Vertical="Top" ss:WrapText="1"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
+   </Borders>
+   <Font ss:FontName="Arial"/>
+  </Style>
+  <Style ss:ID="s75">
+   <Alignment ss:Vertical="Top" ss:WrapText="1"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
+   </Borders>
+   <Font ss:FontName="Arial"/>
+   <Interior/>
+   <NumberFormat/>
+  </Style>
+  <Style ss:ID="s76">
+   <Alignment ss:Vertical="Top" ss:WrapText="1"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
+   </Borders>
+   <Font ss:FontName="Arial" x:Family="Swiss"/>
+   <Interior ss:Color="#C0C0C0" ss:Pattern="Solid"/>
+   <NumberFormat/>
+  </Style>
+  <Style ss:ID="s77">
+   <Alignment ss:Vertical="Top" ss:WrapText="1"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
+   </Borders>
+   <Font ss:FontName="Arial"/>
+   <Interior ss:Color="#C0C0C0" ss:Pattern="Solid"/>
+   <NumberFormat/>
+  </Style>
+  <Style ss:ID="s78">
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
+   </Borders>
+   <Font ss:FontName="Arial" x:Family="Swiss"/>
+  </Style>
+  <Style ss:ID="s80">
+   <Alignment ss:Vertical="Top" ss:WrapText="1"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
+   </Borders>
+   <Font ss:FontName="Arial" x:Family="Swiss" ss:Color="#000000"/>
+  </Style>
+  <Style ss:ID="s81">
+   <Alignment ss:Horizontal="Right" ss:Vertical="Top" ss:WrapText="1"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
+   </Borders>
+   <Font ss:FontName="Arial" x:Family="Swiss" ss:Color="#000000"/>
+  </Style>
+  <Style ss:ID="s82">
+   <Alignment ss:Vertical="Top" ss:WrapText="1"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
+   </Borders>
+   <Font ss:FontName="Arial" x:Family="Swiss" ss:Color="#000000"/>
+   <Interior ss:Color="#C0C0C0" ss:Pattern="Solid"/>
+  </Style>
+  <Style ss:ID="s83">
+   <Alignment ss:Horizontal="Right" ss:Vertical="Top" ss:WrapText="1"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
+   </Borders>
+   <Font ss:FontName="Arial" x:Family="Swiss" ss:Color="#000000"/>
+   <Interior ss:Color="#C0C0C0" ss:Pattern="Solid"/>
+  </Style>
+  <Style ss:ID="s84">
+   <Alignment ss:Vertical="Top" ss:WrapText="1"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
+   </Borders>
+   <Font ss:FontName="Arial"/>
+   <Interior/>
+  </Style>
+  <Style ss:ID="s85">
+   <Alignment ss:Vertical="Top" ss:WrapText="1"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
+   </Borders>
+  </Style>
+  <Style ss:ID="s86">
+   <Alignment ss:Vertical="Top" ss:WrapText="1"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
+   </Borders>
+   <Font ss:FontName="Arial" x:Family="Swiss"/>
+   <Interior/>
+  </Style>
+  <Style ss:ID="s87">
+   <Alignment ss:Vertical="Top"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
+   </Borders>
+  </Style>
+  <Style ss:ID="s89">
+   <Alignment ss:Vertical="Top" ss:WrapText="1"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
+   </Borders>
+   <Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>
+   <NumberFormat/>
+  </Style>
+  <Style ss:ID="s91">
+   <Alignment ss:Vertical="Top" ss:WrapText="1"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
+   </Borders>
+   <Interior/>
+   <NumberFormat/>
+  </Style>
+ </Styles>
+ <Worksheet ss:Name="LC3 Test Plan">
+  <Table ss:ExpandedColumnCount="10" ss:ExpandedRowCount="54" x:FullColumns="1"
+   x:FullRows="1" ss:StyleID="s62" ss:DefaultColumnWidth="52.5"
+   ss:DefaultRowHeight="12">
+   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="67.5"/>
+   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="132"/>
+   <Column ss:StyleID="s62" ss:Width="307.5"/>
+   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="238.5"/>
+   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="81"/>
+   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="61.5"/>
+   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="45"/>
+   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="81" ss:Span="2"/>
+   <Row ss:AutoFitHeight="0" ss:Height="21.9375">
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Verification Plan for LC3 testbench</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="12.9375"/>
+   <Row ss:AutoFitHeight="0" ss:Height="18">
+    <Cell ss:StyleID="s65"><Data ss:Type="String">#</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">Section</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">Description</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">Link</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">Type</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">Weight</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">Goal</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">Owner</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">Manager</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">Priority</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="18">
+    <Cell ss:StyleID="s67"/>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Simulation </Data></Cell>
+    <Cell ss:StyleID="s69"/>
+    <Cell ss:StyleID="s69"/>
+    <Cell ss:StyleID="s69"/>
+    <Cell ss:StyleID="s69"/>
+    <Cell ss:StyleID="s69"/>
+    <Cell ss:StyleID="s69"/>
+    <Cell ss:StyleID="s69"/>
+    <Cell ss:StyleID="s69"/>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="12.9375">
+    <Cell ss:StyleID="s70"><Data ss:Type="String">1</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">LC3 Coverage</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">All coverpoints in the LC3 </Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">instruction_memory_transaction_cg</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">CoverGroup</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="Number">100</Data></Cell>
+    <Cell ss:StyleID="s71"/>
+    <Cell ss:StyleID="s71"/>
+    <Cell ss:StyleID="s71"/>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="13.6875">
+    <Cell><Data ss:Type="String">1.1</Data></Cell>
+    <Cell><Data ss:Type="String">Complete Instruction</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="String">To confirm/ ensure that cmp_instr is being covered</Data></Cell>
+    <Cell ss:StyleID="s73"><Data ss:Type="String">instruction_memory_transaction_cg::inst_comp</Data></Cell>
+    <Cell ss:StyleID="s74"><Data ss:Type="String">Coverpoint</Data></Cell>
+    <Cell ss:StyleID="s75"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s75"><Data ss:Type="Number">100</Data></Cell>
+    <Cell ss:StyleID="s76"/>
+    <Cell ss:StyleID="s77"/>
+    <Cell ss:StyleID="s77"><Data ss:Type="Number">1</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="14.4375">
+    <Cell><Data ss:Type="String">1.2</Data></Cell>
+    <Cell><Data ss:Type="String">Instruction Memory Read</Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Check if Imem_en is being covered</Data></Cell>
+    <Cell ss:StyleID="s73"><Data ss:Type="String">instruction_memory_transaction_cg::Imem_en</Data></Cell>
+    <Cell ss:StyleID="s74"><Data ss:Type="String">Coverpoint</Data></Cell>
+    <Cell ss:StyleID="s75"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s75"><Data ss:Type="Number">100</Data></Cell>
+    <Cell ss:StyleID="s76"/>
+    <Cell ss:StyleID="s77"/>
+    <Cell ss:StyleID="s77"><Data ss:Type="Number">1</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="12.9375">
+    <Cell><Data ss:Type="String">1.3</Data></Cell>
+    <Cell ss:StyleID="s74"><Data ss:Type="String">PC</Data></Cell>
+    <Cell ss:StyleID="s74"><Data ss:Type="String">To ensure that any random PC is covered</Data></Cell>
+    <Cell ss:StyleID="s73"><Data ss:Type="String">instruction_memory_transaction_cg::PC</Data></Cell>
+    <Cell ss:StyleID="s74"><Data ss:Type="String">Coverpoint</Data></Cell>
+    <Cell ss:StyleID="s75"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s75"><Data ss:Type="Number">100</Data></Cell>
+    <Cell ss:StyleID="s76"/>
+    <Cell ss:StyleID="s77"/>
+    <Cell ss:StyleID="s77"><Data ss:Type="Number">1</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="16.6875" ss:StyleID="s72">
+    <Cell ss:StyleID="s63"><Data ss:Type="String">1.4</Data></Cell>
+    <Cell ss:StyleID="s80"><Data ss:Type="String">op_x_mode</Data></Cell>
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Check that the ADD and AND instruction work in both modes</Data></Cell>
+    <Cell ss:StyleID="s80"><Data ss:Type="String">instruction_memory_transaction_cg::op_x_mode</Data></Cell>
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Cross</Data></Cell>
+    <Cell ss:StyleID="s81"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s81"><Data ss:Type="Number">100</Data></Cell>
+    <Cell ss:StyleID="s76"/>
+    <Cell ss:StyleID="s82"/>
+    <Cell ss:StyleID="s83"><Data ss:Type="Number">1</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="12.5625">
+    <Cell ss:StyleID="s70"><Data ss:Type="String">2</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">ALU Coverage</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">All coverpoints for arithmetric instruction</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">arithmetic_operation</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">CoverGroup</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="Number">100</Data></Cell>
+    <Cell ss:StyleID="s71"/>
+    <Cell ss:StyleID="s71"/>
+    <Cell ss:StyleID="s71"/>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="14.4375">
+    <Cell><Data ss:Type="String">2.1</Data></Cell>
+    <Cell><Data ss:Type="String">ALU opcode</Data></Cell>
+    <Cell><Data ss:Type="String">To check if the ALU opcode is being covered</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="String">arithmetic_operation::alu_op</Data></Cell>
+    <Cell ss:StyleID="s74"><Data ss:Type="String">Coverpoint</Data></Cell>
+    <Cell ss:StyleID="s75"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s75"><Data ss:Type="Number">100</Data></Cell>
+    <Cell ss:StyleID="s76"/>
+    <Cell ss:StyleID="s77"/>
+    <Cell ss:StyleID="s77"><Data ss:Type="Number">1</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="15">
+    <Cell><Data ss:Type="String">2.2</Data></Cell>
+    <Cell><Data ss:Type="String">Destination Register</Data></Cell>
+    <Cell><Data ss:Type="String">To check if destination register is being covered</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="String">arithmetic_operation::dest</Data></Cell>
+    <Cell ss:StyleID="s74"><Data ss:Type="String">Coverpoint</Data></Cell>
+    <Cell ss:StyleID="s75"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s75"><Data ss:Type="Number">100</Data></Cell>
+    <Cell ss:StyleID="s77"/>
+    <Cell ss:StyleID="s77"/>
+    <Cell ss:StyleID="s77"><Data ss:Type="Number">1</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="12.9375">
+    <Cell><Data ss:Type="String">2.3</Data></Cell>
+    <Cell><Data ss:Type="String">SRC 1 Register</Data></Cell>
+    <Cell><Data ss:Type="String">To check if first source register is being covered</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="String">arithmetic_operation::src1</Data></Cell>
+    <Cell ss:StyleID="s74"><Data ss:Type="String">Coverpoint</Data></Cell>
+    <Cell ss:StyleID="s75"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s75"><Data ss:Type="Number">100</Data></Cell>
+    <Cell ss:StyleID="s76"/>
+    <Cell ss:StyleID="s77"/>
+    <Cell ss:StyleID="s77"><Data ss:Type="Number">1</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="12.9375">
+    <Cell><Data ss:Type="String">2.4</Data></Cell>
+    <Cell><Data ss:Type="String">SRC 2 Register</Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String">To check if second source register is being covered</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="String">arithmetic_operation::src2</Data></Cell>
+    <Cell ss:StyleID="s74"><Data ss:Type="String">Coverpoint</Data></Cell>
+    <Cell ss:StyleID="s75"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s75"><Data ss:Type="Number">100</Data></Cell>
+    <Cell ss:StyleID="s76"/>
+    <Cell ss:StyleID="s77"/>
+    <Cell ss:StyleID="s77"><Data ss:Type="Number">1</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="12.9375">
+    <Cell><Data ss:Type="String">2.5</Data></Cell>
+    <Cell><Data ss:Type="String">Immediate Field</Data></Cell>
+    <Cell><Data ss:Type="String">To check if imm5 bit is being covered</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="String">arithmetic_operation::imm5</Data></Cell>
+    <Cell ss:StyleID="s74"><Data ss:Type="String">Coverpoint</Data></Cell>
+    <Cell ss:StyleID="s75"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s75"><Data ss:Type="Number">100</Data></Cell>
+    <Cell ss:StyleID="s76"/>
+    <Cell ss:StyleID="s77"/>
+    <Cell ss:StyleID="s77"><Data ss:Type="Number">1</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="12.9375">
+    <Cell><Data ss:Type="String">2.6</Data></Cell>
+    <Cell><Data ss:Type="String">NOT and Register cross</Data></Cell>
+    <Cell><Data ss:Type="String">To check if NOT operation and SR1 register is being used</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="String">arithmetic_operation::not_x_sr1</Data></Cell>
+    <Cell ss:StyleID="s74"><Data ss:Type="String">Cross</Data></Cell>
+    <Cell ss:StyleID="s75"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s75"><Data ss:Type="Number">100</Data></Cell>
+    <Cell ss:StyleID="s76"/>
+    <Cell ss:StyleID="s77"/>
+    <Cell ss:StyleID="s77"><Data ss:Type="Number">1</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="12.9375">
+    <Cell ss:StyleID="s70"><Data ss:Type="String">3</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">Memory Coverage</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">All coverpoints for memory instruction</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">memory_operation</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">CoverGroup</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="Number">100</Data></Cell>
+    <Cell ss:StyleID="s71"/>
+    <Cell ss:StyleID="s71"/>
+    <Cell ss:StyleID="s71"/>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="15">
+    <Cell><Data ss:Type="String">3.1</Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Memory opcode</Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String">To check if mem opcode is being covered</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="String">memory_operation::mem_opcode</Data></Cell>
+    <Cell ss:StyleID="s74"><Data ss:Type="String">Coverpoint</Data></Cell>
+    <Cell ss:StyleID="s75"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s75"><Data ss:Type="Number">100</Data></Cell>
+    <Cell ss:StyleID="s76"/>
+    <Cell ss:StyleID="s77"/>
+    <Cell ss:StyleID="s77"><Data ss:Type="Number">1</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="15">
+    <Cell><Data ss:Type="String">3.2</Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Destination memory register</Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String">To check if destination memory register is being covered</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="String">memory_operation::dest_reg_mem</Data></Cell>
+    <Cell ss:StyleID="s74"><Data ss:Type="String">Coverpoint</Data></Cell>
+    <Cell ss:StyleID="s75"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s75"><Data ss:Type="Number">100</Data></Cell>
+    <Cell ss:StyleID="s77"/>
+    <Cell ss:StyleID="s77"/>
+    <Cell ss:StyleID="s77"><Data ss:Type="Number">1</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="15">
+    <Cell><Data ss:Type="String">3.3</Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Source memory register</Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String">To check if source memory register is being covered</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="String">memory_operation::src_reg_mem</Data></Cell>
+    <Cell ss:StyleID="s74"><Data ss:Type="String">Coverpoint</Data></Cell>
+    <Cell ss:StyleID="s75"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s75"><Data ss:Type="Number">100</Data></Cell>
+    <Cell ss:StyleID="s77"/>
+    <Cell ss:StyleID="s77"/>
+    <Cell ss:StyleID="s77"><Data ss:Type="Number">1</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="15">
+    <Cell><Data ss:Type="String">3.4</Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String">base_r memory register</Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String">To check if base register is being covered</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="String">memory_operation::base_r_reg_mem</Data></Cell>
+    <Cell ss:StyleID="s74"><Data ss:Type="String">Coverpoint</Data></Cell>
+    <Cell ss:StyleID="s75"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s75"><Data ss:Type="Number">100</Data></Cell>
+    <Cell ss:StyleID="s77"/>
+    <Cell ss:StyleID="s77"/>
+    <Cell ss:StyleID="s77"><Data ss:Type="Number">1</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="15">
+    <Cell><Data ss:Type="String">3.5</Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String">PC Offset6 memory register</Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String">To check if PC Offset6 is being covered</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="String">memory_operation::pcOffset_6_reg_mem</Data></Cell>
+    <Cell ss:StyleID="s74"><Data ss:Type="String">Coverpoint</Data></Cell>
+    <Cell ss:StyleID="s75"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s75"><Data ss:Type="Number">100</Data></Cell>
+    <Cell ss:StyleID="s77"/>
+    <Cell ss:StyleID="s77"/>
+    <Cell ss:StyleID="s77"><Data ss:Type="Number">1</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="15">
+    <Cell><Data ss:Type="String">3.6</Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String">PC Offset9 memory register</Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String">To check if PC Offset9 field is being covered</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="String">memory_operation::pcOffset_9_reg_mem</Data></Cell>
+    <Cell ss:StyleID="s74"><Data ss:Type="String">Coverpoint</Data></Cell>
+    <Cell ss:StyleID="s75"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s75"><Data ss:Type="Number">100</Data></Cell>
+    <Cell ss:StyleID="s77"/>
+    <Cell ss:StyleID="s77"/>
+    <Cell ss:StyleID="s77"><Data ss:Type="Number">1</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="15.5625">
+    <Cell><Data ss:Type="String">3.7</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="String">LD and dr cross</Data></Cell>
+    <Cell ss:StyleID="s73"><Data ss:Type="String">To check if LD uses valid dr</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="String">memory_operation::ld_x_dr</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="String">Cross</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="Number">100</Data></Cell>
+    <Cell ss:StyleID="s77"/>
+    <Cell ss:StyleID="s77"/>
+    <Cell ss:StyleID="s77"><Data ss:Type="Number">1</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="15">
+    <Cell><Data ss:Type="String">3.8</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="String">LD and pcoffset9 cross</Data></Cell>
+    <Cell ss:StyleID="s73"><Data ss:Type="String">To check if LD uses valid pcoffset9</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="String">memory_operation::ld_x_pcoffset9</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="String">Cross</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="Number">100</Data></Cell>
+    <Cell ss:StyleID="s77"/>
+    <Cell ss:StyleID="s77"/>
+    <Cell ss:StyleID="s77"><Data ss:Type="Number">1</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="15">
+    <Cell><Data ss:Type="String">3.9</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="String">LDR and dr cross</Data></Cell>
+    <Cell ss:StyleID="s73"><Data ss:Type="String">To check if LDR uses valid dr</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="String">memory_operation::ldr_x_dr</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="String">Cross</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="Number">100</Data></Cell>
+    <Cell ss:StyleID="s76"/>
+    <Cell ss:StyleID="s77"/>
+    <Cell ss:StyleID="s77"><Data ss:Type="Number">1</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="15.5625">
+    <Cell><Data ss:Type="String">3.10</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="String">LDR and BaseR cross</Data></Cell>
+    <Cell ss:StyleID="s73"><Data ss:Type="String">To check if LDR uses valid BaseR</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="String">memory_operation::ldr_x_baser</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="String">Cross</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="Number">100</Data></Cell>
+    <Cell ss:StyleID="s76"/>
+    <Cell ss:StyleID="s77"/>
+    <Cell ss:StyleID="s77"><Data ss:Type="Number">1</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="14.4375">
+    <Cell><Data ss:Type="String">3.11</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="String">LDR and pcoffset6 cross</Data></Cell>
+    <Cell ss:StyleID="s73"><Data ss:Type="String">To check if LDR uses valid pcoffset6</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="String">memory_operation::ldr_x_pcoffset6</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="String">Cross</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="Number">100</Data></Cell>
+    <Cell ss:StyleID="s77"/>
+    <Cell ss:StyleID="s77"/>
+    <Cell ss:StyleID="s77"><Data ss:Type="Number">1</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="15">
+    <Cell><Data ss:Type="String">3.12</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="String">LDI and dr cross</Data></Cell>
+    <Cell ss:StyleID="s73"><Data ss:Type="String">To check if LDI uses valid dr</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="String">memory_operation::ldi_x_dr</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="String">Cross</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="Number">100</Data></Cell>
+    <Cell ss:StyleID="s77"/>
+    <Cell ss:StyleID="s77"/>
+    <Cell ss:StyleID="s77"><Data ss:Type="Number">1</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="14.4375">
+    <Cell><Data ss:Type="String">3.13</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="String">LDI and pcoffset9 cross</Data></Cell>
+    <Cell ss:StyleID="s73"><Data ss:Type="String">To check if LDI uses valid pcoffset9</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="String">memory_operation::ldi_x_pcoffset9</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="String">Cross</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="Number">100</Data></Cell>
+    <Cell ss:StyleID="s77"/>
+    <Cell ss:StyleID="s77"/>
+    <Cell ss:StyleID="s77"><Data ss:Type="Number">1</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="15">
+    <Cell><Data ss:Type="String">3.14</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="String">STR and sr cross</Data></Cell>
+    <Cell ss:StyleID="s73"><Data ss:Type="String">To check if STR uses the correct sr</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="String">memory_operation::str_x_sr</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="String">Cross</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="Number">100</Data></Cell>
+    <Cell ss:StyleID="s77"/>
+    <Cell ss:StyleID="s77"/>
+    <Cell ss:StyleID="s77"><Data ss:Type="Number">1</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="13.6875">
+    <Cell><Data ss:Type="String">3.15</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="String">STR and baseR cross</Data></Cell>
+    <Cell ss:StyleID="s73"><Data ss:Type="String">To check if STR uses correct baser</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="String">memory_operation::str_x_baser</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="String">Cross</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="Number">100</Data></Cell>
+    <Cell ss:StyleID="s77"/>
+    <Cell ss:StyleID="s77"/>
+    <Cell ss:StyleID="s77"><Data ss:Type="Number">1</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="16.3125">
+    <Cell><Data ss:Type="String">3.16</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="String">STR and pcoffset6 cross</Data></Cell>
+    <Cell ss:StyleID="s73"><Data ss:Type="String">To check if STR uses the correct pcoffset6</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="String">memory_operation::str_x_pcoffset6</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="String">Cross</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="Number">100</Data></Cell>
+    <Cell ss:StyleID="s77"/>
+    <Cell ss:StyleID="s77"/>
+    <Cell ss:StyleID="s77"><Data ss:Type="Number">1</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="13.6875">
+    <Cell><Data ss:Type="String">3.17</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="String">STI and sr cross</Data></Cell>
+    <Cell ss:StyleID="s73"><Data ss:Type="String">To check if STI uses the correct sr</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="String">memory_operation::sti_x_sr</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="String">Cross</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="Number">100</Data></Cell>
+    <Cell ss:StyleID="s77"/>
+    <Cell ss:StyleID="s77"/>
+    <Cell ss:StyleID="s77"><Data ss:Type="Number">1</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="17.4375">
+    <Cell><Data ss:Type="String">3.18</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="String">STI and pcoffset9 cross</Data></Cell>
+    <Cell ss:StyleID="s73"><Data ss:Type="String">To check if STI uses the correct pcoffset9</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="String">memory_operation::sti_x_pcoffset9</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="String">Cross</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="Number">100</Data></Cell>
+    <Cell ss:StyleID="s77"/>
+    <Cell ss:StyleID="s77"/>
+    <Cell ss:StyleID="s77"><Data ss:Type="Number">1</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="14.4375">
+    <Cell><Data ss:Type="String">3.19</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="String">ST and sr cross</Data></Cell>
+    <Cell ss:StyleID="s73"><Data ss:Type="String">To check if ST uses the correct sr</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="String">memory_operation::st_x_sr</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="String">Cross</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="Number">100</Data></Cell>
+    <Cell ss:StyleID="s77"/>
+    <Cell ss:StyleID="s77"/>
+    <Cell ss:StyleID="s77"><Data ss:Type="Number">1</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="13.6875">
+    <Cell><Data ss:Type="String">3.20</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="String">ST and pcoffset9 cross</Data></Cell>
+    <Cell ss:StyleID="s73"><Data ss:Type="String">To check if ST uses the correct pcoffset9</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="String">memory_operation::st_x_pcoffset9</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="String">Cross</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="Number">100</Data></Cell>
+    <Cell ss:StyleID="s77"/>
+    <Cell ss:StyleID="s77"/>
+    <Cell ss:StyleID="s77"><Data ss:Type="Number">1</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="15">
+    <Cell><Data ss:Type="String">3.21</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="String">LEA and dr cross</Data></Cell>
+    <Cell ss:StyleID="s73"><Data ss:Type="String">To check if LEA uses the correct dr</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="String">memory_operation::lea_x_dr</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="String">Cross</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="Number">100</Data></Cell>
+    <Cell ss:StyleID="s77"/>
+    <Cell ss:StyleID="s77"/>
+    <Cell ss:StyleID="s77"><Data ss:Type="Number">1</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="15">
+    <Cell><Data ss:Type="String">3.22</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="String">LEA and pcoffset9 cross</Data></Cell>
+    <Cell ss:StyleID="s73"><Data ss:Type="String">To check if LEA uses the correct pcoffset9</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="String">memory_operation::lea_x_pcoffset9</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="String">Cross</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="Number">100</Data></Cell>
+    <Cell ss:StyleID="s76"/>
+    <Cell ss:StyleID="s77"/>
+    <Cell ss:StyleID="s77"><Data ss:Type="Number">1</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="12.9375">
+    <Cell ss:StyleID="s70"><Data ss:Type="String">4</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">Control Coverage</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">All coverpoints for branch instruction</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">control_operation</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">CoverGroup</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="Number">100</Data></Cell>
+    <Cell ss:StyleID="s71"/>
+    <Cell ss:StyleID="s71"/>
+    <Cell ss:StyleID="s71"/>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="15">
+    <Cell><Data ss:Type="String">4.1</Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Branch opcode </Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String">To check if opcode is being covered</Data></Cell>
+    <Cell ss:StyleID="s86"><Data ss:Type="String">control_operation::br_opcode</Data></Cell>
+    <Cell ss:StyleID="s74"><Data ss:Type="String">Coverpoint</Data></Cell>
+    <Cell ss:StyleID="s75"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s75"><Data ss:Type="Number">100</Data></Cell>
+    <Cell ss:StyleID="s77"/>
+    <Cell ss:StyleID="s77"/>
+    <Cell ss:StyleID="s77"><Data ss:Type="Number">1</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="15">
+    <Cell><Data ss:Type="String">4.2</Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String">NZP Register</Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String">To check if NZP is being covered</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="String">control_operation::NZP_reg</Data></Cell>
+    <Cell ss:StyleID="s74"><Data ss:Type="String">Coverpoint</Data></Cell>
+    <Cell ss:StyleID="s75"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s75"><Data ss:Type="Number">100</Data></Cell>
+    <Cell ss:StyleID="s77"/>
+    <Cell ss:StyleID="s77"/>
+    <Cell ss:StyleID="s77"><Data ss:Type="Number">1</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="15">
+    <Cell><Data ss:Type="String">4.3</Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String">PC control</Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String">To check if PC is being covered</Data></Cell>
+    <Cell ss:StyleID="s86"><Data ss:Type="String">control_operation::pc_control</Data></Cell>
+    <Cell ss:StyleID="s74"><Data ss:Type="String">Coverpoint</Data></Cell>
+    <Cell ss:StyleID="s75"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s75"><Data ss:Type="Number">100</Data></Cell>
+    <Cell ss:StyleID="s77"/>
+    <Cell ss:StyleID="s77"/>
+    <Cell ss:StyleID="s77"><Data ss:Type="Number">1</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="15">
+    <Cell><Data ss:Type="String">4.4</Data></Cell>
+    <Cell><Data ss:Type="String">base control</Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String">To check if base is being covered</Data></Cell>
+    <Cell ss:StyleID="s84"><Data ss:Type="String">control_operation::base_r_control</Data></Cell>
+    <Cell ss:StyleID="s74"><Data ss:Type="String">Coverpoint</Data></Cell>
+    <Cell ss:StyleID="s75"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s75"><Data ss:Type="Number">100</Data></Cell>
+    <Cell ss:StyleID="s77"/>
+    <Cell ss:StyleID="s77"/>
+    <Cell ss:StyleID="s77"><Data ss:Type="Number">1</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="14.4375">
+    <Cell><Data ss:Type="String">4.5</Data></Cell>
+    <Cell ss:StyleID="s73"><Data ss:Type="String">Jump Field Cross</Data></Cell>
+    <Cell ss:StyleID="s73"><Data ss:Type="String">To check if Jump instructions have all valid combinations of BaseR</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="String">control_operation::baser_x_jmp</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Cross</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="Number">100</Data></Cell>
+    <Cell ss:StyleID="s77"/>
+    <Cell ss:StyleID="s77"/>
+    <Cell ss:StyleID="s77"><Data ss:Type="Number">1</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="27">
+    <Cell><Data ss:Type="String">4.6</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="String">BR Field Cross with nzp</Data></Cell>
+    <Cell ss:StyleID="s73"><Data ss:Type="String">To check if BR instructions have all valid combinations of NZP including: 011, 001, 101, 010</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="String">control_operation::nzp_x_br</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="String">Cross</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="Number">100</Data></Cell>
+    <Cell ss:StyleID="s77"/>
+    <Cell ss:StyleID="s77"/>
+    <Cell ss:StyleID="s77"><Data ss:Type="Number">1</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="15.5625">
+    <Cell><Data ss:Type="String">4.7</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="String">BR Field Cross with pcoffset9</Data></Cell>
+    <Cell ss:StyleID="s73"><Data ss:Type="String">To check if BR instructions have all valid pcoffset9</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="String">control_operation::pcoffset9_x_br</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="String">Cross</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s85"><Data ss:Type="Number">100</Data></Cell>
+    <Cell ss:StyleID="s77"/>
+    <Cell ss:StyleID="s77"/>
+    <Cell ss:StyleID="s77"><Data ss:Type="Number">1</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s70"><Data ss:Type="String">5</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">Directed Tests</Data></Cell>
+    <Cell ss:StyleID="s71"/>
+    <Cell ss:StyleID="s71"/>
+    <Cell ss:StyleID="s71"/>
+    <Cell ss:StyleID="s71"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="Number">100</Data></Cell>
+    <Cell ss:StyleID="s71"/>
+    <Cell ss:StyleID="s71"/>
+    <Cell ss:StyleID="s71"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">5.1</Data></Cell>
+    <Cell ss:StyleID="s74"><Data ss:Type="String">ALU test</Data></Cell>
+    <Cell ss:StyleID="s74"><Data ss:Type="String">Test with different kind of Arithmetric instructions</Data></Cell>
+    <Cell ss:StyleID="s74"><Data ss:Type="String">alu_test</Data></Cell>
+    <Cell ss:StyleID="s74"><Data ss:Type="String">test</Data></Cell>
+    <Cell ss:StyleID="s75"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s75"><Data ss:Type="Number">100</Data></Cell>
+    <Cell ss:StyleID="s76"/>
+    <Cell ss:StyleID="s77"/>
+    <Cell ss:StyleID="s77"><Data ss:Type="Number">1</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">5.2</Data></Cell>
+    <Cell ss:StyleID="s74"><Data ss:Type="String">MEM test</Data></Cell>
+    <Cell ss:StyleID="s74"><Data ss:Type="String">Test with different kind of Memory instructions</Data></Cell>
+    <Cell ss:StyleID="s74"><Data ss:Type="String">mem_test</Data></Cell>
+    <Cell ss:StyleID="s74"><Data ss:Type="String">test</Data></Cell>
+    <Cell ss:StyleID="s75"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s75"><Data ss:Type="Number">100</Data></Cell>
+    <Cell ss:StyleID="s76"/>
+    <Cell ss:StyleID="s77"/>
+    <Cell ss:StyleID="s77"><Data ss:Type="Number">1</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">5.3</Data></Cell>
+    <Cell ss:StyleID="s74"><Data ss:Type="String">Control test</Data></Cell>
+    <Cell ss:StyleID="s74"><Data ss:Type="String">Test with different kind of Control instructions(Branch, Jump)</Data></Cell>
+    <Cell ss:StyleID="s74"><Data ss:Type="String">ctrl_test</Data></Cell>
+    <Cell ss:StyleID="s74"><Data ss:Type="String">test</Data></Cell>
+    <Cell ss:StyleID="s75"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s75"><Data ss:Type="Number">100</Data></Cell>
+    <Cell ss:StyleID="s76"/>
+    <Cell ss:StyleID="s77"/>
+    <Cell ss:StyleID="s77"><Data ss:Type="Number">1</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">5.4</Data></Cell>
+    <Cell ss:StyleID="s74"><Data ss:Type="String">ALL opcode test</Data></Cell>
+    <Cell ss:StyleID="s74"><Data ss:Type="String">Test with all possible ALU, MEM, and CTRL instructions</Data></Cell>
+    <Cell ss:StyleID="s74"><Data ss:Type="String">test_top</Data></Cell>
+    <Cell ss:StyleID="s74"><Data ss:Type="String">test</Data></Cell>
+    <Cell ss:StyleID="s75"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s75"><Data ss:Type="Number">100</Data></Cell>
+    <Cell ss:StyleID="s76"/>
+    <Cell ss:StyleID="s77"/>
+    <Cell ss:StyleID="s77"><Data ss:Type="Number">1</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s70"><Data ss:Type="String">6</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">Code Coverage</Data></Cell>
+    <Cell ss:StyleID="s71"/>
+    <Cell ss:StyleID="s71"/>
+    <Cell ss:StyleID="s71"/>
+    <Cell ss:StyleID="s71"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="Number">100</Data></Cell>
+    <Cell ss:StyleID="s71"/>
+    <Cell ss:StyleID="s71"/>
+    <Cell ss:StyleID="s71"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">6.1</Data></Cell>
+    <Cell ss:StyleID="s89"><Data ss:Type="String" x:Ticked="1">RTL Core </Data></Cell>
+    <Cell><Data ss:Type="String" x:Ticked="1">&quot;Ensure that all design units have 100% statement coverage 100% branch coverage&quot;</Data></Cell>
+    <Cell ss:StyleID="s91"><Data ss:Type="String">/hdl_top/DUT</Data></Cell>
+    <Cell ss:StyleID="s74"><Data ss:Type="String">Instance</Data></Cell>
+    <Cell ss:StyleID="s91"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s75"><Data ss:Type="Number">100</Data></Cell>
+    <Cell ss:StyleID="s76"/>
+    <Cell ss:StyleID="s77"/>
+    <Cell ss:StyleID="s77"><Data ss:Type="Number">1</Data></Cell>
+   </Row>
+  </Table>
+  <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <PageSetup>
+    <Header x:Margin="0.3"/>
+    <Footer x:Margin="0.3"/>
+    <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
+   </PageSetup>
+   <Unsynced/>
+   <Print>
+    <ValidPrinterInfo/>
+    <PaperSizeIndex>9</PaperSizeIndex>
+    <HorizontalResolution>600</HorizontalResolution>
+    <VerticalResolution>600</VerticalResolution>
+   </Print>
+   <Selected/>
+   <Panes>
+    <Pane>
+     <Number>3</Number>
+     <ActiveRow>5</ActiveRow>
+     <ActiveCol>8</ActiveCol>
+     <RangeSelection>R6C9:R54C9</RangeSelection>
+    </Pane>
+   </Panes>
+   <ProtectObjects>False</ProtectObjects>
+   <ProtectScenarios>False</ProtectScenarios>
+   <x:PageLayoutZoom>0</x:PageLayoutZoom>
+  </WorksheetOptions>
+ </Worksheet>
+</Workbook>
