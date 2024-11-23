@@ -195,7 +195,7 @@ rand memacc_env_config_t memacc_env_config;
   // Interface initialization for local agents
      Instruction_config.initialize( interface_activity[12], {environment_path,".Instruction"}, interface_names[12]);
      Instruction_config.initiator_responder = RESPONDER;
-     // Instruction_config.has_coverage = 1;
+     Instruction_config.has_coverage = 1;
      Data_config.initialize( interface_activity[13], {environment_path,".Data"}, interface_names[13]);
      Data_config.initiator_responder = RESPONDER;
      // Data_config.has_coverage = 1;

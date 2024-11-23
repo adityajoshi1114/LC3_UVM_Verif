@@ -29,7 +29,7 @@ class instruction_memory_responder_sequence
 
   task body();
     req=instruction_memory_transaction::type_id::create("req");
-    forever begin
+    //forever begin
       start_item(req);
       finish_item(req);
       // pragma uvmf custom body begin
@@ -39,8 +39,12 @@ class instruction_memory_responder_sequence
       // If this was an item that required a response, the expectation is
       // that the response should be populated within this transaction now.
       `uvm_info("SEQ",$sformatf("Processed txn: %s",req.convert2string()),UVM_HIGH)
+      req.Instr_Dout = 4'hfa12;
+
+      start_item(req);
+      finish_item(req);
       // pragma uvmf custom body end
-    end
+    //end
   endtask
 
 endclass
