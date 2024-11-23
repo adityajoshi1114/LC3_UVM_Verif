@@ -123,7 +123,7 @@ end
       do_monitor( );
                                                                  
  
-      proxy.notify_transaction( monitored_trans ); 
+      //proxy.notify_transaction( monitored_trans ); 
  
     end                                                                                    
   end                                                                                       
