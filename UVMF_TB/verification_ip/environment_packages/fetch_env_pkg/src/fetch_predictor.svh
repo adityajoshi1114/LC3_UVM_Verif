@@ -63,7 +63,6 @@ class fetch_predictor #(
 
 
   // pragma uvmf custom class_item_additional begin
-  bit fetch_model_return_type;
   // pragma uvmf custom class_item_additional end
 
   // FUNCTION: new
@@ -101,7 +100,7 @@ class fetch_predictor #(
 
     if(t.Enable_fetch) 
     begin
-      fetch_model_return_type = fetch_model (
+      decode_model_return_type = fetch_model (
                 t.Enable_updatePC,
                 t.Enable_fetch,
                 t.Br_taken,
