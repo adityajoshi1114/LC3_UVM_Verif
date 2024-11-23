@@ -58,36 +58,36 @@ import uvmf_base_pkg_hdl::*;
   // The signal bundle, _if, contains signals to be connected to the DUT.
   // The monitor, monitor_bfm, observes the bus, _if, and captures transactions.
   // The driver, driver_bfm, drives transactions onto the bus, _if.
-   bind LC3_inst.Fetch fetch_in_if  fe_env_in_agent_bus(
+   bind LC3_inst fetch_in_if  fe_env_in_agent_bus(
      // pragma uvmf custom fe_env_in_agent_bus_connections begin
       .clock(clock), 
       .reset(reset),
       .enable_updatePC(enable_updatePC),
       .enable_fetch(enable_fetch),
-      .taddr(taddr),
+      .taddr(pcout),
       .br_taken(br_taken)
      // pragma uvmf custom fe_env_in_agent_bus_connections end
      );
-   bind LC3_inst.Fetch fetch_out_if  fe_env_out_agent_bus(
+   bind LC3_inst fetch_out_if  fe_env_out_agent_bus(
      // pragma uvmf custom fe_env_out_agent_bus_connections begin
       .clock(clock),
       .reset(reset),
       .enable_fetch(enable_fetch),
       .pc(pc),
-      .npc(npc_out),
+      .npc(npc_out_fetch),
       .Imem_rd(instrmem_rd)
      // pragma uvmf custom fe_env_out_agent_bus_connections end
      );
-   bind LC3_inst.Dec decode_in_if  de_env_agent_in_bus(
+   bind LC3_inst decode_in_if  de_env_agent_in_bus(
      // pragma uvmf custom de_env_agent_in_bus_connections begin
       .clock(clock),
       .reset(reset),
       .enable_decode(enable_decode),
-      .Instr_dout(dout),
-      .npc_in(npc_in)
+      .Instr_dout(Instr_dout),
+      .npc_in(npc_out_fetch)
      // pragma uvmf custom de_env_agent_in_bus_connections end
      );
-   bind LC3_inst.Dec decode_out_if  de_env_agent_out_bus(
+   bind LC3_inst decode_out_if  de_env_agent_out_bus(
      // pragma uvmf custom de_env_agent_out_bus_connections begin
       .clock(clock),
       .reset(reset),
@@ -96,29 +96,29 @@ import uvmf_base_pkg_hdl::*;
       .Mem_Control(Mem_Control),
       .E_Control(E_Control),
       .IR(IR),
-      .npc_out(npc_out)
+      .npc_out(npc_out_dec)
      // pragma uvmf custom de_env_agent_out_bus_connections end
      );
-   bind LC3_inst.Ex execute_in_if  ex_env_agent_in_bus(
+   bind LC3_inst execute_in_if  ex_env_agent_in_bus(
      // pragma uvmf custom ex_env_agent_in_bus_connections begin
       .clock(clock),
       .reset(reset),
       .enable_execute(enable_execute),
-      .E_control(E_control),
+      .E_control(E_Control),
       .IR(IR),
-      .Mem_Bypass_Val(Mem_Bypass_Val),
-      .npc_in(npc),
+      .Mem_Bypass_Val(memout),
+      .npc_in(npc_out_dec),
       .VSR1(VSR1),
       .VSR2(VSR2),
       .bypass_alu_1(bypass_alu_1),
       .bypass_alu_2(bypass_alu_2),
       .bypass_mem_1(bypass_mem_1),
       .bypass_mem_2(bypass_mem_2),
-      .Mem_Control_in(Mem_Control_in),
-      .W_Control_in(W_Control_in)
+      .Mem_Control_in(Mem_Control),
+      .W_Control_in(W_Control)
      // pragma uvmf custom ex_env_agent_in_bus_connections end
      );
-   bind LC3_inst.Ex execute_out_if  ex_env_agent_out_bus(
+   bind LC3_inst execute_out_if  ex_env_agent_out_bus(
      // pragma uvmf custom ex_env_agent_out_bus_connections begin
       .clock(clock),
       .reset(reset),
@@ -131,11 +131,11 @@ import uvmf_base_pkg_hdl::*;
       .sr2(sr2),
       .IR_Exec(IR_Exec),
       .NZP(NZP),
-      .M_data(M_data),
+      .M_data(M_Data),
       .en_ex(enable_execute)
      // pragma uvmf custom ex_env_agent_out_bus_connections end
      );
-   bind LC3_inst.WB write_back_in_if  wb_env_agent_in_bus(
+   bind LC3_inst write_back_in_if  wb_env_agent_in_bus(
      // pragma uvmf custom wb_env_agent_in_bus_connections begin
       .clock(clock),
       .reset(reset),
@@ -145,22 +145,22 @@ import uvmf_base_pkg_hdl::*;
       .sr1(sr1),
       .sr2(sr2),
       .dr(dr),
-      .npc(npc),
+      .npc(npc_out_dec),
       .pcout(pcout),
-      .W_control(W_control)
+      .W_control(W_Control_out)
      // pragma uvmf custom wb_env_agent_in_bus_connections end
      );
-   bind LC3_inst.WB write_back_out_if  wb_env_agent_out_bus(
+   bind LC3_inst write_back_out_if  wb_env_agent_out_bus(
      // pragma uvmf custom wb_env_agent_out_bus_connections begin
       .clock(clock),
       .reset(reset),
       .enable_writeback(enable_writeback),
-      .VSR1(d1),
-      .VSR2(d2),
+      .VSR1(VSR1),
+      .VSR2(VSR2),
       .psr(psr)
      // pragma uvmf custom wb_env_agent_out_bus_connections end
      );
-   bind LC3_inst.Ctrl control_in_if  ctrl_env_agent_in_bus(
+   bind LC3_inst control_in_if  ctrl_env_agent_in_bus(
      // pragma uvmf custom ctrl_env_agent_in_bus_connections begin
       .clock(clock),
       .reset(reset),
@@ -172,7 +172,7 @@ import uvmf_base_pkg_hdl::*;
       .IR_Exec(IR_Exec)
      // pragma uvmf custom ctrl_env_agent_in_bus_connections end
      );
-   bind LC3_inst.Ctrl control_out_if  ctrl_env_agent_out_bus(
+   bind LC3_inst control_out_if  ctrl_env_agent_out_bus(
      // pragma uvmf custom ctrl_env_agent_out_bus_connections begin
       .clock(clock),
       .reset(reset),
@@ -189,14 +189,25 @@ import uvmf_base_pkg_hdl::*;
       .mem_state(mem_state)
      // pragma uvmf custom ctrl_env_agent_out_bus_connections end
      );
-   bind LC3_inst.MemAccess memaccess_in_if  memacc_env_agent_in_bus(
+   bind LC3_inst memaccess_in_if  memacc_env_agent_in_bus(
      // pragma uvmf custom memacc_env_agent_in_bus_connections begin
-     .clock(clk), .reset(rst)
+      .clock(),
+      .reset(),
+      .M_Data(),
+      .M_Addr(),
+      .M_Control(),
+      .mem_state(),
+      .DMem_dout()
      // pragma uvmf custom memacc_env_agent_in_bus_connections end
      );
-   bind LC3_inst.MemAccess memaccess_out_if  memacc_env_agent_out_bus(
+   bind LC3_inst memaccess_out_if  memacc_env_agent_out_bus(
      // pragma uvmf custom memacc_env_agent_out_bus_connections begin
-     .clock(clk), .reset(rst)
+      .clock(),
+      .reset(),
+      .DMem_addr(),
+      .DMem_din(),
+      .DMem_rd(),
+      .memout()
      // pragma uvmf custom memacc_env_agent_out_bus_connections end
      );
    instruction_memory_if  Instruction_bus(
@@ -209,18 +220,18 @@ import uvmf_base_pkg_hdl::*;
      .clock(clk), .reset(rst), .complete_data(cmp_d), .Data_dout(data_o), .Data_din(data_i), .Data_rd(Dmem_en), .Data_addr(data_addr)
      // pragma uvmf custom Data_bus_connections end
      );
-  fetch_in_monitor_bfm  fe_env_in_agent_mon_bfm(LC3_inst.Fetch.fe_env_in_agent_bus);
-  fetch_out_monitor_bfm  fe_env_out_agent_mon_bfm(LC3_inst.Fetch.fe_env_out_agent_bus);
-  decode_in_monitor_bfm  de_env_agent_in_mon_bfm(LC3_inst.Dec.de_env_agent_in_bus);
-  decode_out_monitor_bfm  de_env_agent_out_mon_bfm(LC3_inst.Dec.de_env_agent_out_bus);
-  execute_in_monitor_bfm  ex_env_agent_in_mon_bfm(LC3_inst.Ex.ex_env_agent_in_bus);
-  execute_out_monitor_bfm  ex_env_agent_out_mon_bfm(LC3_inst.Ex.ex_env_agent_out_bus);
-  write_back_in_monitor_bfm  wb_env_agent_in_mon_bfm(LC3_inst.WB.wb_env_agent_in_bus);
-  write_back_out_monitor_bfm  wb_env_agent_out_mon_bfm(LC3_inst.WB.wb_env_agent_out_bus);
-  control_in_monitor_bfm  ctrl_env_agent_in_mon_bfm(LC3_inst.Ctrl.ctrl_env_agent_in_bus);
-  control_out_monitor_bfm  ctrl_env_agent_out_mon_bfm(LC3_inst.Ctrl.ctrl_env_agent_out_bus);
-  memaccess_in_monitor_bfm  memacc_env_agent_in_mon_bfm(LC3_inst.MemAccess.memacc_env_agent_in_bus);
-  memaccess_out_monitor_bfm  memacc_env_agent_out_mon_bfm(LC3_inst.MemAccess.memacc_env_agent_out_bus);
+  fetch_in_monitor_bfm  fe_env_in_agent_mon_bfm(LC3_inst.fe_env_in_agent_bus);
+  fetch_out_monitor_bfm  fe_env_out_agent_mon_bfm(LC3_inst.fe_env_out_agent_bus);
+  decode_in_monitor_bfm  de_env_agent_in_mon_bfm(LC3_inst.de_env_agent_in_bus);
+  decode_out_monitor_bfm  de_env_agent_out_mon_bfm(LC3_inst.de_env_agent_out_bus);
+  execute_in_monitor_bfm  ex_env_agent_in_mon_bfm(LC3_inst.ex_env_agent_in_bus);
+  execute_out_monitor_bfm  ex_env_agent_out_mon_bfm(LC3_inst.ex_env_agent_out_bus);
+  write_back_in_monitor_bfm  wb_env_agent_in_mon_bfm(LC3_inst.wb_env_agent_in_bus);
+  write_back_out_monitor_bfm  wb_env_agent_out_mon_bfm(LC3_inst.wb_env_agent_out_bus);
+  control_in_monitor_bfm  ctrl_env_agent_in_mon_bfm(LC3_inst.ctrl_env_agent_in_bus);
+  control_out_monitor_bfm  ctrl_env_agent_out_mon_bfm(LC3_inst.ctrl_env_agent_out_bus);
+  memaccess_in_monitor_bfm  memacc_env_agent_in_mon_bfm(LC3_inst.memacc_env_agent_in_bus);
+  memaccess_out_monitor_bfm  memacc_env_agent_out_mon_bfm(LC3_inst.memacc_env_agent_out_bus);
   instruction_memory_monitor_bfm  Instruction_mon_bfm(Instruction_bus);
   data_memory_monitor_bfm  Data_mon_bfm(Data_bus);
   instruction_memory_driver_bfm  Instruction_drv_bfm(Instruction_bus);
