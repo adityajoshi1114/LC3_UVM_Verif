@@ -63,6 +63,7 @@ class fetch_predictor #(
 
 
   // pragma uvmf custom class_item_additional begin
+  bit fetch_model_garbage_return;
   // pragma uvmf custom class_item_additional end
 
   // FUNCTION: new
@@ -100,7 +101,7 @@ class fetch_predictor #(
 
     if(t.Enable_fetch) 
     begin
-      decode_model_return_type = fetch_model (
+      fetch_model_garbage_return = fetch_model (
                 t.Enable_updatePC,
                 t.Enable_fetch,
                 t.Br_taken,
