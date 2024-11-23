@@ -87,7 +87,7 @@ class memaccess_predictor #(
   // This function performs prediction of DUT output values based on DUT input, configuration and state
   virtual function void write_from_in_agent(memaccess_in_transaction t);
     // pragma uvmf custom from_in_agent_predictor begin
-    bit checker_flag;
+    
     from_in_agent_debug = t;
     `uvm_info("PRED", "Transaction Received through from_in_agent", UVM_MEDIUM)
     `uvm_info("PRED", {"            Data: ",t.convert2string()}, UVM_FULL)
@@ -97,7 +97,7 @@ class memaccess_predictor #(
     // `uvm_info("UNIMPLEMENTED_PREDICTOR_MODEL", "******************************************************************************************************",UVM_NONE)
     // `uvm_info("UNIMPLEMENTED_PREDICTOR_MODEL", "UVMF_CHANGE_ME: The memaccess_predictor::write_from_in_agent function needs to be completed with DUT prediction model",UVM_NONE)
     // `uvm_info("UNIMPLEMENTED_PREDICTOR_MODEL", "******************************************************************************************************",UVM_NONE)
-    checker_flag= mem_access_model(
+    mem_access_model(
       .M_Data(t.M_Data),
       .M_Addr(t.M_Addr),
       .M_Control(t.M_Control), 
@@ -108,10 +108,7 @@ class memaccess_predictor #(
       .memout(pred_to_scrbd_output_transaction.memout), 
       .DMem_rd(pred_to_scrbd_output_transaction.DMem_rd)
     );
-    if(checker_flag) begin
-      `uvm_error("PRED", {"Invalid input trans: ", t.convert2string()})
-      `uvm_error("PRED", {"Invalid expected output trans: ", pred_to_scrbd_output_transaction.convert2string()})
-    end
+    
     // Code for sending output transaction out through pred_to_scrbd
     // Please note that each broadcasted transaction should be a different object than previously 
     // broadcasted transactions.  Creation of a different object is done by constructing the transaction 

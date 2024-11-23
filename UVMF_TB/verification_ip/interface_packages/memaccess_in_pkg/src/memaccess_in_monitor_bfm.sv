@@ -171,21 +171,22 @@ end
     // task should return when a complete transfer has been observed.  Once this task is
     // exited with captured values, it is then called again to wait for and observe 
     // the next transfer. One clock cycle is consumed between calls to do_monitor.
-    monitored_trans.start_time = $time;
     // @(posedge clock_i);
     // @(posedge clock_i);
     // @(posedge clock_i);
     // @(posedge clock_i);
     // monitored_trans.end_time = $time;
     // pragma uvmf custom do_monitor end
-    while (reset_i === 1'b1) @(posedge clock_i);
-    monitored_trans.mem_state = mem_state_i;  
-    monitored_trans.M_Control = M_Control_i;  
-    monitored_trans.M_Data = M_Data_i;  
-    monitored_trans.M_Addr = M_Addr_i;  
-    monitored_trans.DMem_dout = DMem_dout_i; 
+      while (reset_i === 1'b1) @(posedge clock_i);
+      monitored_trans.start_time = $time;
+      monitored_trans.mem_state = mem_state_i;  
+      monitored_trans.M_Control = M_Control_i;  
+      monitored_trans.M_Data = M_Data_i;  
+      monitored_trans.M_Addr = M_Addr_i;  
+      monitored_trans.DMem_dout = DMem_dout_i; 
+    @(posedge clock_i);
     monitored_trans.end_time  = $time;
-    proxy.notify_transaction( monitored_trans );
+    
   endtask         
   
  

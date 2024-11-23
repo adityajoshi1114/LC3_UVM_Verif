@@ -100,7 +100,7 @@ class fetch_predictor #(
 
     if(t.Enable_fetch) 
     begin
-     fetch_model (
+      decode_model_return_type = fetch_model (
                 t.Enable_updatePC,
                 t.Enable_fetch,
                 t.Br_taken,
