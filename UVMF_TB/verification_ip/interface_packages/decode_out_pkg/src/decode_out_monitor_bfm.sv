@@ -118,11 +118,7 @@ end
     forever begin                                                                        
       //@(posedge clock_i);  
       monitored_trans = new("monitored_trans");
-      do_monitor( );
-                                                                 
- 
-      //proxy.notify_transaction( monitored_trans ); 
- 
+      do_monitor( ); 
     end                                                                                    
   end                                                                                       
 
@@ -175,21 +171,39 @@ end
     // exited with captured values, it is then called again to wait for and observe 
     // the next transfer. One clock cycle is consumed between calls to do_monitor.
     
-    while (enable_decode_i !== 1'b1) 
+    // Startup
+    if (reset_i == 1) begin 
+      do_wait_for_reset();
+      @(posedge enable_decode_i);
+      @(posedge clock_i); // One cycle delay since its decode_out
+    end
+    // Ideally decode enable should be high
+    if (enable_decode_i != 1'b1) begin 
+   // Monitor 1 transaction and then wait
+      finish_monitoring();
+      while(enable_decode_i != 1'b1) begin
         @(posedge clock_i);
-        monitored_trans.start_time = $time;
-        //monitored_trans.enable_decode = enable_decode_i;
-    
-        monitored_trans.W_Control = W_Control_i;
-        monitored_trans.Mem_Control = Mem_Control_i;
-        monitored_trans.E_Control = E_Control_i;
-        monitored_trans.IR = IR_i;
-        monitored_trans.npc_out = npc_out_i;
-    
-    @(posedge clock_i);
-    monitored_trans.end_time = $time;
+      end
+      @(posedge clock_i); // Adding another posedge because its decode_out
+    end else begin 
+      finish_monitoring();
+    end
     // pragma uvmf custom do_monitor end
   endtask         
+
+  task finish_monitoring ();
+    monitored_trans.start_time = $time;
+    @(negedge clock_i);
+    monitored_trans.W_Control = W_Control_i;
+    monitored_trans.Mem_Control = Mem_Control_i;
+    monitored_trans.E_Control = E_Control_i;
+    monitored_trans.IR = IR_i;
+    monitored_trans.npc_out = npc_out_i;
+    @(posedge clock_i);
+    monitored_trans.end_time = $time;
+    proxy.notify_transaction( monitored_trans );
+    #1; // To capture values slightly after posedge
+  endtask
   
  
 endinterface

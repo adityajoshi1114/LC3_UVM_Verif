@@ -97,8 +97,7 @@ class decode_predictor #(
     //`uvm_info("UNIMPLEMENTED_PREDICTOR_MODEL", "******************************************************************************************************",UVM_NONE)
     //`uvm_info("UNIMPLEMENTED_PREDICTOR_MODEL", "UVMF_CHANGE_ME: The decode_predictor::write_observed_decode_in function needs to be completed with DUT prediction model",UVM_NONE)
     //`uvm_info("UNIMPLEMENTED_PREDICTOR_MODEL", "******************************************************************************************************",UVM_NONE)
-
-    if(t.enable_decode) begin
+    
     decode_model_return_type = decode_model (
               t.instr,
               t.npc,
@@ -108,7 +107,6 @@ class decode_predictor #(
               predictor_decode_out_output_transaction.W_Control,
               predictor_decode_out_output_transaction.Mem_Control
     ); 
-    end
 
     // Code for sending output transaction out through predictor_decode_out
     // Please note that each broadcasted transaction should be a different object than previously 

@@ -110,13 +110,9 @@ end
   initial begin                                                                             
     @go;                                                                                   
     forever begin                                                                        
-      //@(posedge clock_i);  
       monitored_trans = new("monitored_trans");
       do_monitor( );
-                                                                 
- 
-      //proxy.notify_transaction( monitored_trans ); 
- 
+      proxy.notify_transaction( monitored_trans ); 
     end                                                                                    
   end                                                                                       
 
@@ -164,18 +160,21 @@ end
     // exited with captured values, it is then called again to wait for and observe 
     // the next transfer. One clock cycle is consumed between calls to do_monitor.
     
+    // Wait for reset as monitoring starts at time 0
+    if (reset_i == 1) begin 
+      do_wait_for_reset();
+    end
     
-    
-     while(enable_decode_i !== 1'b1) 
-      @(posedge clock_i);
-      monitored_trans.start_time = $time;
-      
-      monitored_trans.enable_decode = enable_decode_i;
-      monitored_trans.instr = Instr_dout_i;
-      monitored_trans.npc = npc_in_i;
-
+    // Only monitor when enable is high
+    wait(enable_decode_i == 1);
+    monitored_trans.start_time = $time;
+    @(negedge clock_i); 
+    monitored_trans.enable_decode = enable_decode_i;
+    monitored_trans.instr = Instr_dout_i;
+    monitored_trans.npc = npc_in_i;
     @(posedge clock_i);
     monitored_trans.end_time = $time;
+    #1; // To capture values slightly after posedge
     
     // pragma uvmf custom do_monitor end
   endtask         
