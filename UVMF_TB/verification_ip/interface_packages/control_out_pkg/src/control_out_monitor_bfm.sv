@@ -127,7 +127,11 @@ end
     @go;                                                                                   
     forever begin                                                                        
       monitored_trans = new("monitored_trans");
-      do_monitor( ); 
+      do_monitor( );
+                                                                 
+ 
+      //proxy.notify_transaction( monitored_trans ); 
+ 
     end                                                                                    
   end                                                                                       
 
