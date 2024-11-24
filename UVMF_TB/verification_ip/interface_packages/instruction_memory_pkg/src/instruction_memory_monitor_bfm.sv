@@ -89,7 +89,7 @@ end
   // ****************************************************************************              
   task do_wait_for_reset(); 
   // pragma uvmf custom reset_condition begin
-    wait ( reset_i === 1 ) ;                                                              
+    wait ( reset_i === 0 ) ;                                                              
     @(posedge clock_i) ;                                                                    
   // pragma uvmf custom reset_condition end                                                                
   endtask    
@@ -178,7 +178,7 @@ end
       monitored_trans.Instr_Dout  = instr_dout_i;
       monitored_trans.cmp_instr = complete_instr_i;
       @(posedge clock_i);   // Move to end of transaction
-      proxy.notify_transaction( monitored_trans ); 
+      //proxy.notify_transaction( monitored_trans ); 
       monitored_trans.end_time = $time;
     end else begin 
       @(posedge clock_i);

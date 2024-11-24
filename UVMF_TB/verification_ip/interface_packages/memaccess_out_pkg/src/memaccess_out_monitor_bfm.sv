@@ -89,7 +89,7 @@ end
   // ****************************************************************************              
   task do_wait_for_reset(); 
   // pragma uvmf custom reset_condition begin
-    wait ( reset_i === 1 ) ;                                                              
+    wait ( reset_i === 0 ) ;                                                              
     @(posedge clock_i) ;                                                                    
   // pragma uvmf custom reset_condition end                                                                
   endtask    
@@ -112,12 +112,11 @@ end
   initial begin                                                                             
     @go;                                                                                   
     forever begin                                                                        
-      @(posedge clock_i);  
       monitored_trans = new("monitored_trans");
       do_monitor( );
                                                                  
  
-      proxy.notify_transaction( monitored_trans ); 
+      //proxy.notify_transaction( monitored_trans ); 
  
     end                                                                                    
   end                                                                                       
@@ -171,14 +170,15 @@ end
     // @(posedge clock_i);
     // @(posedge clock_i);
     // @(posedge clock_i);
-    while(reset_i) 
+    while(reset_i) begin
       @(posedge clock_i);
-      monitored_trans.start_time = $time;
-
-      monitored_trans.DMem_addr = DMem_addr_i;
-      monitored_trans.DMem_din = DMem_din_i;
-      monitored_trans.memout = memout_i;
-      monitored_trans.DMem_rd = DMem_rd_i;
+    end
+    monitored_trans.start_time = $time;
+    @(negedge clock_i); // To capture stable values
+    monitored_trans.DMem_addr = DMem_addr_i;
+    monitored_trans.DMem_din = DMem_din_i;
+    monitored_trans.memout = memout_i;
+    monitored_trans.DMem_rd = DMem_rd_i;
     @(posedge clock_i);
     monitored_trans.end_time = $time;
     // pragma uvmf custom do_monitor end

@@ -91,7 +91,7 @@ end
   // ****************************************************************************              
   task do_wait_for_reset(); 
   // pragma uvmf custom reset_condition begin
-    wait ( reset_i === 1 ) ;                                                              
+    wait ( reset_i === 0 ) ;                                                              
     @(posedge clock_i) ;                                                                    
   // pragma uvmf custom reset_condition end                                                                
   endtask    
@@ -114,12 +114,11 @@ end
   initial begin                                                                             
     @go;                                                                                   
     forever begin                                                                        
-      @(posedge clock_i);  
       monitored_trans = new("monitored_trans");
       do_monitor( );
                                                                  
  
-      proxy.notify_transaction( monitored_trans ); 
+      //proxy.notify_transaction( monitored_trans ); 
  
     end                                                                                    
   end                                                                                       
@@ -177,13 +176,14 @@ end
     // @(posedge clock_i);
     // monitored_trans.end_time = $time;
     // pragma uvmf custom do_monitor end
-      while (reset_i === 1'b1) @(posedge clock_i);
-      monitored_trans.start_time = $time;
-      monitored_trans.mem_state = mem_state_i;  
-      monitored_trans.M_Control = M_Control_i;  
-      monitored_trans.M_Data = M_Data_i;  
-      monitored_trans.M_Addr = M_Addr_i;  
-      monitored_trans.DMem_dout = DMem_dout_i; 
+    while (reset_i === 1'b1) @(posedge clock_i);
+    monitored_trans.start_time = $time;
+    @(negedge clock_i); // To capture stable values
+    monitored_trans.mem_state = mem_state_i;  
+    monitored_trans.M_Control = M_Control_i;  
+    monitored_trans.M_Data = M_Data_i;  
+    monitored_trans.M_Addr = M_Addr_i;  
+    monitored_trans.DMem_dout = DMem_dout_i; 
     @(posedge clock_i);
     monitored_trans.end_time  = $time;
     

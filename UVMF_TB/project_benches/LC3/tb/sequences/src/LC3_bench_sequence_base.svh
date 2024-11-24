@@ -146,8 +146,8 @@ class LC3_bench_sequence_base extends uvmf_sequence_base #(uvm_sequence_item);
       wb_env_agent_out_config.wait_for_reset();
       ctrl_env_agent_in_config.wait_for_reset();
       ctrl_env_agent_out_config.wait_for_reset();
-      memacc_env_agent_in_config.wait_for_reset();
-      memacc_env_agent_out_config.wait_for_reset();
+      //memacc_env_agent_in_config.wait_for_reset();
+      //memacc_env_agent_out_config.wait_for_reset();
       Instruction_config.wait_for_reset();
       Data_config.wait_for_reset();
     join
@@ -176,8 +176,8 @@ class LC3_bench_sequence_base extends uvmf_sequence_base #(uvm_sequence_item);
       wb_env_agent_out_config.wait_for_num_clocks(400);
       ctrl_env_agent_in_config.wait_for_num_clocks(400);
       ctrl_env_agent_out_config.wait_for_num_clocks(400);
-      memacc_env_agent_in_config.wait_for_num_clocks(400);
-      memacc_env_agent_out_config.wait_for_num_clocks(400);
+      //memacc_env_agent_in_config.wait_for_num_clocks(400);
+      //memacc_env_agent_out_config.wait_for_num_clocks(400);
       Instruction_config.wait_for_num_clocks(400);
       Data_config.wait_for_num_clocks(400);
     join

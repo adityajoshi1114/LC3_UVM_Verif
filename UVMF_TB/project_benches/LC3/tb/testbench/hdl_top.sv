@@ -43,9 +43,9 @@ import uvmf_base_pkg_hdl::*;
   bit rst;
   // Instantiate a rst driver
   initial begin
-    rst = 0; 
+    rst = 1; 
     #250ns;
-    rst =  1; 
+    rst =  0; 
   end
 // pragma uvmf custom reset_generator end
 
@@ -191,23 +191,19 @@ import uvmf_base_pkg_hdl::*;
      );
    bind LC3_inst memaccess_in_if  memacc_env_agent_in_bus(
      // pragma uvmf custom memacc_env_agent_in_bus_connections begin
-      .clock(),
-      .reset(),
-      .M_Data(),
-      .M_Addr(),
-      .M_Control(),
-      .mem_state(),
-      .DMem_dout()
+      .M_Data(M_Data),
+      .M_Addr(pcout),
+      .M_Control(Mem_Control_out),
+      .mem_state(mem_state),
+      .DMem_dout(Data_dout)
      // pragma uvmf custom memacc_env_agent_in_bus_connections end
      );
    bind LC3_inst memaccess_out_if  memacc_env_agent_out_bus(
      // pragma uvmf custom memacc_env_agent_out_bus_connections begin
-      .clock(),
-      .reset(),
-      .DMem_addr(),
-      .DMem_din(),
-      .DMem_rd(),
-      .memout()
+      .DMem_addr(Data_addr),
+      .DMem_din(Data_din),
+      .DMem_rd(Data_rd),
+      .memout(memout)
      // pragma uvmf custom memacc_env_agent_out_bus_connections end
      );
    instruction_memory_if  Instruction_bus(

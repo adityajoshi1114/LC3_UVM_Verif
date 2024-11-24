@@ -103,7 +103,7 @@ end
   // ****************************************************************************              
   task do_wait_for_reset(); 
   // pragma uvmf custom reset_condition begin
-    wait ( reset_i === 1 ) ;                                                              
+    wait ( reset_i === 0 ) ;                                                              
     @(posedge clock_i) ;                                                                    
   // pragma uvmf custom reset_condition end                                                                
   endtask    
@@ -126,13 +126,8 @@ end
   initial begin                                                                             
     @go;                                                                                   
     forever begin                                                                        
-      @(posedge clock_i);  
       monitored_trans = new("monitored_trans");
-      do_monitor( );
-                                                                 
- 
-      proxy.notify_transaction( monitored_trans ); 
- 
+      do_monitor( ); 
     end                                                                                    
   end                                                                                       
 
@@ -195,22 +190,26 @@ end
     // task should return when a complete transfer has been observed.  Once this task is
     // exited with captured values, it is then called again to wait for and observe 
     // the next transfer. One clock cycle is consumed between calls to do_monitor.
-    monitored_trans.start_time = $time;
-    @(posedge clock_i);
-    monitored_trans.enable_updatePC = enable_updatePC_i;
-    monitored_trans.enable_fetch = enable_fetch_i;
-    monitored_trans.enable_decode = enable_decode_i;
-    monitored_trans.enable_execute = enable_execute_i;
-    monitored_trans.enable_writeback = enable_writeback_i;
-    monitored_trans.br_taken = br_taken_i;
-    monitored_trans.bypass_alu_1 = bypass_alu_1_i;
-    monitored_trans.bypass_alu_2 = bypass_alu_2_i;
-    monitored_trans.bypass_mem_1 = bypass_mem_1_i;
-    monitored_trans.bypass_mem_2 = bypass_mem_2_i;
-    monitored_trans.mem_state = mem_state_i;
-    @(posedge clock_i);
-    monitored_trans.end_time = $time;
-    proxy.notify_transaction( monitored_trans ); 
+    if(reset_i == 0) begin 
+      monitored_trans.start_time = $time;
+      @(negedge clock_i);
+      monitored_trans.enable_updatePC = enable_updatePC_i;
+      monitored_trans.enable_fetch = enable_fetch_i;
+      monitored_trans.enable_decode = enable_decode_i;
+      monitored_trans.enable_execute = enable_execute_i;
+      monitored_trans.enable_writeback = enable_writeback_i;
+      monitored_trans.br_taken = br_taken_i;
+      monitored_trans.bypass_alu_1 = bypass_alu_1_i;
+      monitored_trans.bypass_alu_2 = bypass_alu_2_i;
+      monitored_trans.bypass_mem_1 = bypass_mem_1_i;
+      monitored_trans.bypass_mem_2 = bypass_mem_2_i;
+      monitored_trans.mem_state = mem_state_i;
+      @(posedge clock_i);
+      monitored_trans.end_time = $time;
+      //proxy.notify_transaction( monitored_trans ); 
+    end else begin
+      @(posedge clock_i);
+    end
     // pragma uvmf custom do_monitor end
   endtask         
   

@@ -279,7 +279,6 @@ bit first_transfer=1;
   end
     // Wait for next transfer then gather info from intiator about the transfer.
     // Place the data into the responder_trans handle.
-    wait (!reset_i);         // Wait for reset 
     wait (instrmem_rd_i);    // Wait for enable 
     responder_trans.PC = PC_i;
     first_transfer = 0;
