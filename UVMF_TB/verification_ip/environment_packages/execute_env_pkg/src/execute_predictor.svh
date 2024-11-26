@@ -90,36 +90,41 @@ class execute_predictor #(
     execute_in_ae_debug = t;
     `uvm_info("PRED", "Transaction Received through execute_in_ae", UVM_MEDIUM)
     `uvm_info("PRED", {"            Data: ",t.convert2string()}, UVM_FULL)
+    $display("Received transaction - %s",t.convert2string());
     // Construct one of each output transaction type.
     execute_out_ap_output_transaction = execute_out_ap_output_transaction_t::type_id::create("execute_out_ap_output_transaction");
+    
+
+    $display("Empty output transaction - %s",execute_out_ap_output_transaction.convert2string());
     //  UVMF_CHANGE_ME: Implement predictor model here.  
     execute_model(
       // Inputs
-      .E_Control(t.E_ctrl), 
-      .bypass_alu_1(t.bp_alu_1), 
-      .bypass_alu_2(t.bp_alu_2), 
-      .bypass_mem_1(t.bp_mem_1), 
-      .bypass_mem_2(t.bp_mem_2), 
-      .enable_execute(1),
-      .IR(t.Instr), 
-      .npc_in(t.npc), 
-      .Mem_Control_in(t.mem_ctrl), 
-      .W_Control_in(t.w_ctrl), 
-      .Mem_Bypass_Val(t.Mem_bp), 
-      .VSR1(t.vsr1), 
-      .VSR2(t.vsr2),
-      // Outputs
-      .aluout(execute_out_ap_output_transaction.alu_out),
-      .W_Control_out(execute_out_ap_output_transaction.w_ctrl),
-      .Mem_Control_out(execute_out_ap_output_transaction.mem_ctrl),
-      .M_Data(execute_out_ap_output_transaction.M_data),
-      .dr(execute_out_ap_output_transaction.dest_reg),
-      .sr1(execute_out_ap_output_transaction.src_reg1),
-      .sr2(execute_out_ap_output_transaction.src_reg2),
-      .IR_Exec(execute_out_ap_output_transaction.IR_ex),
-      .NZP(execute_out_ap_output_transaction.nzp),
-      .pcout(execute_out_ap_output_transaction.pc_out)
+      t.E_ctrl, 
+      t.bp_alu_1, 
+      t.bp_alu_2, 
+      t.bp_mem_1, 
+      t.bp_mem_2, 
+      1,
+      t.Instr, 
+      t.npc, 
+      t.mem_ctrl, 
+      t.w_ctrl, 
+      t.Mem_bp, 
+      t.vsr1, 
+      t.vsr2,
+      execute_out_ap_output_transaction.alu_out,
+      execute_out_ap_output_transaction.w_ctrl,
+      execute_out_ap_output_transaction.mem_ctrl,
+      execute_out_ap_output_transaction.M_data,
+      execute_out_ap_output_transaction.dest_reg,
+      execute_out_ap_output_transaction.src_reg1,
+      execute_out_ap_output_transaction.src_reg2,
+      execute_out_ap_output_transaction.IR_ex,
+      execute_out_ap_output_transaction.nzp,
+      execute_out_ap_output_transaction.pc_out
     );
+
+    $display("Predicted transaction - %s",execute_out_ap_output_transaction.convert2string());
  
     // Code for sending output transaction out through execute_out_ap
     // Please note that each broadcasted transaction should be a different object than previously 

@@ -140,13 +140,13 @@ import uvmf_base_pkg_hdl::*;
       .clock(clock),
       .reset(reset),
       .enable_writeback(enable_writeback),
-      .aluout(aluout),
+      .aluout_in(aluout),
       .memout(memout),
       .sr1(sr1),
       .sr2(sr2),
       .dr(dr),
       .npc(npc_out_dec),
-      .pcout(pcout),
+      .pcout_in(pcout),
       .W_control(W_Control_out)
      // pragma uvmf custom wb_env_agent_in_bus_connections end
      );

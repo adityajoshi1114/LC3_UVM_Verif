@@ -197,30 +197,47 @@ end
     // task should return when a complete transfer has been observed.  Once this task is
     // exited with captured values, it is then called again to wait for and observe 
     // the next transfer. One clock cycle is consumed between calls to do_monitor.
-    if (enable_execute_i) begin // If enable is high 
-      monitored_trans.start_time = $time;
-      @(negedge clock_i);    // Capture values at negedge
-      monitored_trans.E_ctrl    = E_control_i;
-      monitored_trans.bp_alu_1  = bypass_alu_1_i;
-      monitored_trans.bp_alu_2  = bypass_alu_2_i;
-      monitored_trans.bp_mem_1  = bypass_mem_1_i;
-      monitored_trans.bp_mem_2  = bypass_mem_2_i;
-      monitored_trans.Instr     = IR_i;
-      monitored_trans.npc       = npc_in_i;
-      monitored_trans.mem_ctrl  = Mem_Control_in_i;
-      monitored_trans.w_ctrl    = W_Control_in_i;
-      monitored_trans.Mem_bp    = Mem_Bypass_Val_i;
-      monitored_trans.vsr1      = VSR1_i;
-      monitored_trans.vsr2      = VSR2_i;
-      @(posedge clock_i);   // Move to end of transaction
-      monitored_trans.end_time  = $time;
-      //proxy.notify_transaction( monitored_trans ); 
-    end else begin 
-      @(posedge clock_i);
+    
+    // First transaction
+    if (reset_i == 1) begin
+      #1; // To ensure the assertion below works 
+      assert(!enable_execute_i);
+      do_wait_for_reset();
+      @(posedge enable_execute_i);
+      finish_monitoring();
+    end else begin // Further transactions
+      if (enable_execute_i) begin // If enable is high 
+        finish_monitoring();
+      end else begin 
+        @(posedge enable_execute_i);
+        finish_monitoring();
+      end
     end
+    
     // pragma uvmf custom do_monitor end
     
   endtask         
+
+  task finish_monitoring();
+    monitored_trans.start_time = $time;
+    @(negedge clock_i);    // Capture values at negedge
+    monitored_trans.E_ctrl    = E_control_i;
+    monitored_trans.bp_alu_1  = bypass_alu_1_i;
+    monitored_trans.bp_alu_2  = bypass_alu_2_i;
+    monitored_trans.bp_mem_1  = bypass_mem_1_i;
+    monitored_trans.bp_mem_2  = bypass_mem_2_i;
+    monitored_trans.Instr     = IR_i;
+    monitored_trans.npc       = npc_in_i;
+    monitored_trans.mem_ctrl  = Mem_Control_in_i;
+    monitored_trans.w_ctrl    = W_Control_in_i;
+    monitored_trans.Mem_bp    = Mem_Bypass_Val_i;
+    monitored_trans.vsr1      = VSR1_i;
+    monitored_trans.vsr2      = VSR2_i;
+    @(posedge clock_i);   // Move to end of transaction
+    monitored_trans.end_time  = $time;
+    proxy.notify_transaction( monitored_trans ); 
+    #1;   // To capture enable value slightly after posedge
+    endtask
   
  
 endinterface

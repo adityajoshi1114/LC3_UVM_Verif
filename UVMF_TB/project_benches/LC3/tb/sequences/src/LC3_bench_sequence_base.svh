@@ -146,8 +146,6 @@ class LC3_bench_sequence_base extends uvmf_sequence_base #(uvm_sequence_item);
       wb_env_agent_out_config.wait_for_reset();
       ctrl_env_agent_in_config.wait_for_reset();
       ctrl_env_agent_out_config.wait_for_reset();
-      //memacc_env_agent_in_config.wait_for_reset();
-      //memacc_env_agent_out_config.wait_for_reset();
       Instruction_config.wait_for_reset();
       Data_config.wait_for_reset();
     join
@@ -155,31 +153,27 @@ class LC3_bench_sequence_base extends uvmf_sequence_base #(uvm_sequence_item);
     fork
       Instruction_responder_seq.start(Instruction_sequencer);
       Data_responder_seq.start(Data_sequencer);
-    join_none
-    // Start INITIATOR sequences here
-    fork
-    join
+    join_any
 
 // LC3_env_seq.start(top_configuration.vsqr);
 
     // UVMF_CHANGE_ME : Extend the simulation XXX number of clocks after 
     // the last sequence to allow for the last sequence item to flow 
     // through the design.
+    // Use the below extra time if needed
     fork
-      fe_env_in_agent_config.wait_for_num_clocks(400);
-      fe_env_out_agent_config.wait_for_num_clocks(400);
-      de_env_agent_in_config.wait_for_num_clocks(400);
-      de_env_agent_out_config.wait_for_num_clocks(400);
-      ex_env_agent_in_config.wait_for_num_clocks(400);
-      ex_env_agent_out_config.wait_for_num_clocks(400);
-      wb_env_agent_in_config.wait_for_num_clocks(400);
-      wb_env_agent_out_config.wait_for_num_clocks(400);
-      ctrl_env_agent_in_config.wait_for_num_clocks(400);
-      ctrl_env_agent_out_config.wait_for_num_clocks(400);
-      //memacc_env_agent_in_config.wait_for_num_clocks(400);
-      //memacc_env_agent_out_config.wait_for_num_clocks(400);
-      Instruction_config.wait_for_num_clocks(400);
-      Data_config.wait_for_num_clocks(400);
+      fe_env_in_agent_config.wait_for_num_clocks(4);
+      fe_env_out_agent_config.wait_for_num_clocks(4);
+      de_env_agent_in_config.wait_for_num_clocks(4);
+      de_env_agent_out_config.wait_for_num_clocks(4);
+      ex_env_agent_in_config.wait_for_num_clocks(4);
+      ex_env_agent_out_config.wait_for_num_clocks(4);
+      wb_env_agent_in_config.wait_for_num_clocks(4);
+      wb_env_agent_out_config.wait_for_num_clocks(4);
+      ctrl_env_agent_in_config.wait_for_num_clocks(4);
+      ctrl_env_agent_out_config.wait_for_num_clocks(4);
+      Instruction_config.wait_for_num_clocks(4);
+      Data_config.wait_for_num_clocks(4);
     join
 
     // pragma uvmf custom body end

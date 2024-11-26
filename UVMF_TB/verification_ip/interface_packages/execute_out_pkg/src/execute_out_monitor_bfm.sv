@@ -189,27 +189,45 @@ end
     // task should return when a complete transfer has been observed.  Once this task is
     // exited with captured values, it is then called again to wait for and observe 
     // the next transfer. One clock cycle is consumed between calls to do_monitor.
-    if (en_ex_i) begin // If enable is high 
-      monitored_trans.start_time = $time;
-      @(negedge clock_i);    // Capture values at negedge
-      monitored_trans.alu_out = aluout_i;
-      monitored_trans.w_ctrl  =  W_Control_out_i;
-      monitored_trans.mem_ctrl  =  Mem_Control_out_i;
-      monitored_trans.M_data  =  M_data_i;
-      monitored_trans.dest_reg  =  dr_i;
-      monitored_trans.src_reg1  =  sr1_i;
-      monitored_trans.src_reg2  =  sr2_i;
-      monitored_trans.IR_ex = IR_Exec_i;
-      monitored_trans.nzp = NZP_i;
-      monitored_trans.pc_out  =  pcout_i;
-      @(posedge clock_i);     // Move to end of transaction
-      monitored_trans.end_time  = $time;
-      //proxy.notify_transaction( monitored_trans ); 
-    end else begin 
-      @(posedge clock_i);
+
+    // First transaction
+    if (reset_i == 1) begin 
+      #1; // To ensure the assertion below works 
+      assert(!en_ex_i); // enable cannot go high without reset going high
+      do_wait_for_reset();
+      @(posedge en_ex_i);
+      @(negedge clock_i);
+      finish_monitoring();
+    end else begin // Further transactions
+      if (en_ex_i) begin 
+        finish_monitoring();
+      end else begin // If enable goes low in between
+        @(posedge en_ex_i);
+        @(negedge clock_i);
+        finish_monitoring(); 
+      end
     end
-    // pragma uvmf custom do_monitor end
+
   endtask         
+
+  task finish_monitoring();
+    // Capture asynchronous outputs here 
+    monitored_trans.src_reg1 = sr1_i;
+    monitored_trans.src_reg2 = sr2_i;
+    monitored_trans.start_time = $time;
+    // Capture synchronous outputs here 
+    @(negedge clock_i);
+    monitored_trans.alu_out = aluout_i;
+    monitored_trans.w_ctrl  =  W_Control_out_i;
+    monitored_trans.mem_ctrl  =  Mem_Control_out_i;
+    monitored_trans.M_data  =  M_data_i;
+    monitored_trans.dest_reg  =  dr_i;
+    monitored_trans.IR_ex = IR_Exec_i;
+    monitored_trans.nzp = NZP_i;
+    monitored_trans.pc_out  =  pcout_i;
+    monitored_trans.end_time = $time;
+    proxy.notify_transaction( monitored_trans ); 
+  endtask
   
  
 endinterface

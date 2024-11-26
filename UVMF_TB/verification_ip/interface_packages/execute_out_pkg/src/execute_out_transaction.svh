@@ -18,16 +18,16 @@ class execute_out_transaction  extends uvmf_transaction_base;
 
   `uvm_object_utils( execute_out_transaction )
 
-  bit [15:0] alu_out ;
-  bit [1:0] w_ctrl ;
-  bit mem_ctrl ;
-  bit [15:0] M_data ;
-  bit [2:0] dest_reg ;
-  bit [2:0] src_reg1 ;
-  bit [2:0] src_reg2 ;
-  bit [15:0] IR_ex ;
-  bit [2:0] nzp ;
-  bit [15:0] pc_out ;
+  logic [15:0] alu_out ;
+  logic [1:0] w_ctrl ;
+  logic mem_ctrl ;
+  logic [15:0] M_data ;
+  logic [2:0] dest_reg ;
+  logic [2:0] src_reg1 ;
+  logic [2:0] src_reg2 ;
+  logic [15:0] IR_ex ;
+  logic [2:0] nzp ;
+  logic [15:0] pc_out ;
 
   //Constraints for the transaction variables:
 
@@ -78,16 +78,16 @@ class execute_out_transaction  extends uvmf_transaction_base;
     // pragma uvmf custom do_compare begin
     // UVMF_CHANGE_ME : Eliminate comparison of variables not to be used for compare
     return (super.do_compare(rhs,comparer)
-            &&(this.alu_out == RHS.alu_out)
-            &&(this.w_ctrl == RHS.w_ctrl)
-            &&(this.mem_ctrl == RHS.mem_ctrl)
-            &&(this.M_data == RHS.M_data)
-            &&(this.dest_reg == RHS.dest_reg)
-            &&(this.src_reg1 == RHS.src_reg1)
-            &&(this.src_reg2 == RHS.src_reg2)
-            &&(this.IR_ex == RHS.IR_ex)
-            &&(this.nzp == RHS.nzp)
-            &&(this.pc_out == RHS.pc_out)
+            &&(this.alu_out[0] === 1'bx ? 1 : (this.alu_out == RHS.alu_out))
+            &&(this.w_ctrl[0] === 1'bx ? 1 : (this.w_ctrl == RHS.w_ctrl))
+            &&(this.mem_ctrl === 1'bx ? 1 : (this.mem_ctrl == RHS.mem_ctrl))
+            &&(this.M_data[0] === 1'bx ? 1 : (this.M_data == RHS.M_data))
+            &&(this.dest_reg[0] === 1'bx ? 1 : (this.dest_reg == RHS.dest_reg))
+            &&(this.src_reg1[0] === 1'bx ? 1 : (this.src_reg1 == RHS.src_reg1))
+            &&(this.src_reg2[0] === 1'bx ? 1 : (this.src_reg2 == RHS.src_reg2))
+            &&(this.IR_ex[0] === 1'bx ? 1 : (this.IR_ex == RHS.IR_ex))
+            &&(this.nzp[0] === 1'bx ? 1 : (this.nzp == RHS.nzp))
+            &&(this.pc_out[0] === 1'bx ? 1 : (this.pc_out == RHS.pc_out))
             );
     // pragma uvmf custom do_compare end
   endfunction

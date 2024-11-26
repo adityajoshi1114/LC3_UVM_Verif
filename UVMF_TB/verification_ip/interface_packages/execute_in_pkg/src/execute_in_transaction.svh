@@ -18,18 +18,18 @@ class execute_in_transaction  extends uvmf_transaction_base;
 
   `uvm_object_utils( execute_in_transaction )
 
-  bit [5:0] E_ctrl ;
-  bit bp_alu_1 ;
-  bit bp_alu_2 ;
-  bit bp_mem_1 ;
-  bit bp_mem_2 ;
-  bit [15:0] Instr ;
-  bit [15:0] npc ;
-  bit mem_ctrl ;
-  bit [1:0] w_ctrl ;
-  bit [15:0] Mem_bp ;
-  bit [15:0] vsr1 ;
-  bit [15:0] vsr2 ;
+  logic [5:0] E_ctrl ;
+  logic bp_alu_1 ;
+  logic bp_alu_2 ;
+  logic bp_mem_1 ;
+  logic bp_mem_2 ;
+  logic [15:0] Instr ;
+  logic [15:0] npc ;
+  logic mem_ctrl ;
+  logic [1:0] w_ctrl ;
+  logic [15:0] Mem_bp ;
+  logic [15:0] vsr1 ;
+  logic [15:0] vsr2 ;
 
   //Constraints for the transaction variables:
 

@@ -123,7 +123,7 @@ end
   // not be driven by this BFM unless placed in INITIATOR mode.
   assign bus.enable_writeback = (initiator_responder == INITIATOR) ? enable_writeback_o : 'bz;
   assign enable_writeback_i = bus.enable_writeback;
-  assign bus.aluout = (initiator_responder == INITIATOR) ? aluout_o : 'bz;
+  //assign bus.aluout = (initiator_responder == INITIATOR) ? aluout_o : 'bz;
   assign aluout_i = bus.aluout;
   assign bus.memout = (initiator_responder == INITIATOR) ? memout_o : 'bz;
   assign memout_i = bus.memout;
@@ -135,7 +135,7 @@ end
   assign dr_i = bus.dr;
   assign bus.npc = (initiator_responder == INITIATOR) ? npc_o : 'bz;
   assign npc_i = bus.npc;
-  assign bus.pcout = (initiator_responder == INITIATOR) ? pcout_o : 'bz;
+  //assign bus.pcout = (initiator_responder == INITIATOR) ? pcout_o : 'bz;
   assign pcout_i = bus.pcout;
   assign bus.W_control = (initiator_responder == INITIATOR) ? W_control_o : 'bz;
   assign W_control_i = bus.W_control;
@@ -147,22 +147,22 @@ end
   // ****************************************************************************
 // pragma uvmf custom reset_condition_and_response begin
   // Always block used to return signals to reset value upon assertion of reset
-  always @( negedge reset_i )
-     begin
-       // RESPONDER mode output signals
-       // INITIATOR mode output signals
-       enable_writeback_o <= 'b0;
-       aluout_o <= 'b0;
-       memout_o <= 'b0;
-       sr1_o <= 'b0;
-       sr2_o <= 'b0;
-       dr_o <= 'b0;
-       npc_o <= 'b0;
-       pcout_o <= 'b0;
-       W_control_o <= 'b0;
-       // Bi-directional signals
+  // always @( negedge reset_i )
+  //    begin
+  //      // RESPONDER mode output signals
+  //      // INITIATOR mode output signals
+  //      enable_writeback_o <= 'b0;
+  //      aluout_o <= 'b0;
+  //      memout_o <= 'b0;
+  //      sr1_o <= 'b0;
+  //      sr2_o <= 'b0;
+  //      dr_o <= 'b0;
+  //      npc_o <= 'b0;
+  //      pcout_o <= 'b0;
+  //      W_control_o <= 'b0;
+  //      // Bi-directional signals
  
-     end    
+  //    end    
 // pragma uvmf custom reset_condition_and_response end
 
   // pragma uvmf custom interface_item_additional begin
