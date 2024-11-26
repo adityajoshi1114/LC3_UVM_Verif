@@ -45,17 +45,18 @@ class instruction_memory_transaction_coverage  extends uvm_subscriber #(.T(instr
   endgroup
 
   covergroup alu_cg;
-
+      Instr_dout_bit: coverpoint coverage_trans.Instr_Dout[5];
+      opcode : coverpoint coverage_trans.opcode;
     // Cross for Register Adds 
-    add_reg_cross : cross coverage_trans.src1,coverage_trans.src2,coverage_trans.dest,coverage_trans.opcode,coverage_trans.Instr_Dout[5]
+    add_reg_cross : cross coverage_trans.src1,coverage_trans.src2,coverage_trans.dest,opcode,Instr_dout_bit
       {
-        bins all [] = add_reg_cross with (coverage_trans.Instr_Dout[5] == 0 && coverage_trans.opcode == 4'b0001 );
+        ignore_bins b1 = binsof(Instr_dout_bit) intersect {1} || binsof(opcode) intersect {0,[2:15]};
       }
 
     // Cross for Add immediates
-    add_imm_cross : cross coverage_trans.src1,coverage_trans.imm5,coverage_trans.dest,coverage_trans.opcode,coverage_trans.Instr_Dout[5]
+    add_imm_cross : cross coverage_trans.src1,coverage_trans.imm5,coverage_trans.dest,opcode,Instr_dout_bit
       {
-        bins all [] = add_reg_cross with (coverage_trans.Instr_Dout[5] == 1 && coverage_trans.opcode == 4'b0001 );
+        ignore_bins b1 = binsof(Instr_dout_bit) intersect {0} || binsof(opcode) intersect {0,[2:15]};
       }
   endgroup
 
