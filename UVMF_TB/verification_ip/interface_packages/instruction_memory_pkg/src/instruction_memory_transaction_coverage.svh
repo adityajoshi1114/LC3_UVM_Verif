@@ -44,6 +44,21 @@ class instruction_memory_transaction_coverage  extends uvm_subscriber #(.T(instr
     // pragma uvmf custom covergroup end
   endgroup
 
+  covergroup alu_cg;
+
+    // Cross for Register Adds 
+    add_reg_cross : cross coverage_trans.src1,coverage_trans.src2,coverage_trans.dest,coverage_trans.opcode,coverage_trans.Instr_Dout[5]
+      {
+        bins all [] = add_reg_cross with (coverage_trans.Instr_Dout[5] == 0 && coverage_trans.opcode == 4'b0001 );
+      }
+
+    // Cross for Add immediates
+    add_imm_cross : cross coverage_trans.src1,coverage_trans.imm5,coverage_trans.dest,coverage_trans.opcode,coverage_trans.Instr_Dout[5]
+      {
+        bins all [] = add_reg_cross with (coverage_trans.Instr_Dout[5] == 1 && coverage_trans.opcode == 4'b0001 );
+      }
+  endgroup
+
   // ****************************************************************************
   // FUNCTION : new()
   // This function is the standard SystemVerilog constructor.
