@@ -332,6 +332,9 @@ function bit controller_model
                            (dec_out_valid && insn_dec_out.optype == CONTROL) ||
                            (exe_out_valid && insn_exe_out.optype == CONTROL)
                          );
+  $display("fe2_out_valid=%b, insn_fe2_out.optype=%b, dec_out_valid=%b, insn_dec_out.optype=%b, exe_out_valid=%b, insn_exe_out.optype=%b",
+         fe2_out_valid, insn_fe2_out.optype, dec_out_valid, insn_dec_out.optype, exe_out_valid, insn_exe_out.optype);
+
   // Befoe the branch is resolved, the PC output of FE1 stage is invalid
   next_fe1_out_valid = is_pipeline_mem_stall ? fe1_out_valid :
                        (!is_pipeline_has_branch || is_branch_resolved);
@@ -347,6 +350,7 @@ function bit controller_model
   br_taken         = !is_pipeline_mem_stall && is_branch_taken;
   enable_updatePC  = has_been_reset &&
                      !is_pipeline_mem_stall && (!is_pipeline_has_branch || is_branch_taken);
+  $display("mem_stall - %b branch - %b take - %b",is_pipeline_mem_stall,is_pipeline_has_branch,is_branch_taken);
   enable_fetch     = !has_been_reset ||
                      !is_pipeline_mem_stall && next_fe2_out_valid;
   enable_decode    = !is_pipeline_mem_stall && next_dec_out_valid;

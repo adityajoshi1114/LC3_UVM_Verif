@@ -95,8 +95,7 @@ end
   // ****************************************************************************              
   task do_wait_for_reset(); 
   // pragma uvmf custom reset_condition begin
-    wait ( reset_i === 0 ) ;                                                              
-    @(posedge clock_i) ;                                                                    
+    wait ( reset_i === 0 ) ;                                                                   
   // pragma uvmf custom reset_condition end                                                                
   endtask    
 
@@ -118,13 +117,8 @@ end
   initial begin                                                                             
     @go;                                                                                   
     forever begin                                                                        
-      @(posedge clock_i);  
       monitored_trans = new("monitored_trans");
       do_monitor( );
-                                                                 
- 
-      //proxy.notify_transaction( monitored_trans ); 
- 
     end                                                                                    
   end                                                                                       
 
@@ -179,28 +173,30 @@ end
     // task should return when a complete transfer has been observed.  Once this task is
     // exited with captured values, it is then called again to wait for and observe 
     // the next transfer. One clock cycle is consumed between calls to do_monitor.
-    if(reset_i == 0) begin 
-      monitored_trans.start_time = $time;
-      @(negedge clock_i);
-      monitored_trans.complete_data = complete_data_i;
-      monitored_trans.complete_instr = complete_instr_i;
-      monitored_trans.IR = IR_i;
-      monitored_trans.NZP = NZP_i;
-      monitored_trans.psr = psr_i;
-      monitored_trans.IR_Exec = IR_Exec_i;
-      monitored_trans.IMem_dout = IMem_dout_i;
-      @(posedge clock_i);
-      monitored_trans.end_time = $time;
-      //proxy.notify_transaction( monitored_trans ); 
-    end else begin
-      @(posedge clock_i);
-    end
-    // @(posedge clock_i);
-    // @(posedge clock_i);
-    // @(posedge clock_i);
-
+    // First transaction
+    if(reset_i == 1) begin 
+      #240;
+    end 
+    finish_monitoring();
+    
     // pragma uvmf custom do_monitor end
-  endtask         
+  endtask   
+
+  task finish_monitoring();
+    monitored_trans.start_time = $time;
+    @(negedge clock_i); // Capture values at negedge 
+    //#1; // Capture values just after the posedge
+    monitored_trans.complete_data = complete_data_i;
+    monitored_trans.complete_instr = 1;
+    monitored_trans.IR = IR_i;
+    monitored_trans.NZP = NZP_i;
+    monitored_trans.psr = psr_i;
+    monitored_trans.IR_Exec = IR_Exec_i;
+    monitored_trans.IMem_dout = IMem_dout_i;
+    @(posedge clock_i); // Move to end of transaction
+    monitored_trans.end_time = $time;
+    proxy.notify_transaction( monitored_trans ); 
+  endtask      
   
  
 endinterface

@@ -107,8 +107,7 @@ end
   // ****************************************************************************              
   task do_wait_for_reset(); 
   // pragma uvmf custom reset_condition begin
-    wait ( reset_i === 0 ) ;                                                              
-    @(posedge clock_i) ;                                                                    
+    wait ( reset_i === 0 ) ;                                                                   
   // pragma uvmf custom reset_condition end                                                                
   endtask    
 

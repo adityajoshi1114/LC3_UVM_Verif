@@ -28,17 +28,18 @@ wave group LC3_inst.de_env_agent_out_bus
 wave add -group LC3_inst.de_env_agent_out_bus hdl_top.LC3_inst.de_env_agent_out_bus.* -radix hexadecimal -tag F0
 wave group LC3_inst.de_env_agent_out_bus -collapse
 wave insertion [expr [wave index insertpoint] +1]
-wave spacer -backgroundcolor Salmon { ex_env_agent_in }
-wave add uvm_test_top.environment.ex_env.agent_in.agent_in_monitor.txn_stream -radix string -tag F0
-wave group LC3_inst.ex_env_agent_in_bus
-wave add -group LC3_inst.ex_env_agent_in_bus hdl_top.LC3_inst.ex_env_agent_in_bus.* -radix hexadecimal -tag F0
-wave group LC3_inst.ex_env_agent_in_bus -collapse
+wave spacer -backgroundcolor Salmon { ctrl_env_agent_in }
+wave add uvm_test_top.environment.ctrl_env.agent_in.agent_in_monitor.txn_stream -radix string -tag F0
+wave group LC3_inst.ctrl_env_agent_in_bus
+wave add -group LC3_inst.ctrl_env_agent_in_bus hdl_top.LC3_inst.ctrl_env_agent_in_bus.* -radix hexadecimal -tag F0
+wave group LC3_inst.ctrl_env_agent_in_bus -collapse
 wave insertion [expr [wave index insertpoint] +1]
-wave spacer -backgroundcolor Salmon { ex_env_agent_out }
-wave add uvm_test_top.environment.ex_env.agent_out.agent_out_monitor.txn_stream -radix string -tag F0
-wave group LC3_inst.ex_env_agent_out_bus
-wave add -group LC3_inst.ex_env_agent_out_bus hdl_top.LC3_inst.ex_env_agent_out_bus.* -radix hexadecimal -tag F0
-wave group LC3_inst.ex_env_agent_out_bus -collapse
+wave spacer -backgroundcolor Salmon { ctrl_env_agent_out }
+wave add uvm_test_top.environment.ctrl_env.agent_out.agent_out_monitor.txn_stream -radix string -tag F0
+wave group LC3_inst.ctrl_env_agent_out_bus
+wave add -group LC3_inst.ctrl_env_agent_out_bus hdl_top.LC3_inst.ctrl_env_agent_out_bus.* -radix hexadecimal -tag F0
+wave group LC3_inst.ctrl_env_agent_out_bus -collapse
+wave insertion [expr [wave index insertpoint] +1]
 wave spacer -backgroundcolor Salmon { Instruction }
 wave add uvm_test_top.environment.Instruction.Instruction_monitor.txn_stream -radix string -tag F0
 wave group Instruction_bus

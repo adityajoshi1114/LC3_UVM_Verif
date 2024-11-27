@@ -93,10 +93,7 @@ class control_predictor #(
     // Construct one of each output transaction type.
     pred_to_scbd_output_transaction = pred_to_scbd_output_transaction_t::type_id::create("pred_to_scbd_output_transaction");
     //  UVMF_CHANGE_ME: Implement predictor model here.  
-    `uvm_info("UNIMPLEMENTED_PREDICTOR_MODEL", "******************************************************************************************************",UVM_NONE)
-    `uvm_info("UNIMPLEMENTED_PREDICTOR_MODEL", "UVMF_CHANGE_ME: The control_predictor::write_agent_in function needs to be completed with DUT prediction model",UVM_NONE)
-    `uvm_info("UNIMPLEMENTED_PREDICTOR_MODEL", "******************************************************************************************************",UVM_NONE)
- 
+     
     // Code for sending output transaction out through pred_to_scbd
     // Please note that each broadcasted transaction should be a different object than previously 
     // broadcasted transactions.  Creation of a different object is done by constructing the transaction 

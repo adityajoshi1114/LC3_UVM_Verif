@@ -73,7 +73,7 @@ class instruction_memory_transaction_coverage  extends uvm_subscriber #(.T(instr
       }
 
     // Cross for NOT operations
-    not_cross : cross coverage_trans.src1,coverage_trans.dest
+    not_cross : cross coverage_trans.src1,coverage_trans.dest,opcode
       {
         ignore_bins b1 = binsof(opcode) intersect {[0:8],[10:15]};
       }
@@ -151,7 +151,7 @@ class instruction_memory_transaction_coverage  extends uvm_subscriber #(.T(instr
   //
   function new(string name="", uvm_component parent=null);
     super.new(name,parent);
-    instruction_memory_transaction_cg=new;
+    //instruction_memory_transaction_cg=new;
     `uvm_warning("COVERAGE_MODEL_REVIEW", "A covergroup has been constructed which may need review because of either generation or re-generation with merging.  Please note that transaction variables added as a result of re-generation and merging are not automatically added to the covergroup.  Remove this warning after the covergroup has been reviewed.")
   endfunction
 
@@ -160,7 +160,7 @@ class instruction_memory_transaction_coverage  extends uvm_subscriber #(.T(instr
   // This function is the standard UVM build_phase.
   //
   function void build_phase(uvm_phase phase);
-    instruction_memory_transaction_cg.set_inst_name($sformatf("instruction_memory_transaction_cg_%s",get_full_name()));
+    //instruction_memory_transaction_cg.set_inst_name($sformatf("instruction_memory_transaction_cg_%s",get_full_name()));
   endfunction
 
   // ****************************************************************************

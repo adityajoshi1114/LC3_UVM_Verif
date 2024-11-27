@@ -127,17 +127,16 @@ end
   // ****************************************************************************
 // pragma uvmf custom reset_condition_and_response begin
   // Always block used to return signals to reset value upon assertion of reset
-  always @( negedge reset_i )
-     begin
-       // RESPONDER mode output signals
-       instr_dout_o <= 'bz;
-       complete_instr_o <= 'bz;
-       // INITIATOR mode output signals
-       PC_o <= 'bz;
-       instrmem_rd_o <= 'bz;
-       // Bi-directional signals
- 
-     end    
+  initial begin : Initial_values
+    wait (instrmem_rd_i);
+    // RESPONDER mode output signals
+    instr_dout_o <= 16'h1a22;
+    complete_instr_o <= 'b0;
+    // INITIATOR mode output signals
+    PC_o <= 'bz;
+    instrmem_rd_o <= 'bz;
+    // Bi-directional signals 
+  end    
 // pragma uvmf custom reset_condition_and_response end
 
   // pragma uvmf custom interface_item_additional begin
@@ -264,22 +263,20 @@ bit first_transfer=1;
     // Reply using data recieved in the responder_trans.
     // IF the previously sent instruction stalled the pipeline then wait for fetch
     // to be enabled again i.e Imem read to be enabled again
-    if (!instrmem_rd_i) begin 
-      wait (instrmem_rd_i);    // Wait for enable 
-      @(negedge clock_i);
-      responder_trans.PC = PC_i;
+    if (!instrmem_rd_i) begin
+      complete_instr_o <= 1'b0; 
     end else begin 
       @(posedge clock_i);
       instr_dout_o <= responder_trans.Instr_Dout;
-      // Reply using data recieved in the transaction handle.
-      @(negedge clock_i);
-      responder_trans.PC = PC_i;
-      complete_instr_o <= 1'b1;
     end
   end
     // Wait for next transfer then gather info from intiator about the transfer.
     // Place the data into the responder_trans handle.
     wait (instrmem_rd_i);    // Wait for enable 
+    // if (first_transfer) begin 
+    //   @(posedge clock_i);
+    // end
+    #1.5; 
     responder_trans.PC = PC_i;
     complete_instr_o <= 1'b1;
     first_transfer = 0;

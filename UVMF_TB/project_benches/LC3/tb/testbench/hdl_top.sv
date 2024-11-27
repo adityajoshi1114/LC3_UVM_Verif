@@ -169,7 +169,8 @@ import uvmf_base_pkg_hdl::*;
       .IR(IR),
       .NZP(NZP),
       .psr(psr),
-      .IR_Exec(IR_Exec)
+      .IR_Exec(IR_Exec),
+      .IMem_dout(Instr_dout)
      // pragma uvmf custom ctrl_env_agent_in_bus_connections end
      );
    bind LC3_inst control_out_if  ctrl_env_agent_out_bus(

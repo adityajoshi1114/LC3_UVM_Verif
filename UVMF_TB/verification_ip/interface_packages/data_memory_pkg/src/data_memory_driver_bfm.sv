@@ -134,8 +134,8 @@ end
   always @( negedge reset_i )
      begin
        // RESPONDER mode output signals
-       complete_data_o <= 'bz;
-       Data_dout_o <= 'bz;
+       complete_data_o <= 'b0;
+       Data_dout_o <= 'bx;
        // INITIATOR mode output signals
        Data_din_o <= 'bz;
        Data_rd_o <= 'bz;
