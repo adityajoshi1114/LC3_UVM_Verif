@@ -176,16 +176,37 @@ end
     // @(posedge clock_i);
     // monitored_trans.end_time = $time;
     // pragma uvmf custom do_monitor end
-    while (reset_i === 1'b1) @(posedge clock_i);
-    monitored_trans.start_time = $time;
-    @(negedge clock_i); // To capture stable values
-    monitored_trans.mem_state = mem_state_i;  
-    monitored_trans.M_Control = M_Control_i;  
-    monitored_trans.M_Data = M_Data_i;  
-    monitored_trans.M_Addr = M_Addr_i;  
-    monitored_trans.DMem_dout = DMem_dout_i; 
-    @(posedge clock_i);
-    monitored_trans.end_time  = $time;
+    // // while (reset_i === 1'b1) @(posedge clock_i);
+    // if (mem_state_i == 1) begin 
+    //   do_wait_for_reset();
+    // end
+    // // Wait for enable
+    // while(mem_state_i != 1'b1) begin
+    //   @(posedge clock_i);
+    // end
+    // monitored_trans.start_time = $time;
+    //  #1; // One of the outputs is produced asynchronously
+    // @(negedge clock_i);   // To capture stable values
+    // //monitored_trans.mem_state = mem_state_i;  
+    // monitored_trans.M_Control = M_Control_i;  
+    // monitored_trans.M_Data = M_Data_i;  
+    // monitored_trans.M_Addr = M_Addr_i;  
+    // monitored_trans.DMem_dout = DMem_dout_i;
+    // @(posedge clock_i);
+    // monitored_trans.end_time  = $time;
+    // #1
+    // monitored_trans.mem_state = mem_state_i;  
+     while (reset_i === 1'b1) @(posedge clock_i);
+      monitored_trans.mem_state = mem_state_i;  
+      monitored_trans.M_Control = M_Control_i;  
+      monitored_trans.M_Data = M_Data_i;  
+      monitored_trans.M_Addr = M_Addr_i;  
+      monitored_trans.DMem_dout = DMem_dout_i; 
+
+    //@(negedge clock_i); // To capture stable values
+    
+    //@(posedge clock_i);
+    
     
   endtask         
   

@@ -111,13 +111,13 @@ end
 
   // These are signals marked as 'output' by the config file, but the outputs will
   // not be driven by this BFM unless placed in INITIATOR mode.
-  assign bus.DMem_addr = (initiator_responder == INITIATOR) ? DMem_addr_o : 'bz;
+  assign bus.DMem_addr = (initiator_responder == RESPONDER) ? DMem_addr_o : 'bz;
   assign DMem_addr_i = bus.DMem_addr;
-  assign bus.DMem_din = (initiator_responder == INITIATOR) ? DMem_din_o : 'bz;
+  assign bus.DMem_din = (initiator_responder == RESPONDER) ? DMem_din_o : 'bz;
   assign DMem_din_i = bus.DMem_din;
-  assign bus.DMem_rd = (initiator_responder == INITIATOR) ? DMem_rd_o : 'bz;
+  assign bus.DMem_rd = (initiator_responder == RESPONDER) ? DMem_rd_o : 'bz;
   assign DMem_rd_i = bus.DMem_rd;
-  assign bus.memout = (initiator_responder == INITIATOR) ? memout_o : 'bz;
+  assign bus.memout = (initiator_responder == RESPONDER) ? memout_o : 'bz;
   assign memout_i = bus.memout;
 
   // Proxy handle to UVM driver
@@ -194,7 +194,7 @@ end
        //      DMem_rd_o <= initiator_trans.xyz;  //     
        //      memout_o <= initiator_trans.xyz;  //    [15:0] 
        //    Initiator inout signals:
-    // Initiate a transfer using the data received.
+    //Initiate a transfer using the data received.
     @(posedge clock_i);
     @(posedge clock_i);
     // Wait for the responder to complete the transfer then place the responder data into 

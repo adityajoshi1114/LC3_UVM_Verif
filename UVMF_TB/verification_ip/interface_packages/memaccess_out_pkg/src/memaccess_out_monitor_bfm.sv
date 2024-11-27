@@ -170,21 +170,18 @@ end
     // @(posedge clock_i);
     // @(posedge clock_i);
     // @(posedge clock_i);
-    while(reset_i) begin
-      @(posedge clock_i);
-    end
-    monitored_trans.start_time = $time;
-    @(negedge clock_i); // To capture stable values
+    // while(reset_i) begin
+    //   @(posedge clock_i);
+    // end
+   
+  
+  while(reset_i) @(posedge clock_i);
+  
     monitored_trans.DMem_addr = DMem_addr_i;
     monitored_trans.DMem_din = DMem_din_i;
     monitored_trans.memout = memout_i;
     monitored_trans.DMem_rd = DMem_rd_i;
-    @(posedge clock_i);
-    monitored_trans.end_time = $time;
-    // pragma uvmf custom do_monitor end
-  endtask         
-  
- 
+  endtask
 endinterface
 
 // pragma uvmf custom external begin

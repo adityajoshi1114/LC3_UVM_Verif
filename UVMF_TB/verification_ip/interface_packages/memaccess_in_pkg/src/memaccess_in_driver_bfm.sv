@@ -111,13 +111,13 @@ end
   // These are signals marked as 'input' by the config file, but the signals will be
   // driven by this BFM if put into RESPONDER mode (flipping all signal directions around)
   assign M_Data_i = bus.M_Data;
-  assign bus.M_Data = (initiator_responder == RESPONDER) ? M_Data_o : 'bz;
+  assign bus.M_Data = (initiator_responder == INITIATOR) ? M_Data_o : 'bz;
   assign M_Addr_i = bus.M_Addr;
-  assign bus.M_Addr = (initiator_responder == RESPONDER) ? M_Addr_o : 'bz;
+  assign bus.M_Addr = (initiator_responder == INITIATOR) ? M_Addr_o : 'bz;
   assign M_Control_i = bus.M_Control;
-  assign bus.M_Control = (initiator_responder == RESPONDER) ? M_Control_o : 'bz;
+  assign bus.M_Control = (initiator_responder == INITIATOR) ? M_Control_o : 'bz;
   assign mem_state_i = bus.mem_state;
-  assign bus.mem_state = (initiator_responder == RESPONDER) ? mem_state_o : 'bz;
+  assign bus.mem_state = (initiator_responder == INITIATOR) ? mem_state_o : 'bz;
 
 
   // These are signals marked as 'output' by the config file, but the outputs will
@@ -253,18 +253,18 @@ bit first_transfer=1;
        //    Responder inout signals
     
 
-  @(posedge clock_i);
-  if (!first_transfer) begin
-    // Perform transfer response here.   
-    // Reply using data recieved in the responder_trans.
-    @(posedge clock_i);
-    // Reply using data recieved in the transaction handle.
-    @(posedge clock_i);
-  end
-    // Wait for next transfer then gather info from intiator about the transfer.
-    // Place the data into the responder_trans handle.
-    @(posedge clock_i);
-    @(posedge clock_i);
+  // @(posedge clock_i);
+  // if (!first_transfer) begin
+  //   // Perform transfer response here.   
+  //   // Reply using data recieved in the responder_trans.
+  //   @(posedge clock_i);
+  //   // Reply using data recieved in the transaction handle.
+  //   @(posedge clock_i);
+  // end
+  //   // Wait for next transfer then gather info from intiator about the transfer.
+  //   // Place the data into the responder_trans handle.
+  //   @(posedge clock_i);
+  //   @(posedge clock_i);
     first_transfer = 0;
   endtask
 // pragma uvmf custom respond_and_wait_for_next_transfer end
