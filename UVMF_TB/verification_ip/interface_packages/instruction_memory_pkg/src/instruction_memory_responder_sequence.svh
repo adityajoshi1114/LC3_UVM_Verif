@@ -27,7 +27,7 @@ class instruction_memory_responder_sequence
     super.new(name);
   endfunction
 
-  task body();
+  virtual task body();
     req=instruction_memory_transaction::type_id::create("req");
     //forever begin
       start_item(req);
