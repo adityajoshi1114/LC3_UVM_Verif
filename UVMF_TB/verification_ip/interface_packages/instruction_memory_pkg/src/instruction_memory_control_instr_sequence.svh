@@ -51,7 +51,7 @@ class instruction_memory_control_instr_sequence
 
         assert(Instr_dout[15:12] == 4'b0000) else $error("BR Opcode is not set");
         
-        start_time(req);
+        start_item(req);
         finish_item(req);
         end
 
@@ -66,7 +66,7 @@ class instruction_memory_control_instr_sequence
 
         assert(Instr_dout[15:12] == 4'b1100) else $error("JMP Opcode is not set");
         
-        start_time(req);
+        start_item(req);
         finish_item(req);
         end
       // pragma uvmf custom body end
