@@ -49,7 +49,7 @@ class instruction_memory_control_instr_sequence
         req.Instr_dout[11:9] = req.cnd_flags;
         req.Instr_dout[15:12] = req.opcode;
 
-        assert(Instr_dout[15:12] == 4'b0000) else $error("BR Opcode is not set");
+        assert(Instr_dout[15:12] == 4'b0000);
         
         start_item(req);
         finish_item(req);
@@ -64,7 +64,7 @@ class instruction_memory_control_instr_sequence
         req.Instr_dout[11:9] = 3'b000;
         req.Instr_dout[15:12] = req.opcode;
 
-        assert(Instr_dout[15:12] == 4'b1100) else $error("JMP Opcode is not set");
+        assert(Instr_dout[15:12] == 4'b1100);
         
         start_item(req);
         finish_item(req);

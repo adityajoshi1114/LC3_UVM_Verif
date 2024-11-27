@@ -49,7 +49,7 @@ class instruction_memory_memory_instr_sequence
         req.Instr_dout[11:9] = req.dest;
         req.Instr_dout[15:12] = req.opcode;
 
-        assert(Instr_dout[15:12] == 4'b0010) else $error("LD Opcode is not set");
+        assert(Instr_dout[15:12] == 4'b0010);
         
         start_item(req);
         finish_item(req);
@@ -64,7 +64,7 @@ class instruction_memory_memory_instr_sequence
         req.Instr_dout[11:9] = req.dest;
         req.Instr_dout[15:12] = req.opcode;
 
-        assert(Instr_dout[15:12] == 4'b0110) else $error("LDR Opcode is not set");
+        assert(Instr_dout[15:12] == 4'b0110);
         
         start_item(req);
         finish_item(req);
@@ -78,7 +78,7 @@ class instruction_memory_memory_instr_sequence
         req.Instr_dout[11:9] = req.dest;
         req.Instr_dout[15:12] = req.opcode;
 
-        assert(Instr_dout[15:12] == 4'b1010) else $error("LDI Opcode is not set");
+        assert(Instr_dout[15:12] == 4'b1010);
         
         start_item(req);
         finish_item(req);
@@ -91,7 +91,7 @@ class instruction_memory_memory_instr_sequence
         req.Instr_dout[11:9] = req.dest;
         req.Instr_dout[15:12] = req.opcode;
 
-        assert(Instr_dout[15:12] == 4'b1110) else $error("LDA Opcode is not set");
+        assert(Instr_dout[15:12] == 4'b1110);
         
         start_item(req);
         finish_item(req);
@@ -105,7 +105,7 @@ class instruction_memory_memory_instr_sequence
         req.Instr_dout[11:9] = req.src;
         req.Instr_dout[15:12] = req.opcode;
 
-        assert(Instr_dout[15:12] == 4'b0011) else $error("ST Opcode is not set");
+        assert(Instr_dout[15:12] == 4'b0011);
         
         start_item(req);
         finish_item(req);
@@ -120,7 +120,7 @@ class instruction_memory_memory_instr_sequence
         req.Instr_dout[11:9] = req.src;
         req.Instr_dout[15:12] = req.opcode;
 
-        assert(Instr_dout[15:12] == 4'b0111) else $error("STR Opcode is not set");
+        assert(Instr_dout[15:12] == 4'b0111);
         
         start_item(req);
         finish_item(req);
@@ -133,7 +133,7 @@ class instruction_memory_memory_instr_sequence
         req.Instr_dout[11:9] = req.src;
         req.Instr_dout[15:12] = req.opcode;
 
-        assert(Instr_dout[15:12] == 4'b1011) else $error("STI Opcode is not set");
+        assert(Instr_dout[15:12] == 4'b1011);
         
         start_item(req);
         finish_item(req);
