@@ -18,10 +18,10 @@ class memaccess_out_transaction  extends uvmf_transaction_base;
 
   `uvm_object_utils( memaccess_out_transaction )
 
-  logic [15:0] DMem_addr ;
-  logic [15:0] DMem_din ;
+  bit [15:0] DMem_addr ;
+  bit [15:0] DMem_din ;
   bit DMem_rd ;
-  logic [15:0] memout ;
+  bit [15:0] memout ;
 
   //Constraints for the transaction variables:
 

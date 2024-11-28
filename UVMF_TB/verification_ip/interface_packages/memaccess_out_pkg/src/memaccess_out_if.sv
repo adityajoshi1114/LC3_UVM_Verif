@@ -35,6 +35,7 @@ interface  memaccess_out_if
   inout tri [15:0] DMem_addr,
   inout tri [15:0] DMem_din,
   inout tri  DMem_rd,
+  inout tri [1:0] mem_state,
   inout tri [15:0] memout
   );
 
@@ -45,7 +46,8 @@ modport monitor_port
   input DMem_addr,
   input DMem_din,
   input DMem_rd,
-  input memout
+  input memout,
+  input mem_state
   );
 
 modport initiator_port 
@@ -55,7 +57,8 @@ modport initiator_port
   output DMem_addr,
   output DMem_din,
   output DMem_rd,
-  output memout
+  output memout,
+  output mem_state
   );
 
 modport responder_port 
@@ -65,7 +68,8 @@ modport responder_port
   input DMem_addr,
   input DMem_din,
   input DMem_rd,
-  input memout
+  input memout,
+  input mem_state
   );
   
 

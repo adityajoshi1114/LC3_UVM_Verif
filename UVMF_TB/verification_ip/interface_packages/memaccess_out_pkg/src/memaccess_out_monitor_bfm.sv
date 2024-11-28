@@ -67,17 +67,20 @@ end
   tri [15:0] DMem_din_i;
   tri  DMem_rd_i;
   tri [15:0] memout_i;
+  tri [1:0] mem_state_i;
   assign clock_i = bus.clock;
   assign reset_i = bus.reset;
   assign DMem_addr_i = bus.DMem_addr;
   assign DMem_din_i = bus.DMem_din;
   assign DMem_rd_i = bus.DMem_rd;
   assign memout_i = bus.memout;
+  assign mem_state_i = bus.mem_state;
 
   // Proxy handle to UVM monitor
   memaccess_out_pkg::memaccess_out_monitor  proxy;
 
   // pragma uvmf custom interface_item_additional begin
+    bit first_transaction = 1;
   // pragma uvmf custom interface_item_additional end
   
   //******************************************************************                         
@@ -114,10 +117,6 @@ end
     forever begin                                                                        
       monitored_trans = new("monitored_trans");
       do_monitor( );
-                                                                 
- 
-      //proxy.notify_transaction( monitored_trans ); 
- 
     end                                                                                    
   end                                                                                       
 
@@ -166,23 +165,28 @@ end
     // task should return when a complete transfer has been observed.  Once this task is
     // exited with captured values, it is then called again to wait for and observe 
     // the next transfer. One clock cycle is consumed between calls to do_monitor.
-    // @(posedge clock_i);
-    // @(posedge clock_i);
-    // @(posedge clock_i);
-    // @(posedge clock_i);
-    while(reset_i) begin
-      @(posedge clock_i);
+    if (first_transaction) begin 
+      wait (mem_state_i == 2'b11);
+      @(mem_state_i);  
+      $display("%0.2f",$time);
+      first_transaction = 0;
+      #5; // For asynchronous value capture
     end
-    monitored_trans.start_time = $time;
-    @(negedge clock_i); // To capture stable values
-    monitored_trans.DMem_addr = DMem_addr_i;
-    monitored_trans.DMem_din = DMem_din_i;
-    monitored_trans.memout = memout_i;
-    monitored_trans.DMem_rd = DMem_rd_i;
-    @(posedge clock_i);
-    monitored_trans.end_time = $time;
+    finish_monitoring();
     // pragma uvmf custom do_monitor end
-  endtask         
+  endtask        
+
+  task finish_monitoring();
+    monitored_trans.start_time = $time;
+    monitored_trans.memout = memout_i;  // Asynchronous
+    monitored_trans.DMem_addr = DMem_addr_i;  // Asynchronous
+    @(mem_state_i); // Move to capture synchronous values
+    monitored_trans.DMem_din = DMem_din_i;
+    monitored_trans.DMem_rd = DMem_rd_i;
+    #5;
+    monitored_trans.end_time = $time;
+    proxy.notify_transaction(monitored_trans);
+  endtask 
   
  
 endinterface

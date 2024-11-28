@@ -204,7 +204,8 @@ import uvmf_base_pkg_hdl::*;
       .DMem_addr(Data_addr),
       .DMem_din(Data_din),
       .DMem_rd(Data_rd),
-      .memout(memout)
+      .memout(memout),
+      .mem_state(mem_state)
      // pragma uvmf custom memacc_env_agent_out_bus_connections end
      );
    instruction_memory_if  Instruction_bus(

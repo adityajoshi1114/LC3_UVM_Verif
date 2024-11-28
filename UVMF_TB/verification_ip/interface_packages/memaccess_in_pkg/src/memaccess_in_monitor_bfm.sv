@@ -80,6 +80,7 @@ end
   memaccess_in_pkg::memaccess_in_monitor  proxy;
 
   // pragma uvmf custom interface_item_additional begin
+    bit first_transaction = 1;
   // pragma uvmf custom interface_item_additional end
   
   //******************************************************************                         
@@ -116,10 +117,6 @@ end
     forever begin                                                                        
       monitored_trans = new("monitored_trans");
       do_monitor( );
-                                                                 
- 
-      //proxy.notify_transaction( monitored_trans ); 
- 
     end                                                                                    
   end                                                                                       
 
@@ -139,7 +136,6 @@ end
   // pragma uvmf custom configure begin
   // pragma uvmf custom configure end
   endfunction   
-
 
   // ****************************************************************************  
   task do_monitor();
@@ -175,19 +171,27 @@ end
     // @(posedge clock_i);
     // @(posedge clock_i);
     // monitored_trans.end_time = $time;
+    if (first_transaction) begin 
+      wait (mem_state_i == 2'b11);
+      @(mem_state_i);
+      first_transaction = 0;
+    end
+    finish_monitoring();
     // pragma uvmf custom do_monitor end
-    while (reset_i === 1'b1) @(posedge clock_i);
+  endtask  
+
+  task finish_monitoring();
     monitored_trans.start_time = $time;
-    @(negedge clock_i); // To capture stable values
+    #1; // To capture stable values after change in state
     monitored_trans.mem_state = mem_state_i;  
     monitored_trans.M_Control = M_Control_i;  
     monitored_trans.M_Data = M_Data_i;  
     monitored_trans.M_Addr = M_Addr_i;  
     monitored_trans.DMem_dout = DMem_dout_i; 
-    @(posedge clock_i);
+    @(mem_state_i);
     monitored_trans.end_time  = $time;
-    
-  endtask         
+    proxy.notify_transaction(monitored_trans);
+  endtask       
   
  
 endinterface
