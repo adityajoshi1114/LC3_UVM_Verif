@@ -160,32 +160,29 @@ end
     // task should return when a complete transfer has been observed.  Once this task is
     // exited with captured values, it is then called again to wait for and observe 
     // the next transfer. One clock cycle is consumed between calls to do_monitor.
-    // Wait for Reset
+    // Wait for Reset -> first transaction
     if (reset_i == 1) begin 
       do_wait_for_reset();
+      assert(enable_fetch_i);
       @(posedge clock_i); // Adding another posedge because its fetch_out
-    end
-    #1;   // One of the outputs is produced asynchronously
-    // Ideally fetch enable should be high
-    if (enable_fetch_i != 1'b1) begin 
-      // Monitor 1 transaction and then wait
       finish_monitoring();
-      while(enable_fetch_i != 1'b1) begin
-        @(posedge clock_i);
-      end
-      @(posedge clock_i); // Adding another posedge because its fetch_out
     end else begin 
+      if (enable_fetch_i == 0) begin 
+        while(enable_fetch_i != 1'b1) begin
+          @(posedge clock_i); // This ensures that we skip the posedge where enable first goes high
+        end
+      end
       finish_monitoring();
     end
-  // pragma uvmf custom do_monitor end
+    // pragma uvmf custom do_monitor end
   endtask
 
   task finish_monitoring ();
+    monitored_trans.Imem_RD   = Imem_rd_i;  // Asynchronous
     monitored_trans.start_time         = $time;
     @(negedge clock_i);   // To capture stable values
     monitored_trans.PC        = pc_i;
     monitored_trans.NPC       = npc_i;
-    monitored_trans.Imem_RD   = Imem_rd_i;
     @(posedge clock_i); // Move to the end of the transaction
     monitored_trans.end_time = $time;
     proxy.notify_transaction( monitored_trans );

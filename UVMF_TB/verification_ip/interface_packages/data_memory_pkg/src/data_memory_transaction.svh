@@ -19,9 +19,9 @@ class data_memory_transaction  extends uvmf_transaction_base;
   `uvm_object_utils( data_memory_transaction )
 
   logic complete_data ;
-  logic [15:0] Data_dout ;
+  rand  logic [15:0] Data_dout ;
   logic [15:0] Data_din ;
-  rand logic Data_rd ;
+  logic Data_rd ;
   logic [15:0] Data_addr ;
 
   //Constraints for the transaction variables:

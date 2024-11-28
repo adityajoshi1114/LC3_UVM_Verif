@@ -251,19 +251,29 @@ bit first_transfer=1;
        //      Data_dout_o <= responder_trans.xyz;  //    [15:0] 
        //    Responder inout signals
     
-
-  @(posedge clock_i);
   if (!first_transfer) begin
     // Perform transfer response here.   
     // Reply using data recieved in the responder_trans.
     @(posedge clock_i);
-    // Reply using data recieved in the transaction handle.
-    @(posedge clock_i);
+    if (Data_rd_i) begin 
+      Data_dout_o <= responder_trans.Data_dout;
+    end
+    
   end
     // Wait for next transfer then gather info from intiator about the transfer.
     // Place the data into the responder_trans handle.
-    @(posedge clock_i);
-    @(posedge clock_i);
+    if (Data_rd_i === 1'bz) begin 
+      complete_data_o <= 1'b0;  
+      wait (Data_rd_i !== 1'bz);  
+    end
+    
+    #1.5;
+    responder_trans.Data_addr = Data_addr_i;
+    responder_trans.Data_rd = Data_rd_i;
+    if (!Data_rd_i) begin 
+      responder_trans.Data_din = Data_din_i;
+    end
+    complete_data_o <= 1'b1;
     first_transfer = 0;
   endtask
 // pragma uvmf custom respond_and_wait_for_next_transfer end

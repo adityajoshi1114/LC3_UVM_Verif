@@ -162,26 +162,31 @@ end
     // task should return when a complete transfer has been observed.  Once this task is
     // exited with captured values, it is then called again to wait for and observe 
     // the next transfer. One clock cycle is consumed between calls to do_monitor.
-    // Wait for Reset
+    // Wait for Reset -> first transaction
     if (reset_i == 1) begin 
       do_wait_for_reset();
+      finish_monitoring();
+    end else begin  // subsequent transactions
+      // Wait for enable
+      if (enable_fetch_i == 0) begin 
+        @(posedge enable_fetch_i);
+      end
+      finish_monitoring();
     end
-    // Wait for enable
-    while(enable_fetch_i != 1'b1) begin
-      @(posedge clock_i);
-    end
+    // pragma uvmf custom do_monitor end
+  endtask 
+
+  task finish_monitoring();
     monitored_trans.start_time = $time;
     @(negedge clock_i);   // To capture stable values
     monitored_trans.Taddr           = taddr_i;
-    //monitored_trans.Enable_fetch    = enable_fetch_i;
     monitored_trans.Br_taken        = br_taken_i;
     monitored_trans.Enable_updatePC = enable_updatePC_i;
+    monitored_trans.Enable_fetch    = enable_fetch_i;
     @(posedge clock_i);
     monitored_trans.end_time = $time;
     #1; // One of the outputs is produced asynchronously
-    monitored_trans.Enable_fetch    = enable_fetch_i;
-    // pragma uvmf custom do_monitor end
-  endtask         
+  endtask        
   
  
 endinterface

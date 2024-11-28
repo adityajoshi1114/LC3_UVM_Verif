@@ -39,23 +39,33 @@ class instruction_memory_responder_sequence
       // If this was an item that required a response, the expectation is
       // that the response should be populated within this transaction now.
       `uvm_info("SEQ",$sformatf("Processed txn: %s",req.convert2string()),UVM_HIGH)
-      req.Instr_Dout = 16'h1a22;
+      
+      req.Instr_Dout[15:12] = 4'ha;
+      req.Instr_Dout[8:0]  = 9'b101000010;
+      for (int i = 0; i<8 ; i ++) begin 
+        req.Instr_Dout[11:9]  = i;
+        start_item(req);
+        finish_item(req);
+      end
+
+      req.Instr_Dout = 16'h1078;
       $display("Instruction - %x",req.Instr_Dout);
 
       start_item(req);
       finish_item(req);
 
-      req.Instr_Dout = 16'h1a18;
+      req.Instr_Dout = 16'h1278;
       $display("Instruction - %x",req.Instr_Dout);
 
       start_item(req);
       finish_item(req);
 
-      req.Instr_Dout = 16'h1a12;
+      req.Instr_Dout = 16'h1478;
       $display("Instruction - %x",req.Instr_Dout);
 
       start_item(req);
       finish_item(req);
+
       // pragma uvmf custom body end
     //end
   endtask

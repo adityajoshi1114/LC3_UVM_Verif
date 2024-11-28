@@ -38,6 +38,9 @@ class data_memory_responder_sequence
       // If this was an item that required a response, the expectation is
       // that the response should be populated within this transaction now.
       `uvm_info("SEQ",$sformatf("Processed txn: %s",req.convert2string()),UVM_HIGH)
+      if (req.Data_rd) begin 
+        assert(req.randomize());
+      end
       // pragma uvmf custom body end
     end
   endtask
