@@ -91,7 +91,7 @@ class instruction_memory_transaction_coverage  extends uvm_subscriber #(.T(instr
     BaseR     : coverpoint coverage_trans.BaseR;
     PCoffset9 : coverpoint coverage_trans.PCoffset9
     {
-      bins all [] = {[0:512]};
+      bins all [] = {[0:511]};
     }
     PCoffset6 : coverpoint coverage_trans.PCoffset6;
     dest      : coverpoint coverage_trans.dest;
@@ -148,7 +148,7 @@ class instruction_memory_transaction_coverage  extends uvm_subscriber #(.T(instr
     opcode    : coverpoint coverage_trans.opcode;
     PCoffset9 : coverpoint coverage_trans.PCoffset9
     {
-      bins all [] = {[0:512]};
+      bins all [] = {[0:511]};
     }
     cnd_flags : coverpoint coverage_trans.cnd_flags;
     BaseR     : coverpoint coverage_trans.BaseR;

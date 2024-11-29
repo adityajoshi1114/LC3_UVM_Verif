@@ -45,11 +45,11 @@ class instruction_memory_memory_instr_sequence
         //LD instrunctions (512x8)
         repeat(4096) begin
         req.randomize() with {opcode == LD;};
-        req.Instr_dout[8:0] = req.PCOffset9;
-        req.Instr_dout[11:9] = req.dest;
-        req.Instr_dout[15:12] = req.opcode;
+        req.Instr_Dout[8:0] = req.PCoffset9;
+        req.Instr_Dout[11:9] = req.dest;
+        req.Instr_Dout[15:12] = req.opcode;
 
-        assert(Instr_dout[15:12] == 4'b0010);
+        assert(req.Instr_Dout[15:12] == 4'b0010);
         
         start_item(req);
         finish_item(req);
@@ -59,12 +59,12 @@ class instruction_memory_memory_instr_sequence
         //LDR instrunctions (64x8x8)
         repeat(4096) begin
         req.randomize() with {opcode == LDR;};
-        req.Instr_dout[5:0] = req.PCoffset6;
-        eq.Instr_dout[8:6] = req.BaseR;
-        req.Instr_dout[11:9] = req.dest;
-        req.Instr_dout[15:12] = req.opcode;
+        req.Instr_Dout[5:0] = req.PCoffset6;
+        req.Instr_Dout[8:6] = req.BaseR;
+        req.Instr_Dout[11:9] = req.dest;
+        req.Instr_Dout[15:12] = req.opcode;
 
-        assert(Instr_dout[15:12] == 4'b0110);
+        assert(req.Instr_Dout[15:12] == 4'b0110);
         
         start_item(req);
         finish_item(req);
@@ -74,11 +74,11 @@ class instruction_memory_memory_instr_sequence
         //LDI instrunctions (512x8)
         repeat(4096) begin
         req.randomize() with {opcode == LDI;};
-        req.Instr_dout[8:0] = req.PCOffset9;
-        req.Instr_dout[11:9] = req.dest;
-        req.Instr_dout[15:12] = req.opcode;
+        req.Instr_Dout[8:0] = req.PCoffset9;
+        req.Instr_Dout[11:9] = req.dest;
+        req.Instr_Dout[15:12] = req.opcode;
 
-        assert(Instr_dout[15:12] == 4'b1010);
+        assert(req.Instr_Dout[15:12] == 4'b1010);
         
         start_item(req);
         finish_item(req);
@@ -86,12 +86,12 @@ class instruction_memory_memory_instr_sequence
 
         //LDA instrunctions (512x8)
         repeat(4096) begin
-        req.randomize() with {opcode == LDA;};
-        req.Instr_dout[8:0] = req.PCOffset9;
-        req.Instr_dout[11:9] = req.dest;
-        req.Instr_dout[15:12] = req.opcode;
+        req.randomize() with {opcode == LEA;};
+        req.Instr_Dout[8:0] = req.PCoffset9;
+        req.Instr_Dout[11:9] = req.dest;
+        req.Instr_Dout[15:12] = req.opcode;
 
-        assert(Instr_dout[15:12] == 4'b1110);
+        assert(req.Instr_Dout[15:12] == 4'b1110);
         
         start_item(req);
         finish_item(req);
@@ -101,11 +101,11 @@ class instruction_memory_memory_instr_sequence
         //ST instrunctions (512x8)
         repeat(4096) begin
         req.randomize() with {opcode == ST;};
-        req.Instr_dout[8:0] = req.PCOffset9;
-        req.Instr_dout[11:9] = req.src;
-        req.Instr_dout[15:12] = req.opcode;
+        req.Instr_Dout[8:0] = req.PCoffset9;
+        req.Instr_Dout[11:9] = req.src;
+        req.Instr_Dout[15:12] = req.opcode;
 
-        assert(Instr_dout[15:12] == 4'b0011);
+        assert(req.Instr_Dout[15:12] == 4'b0011);
         
         start_item(req);
         finish_item(req);
@@ -115,12 +115,12 @@ class instruction_memory_memory_instr_sequence
         //STR instrunctions (64x8x8)
         repeat(4096) begin
         req.randomize() with {opcode == STR;};
-        req.Instr_dout[5:0] = req.PCoffset6;
-        req.Instr_dout[8:6] = req.BaseR;
-        req.Instr_dout[11:9] = req.src;
-        req.Instr_dout[15:12] = req.opcode;
+        req.Instr_Dout[5:0] = req.PCoffset6;
+        req.Instr_Dout[8:6] = req.BaseR;
+        req.Instr_Dout[11:9] = req.src;
+        req.Instr_Dout[15:12] = req.opcode;
 
-        assert(Instr_dout[15:12] == 4'b0111);
+        assert(req.Instr_Dout[15:12] == 4'b0111);
         
         start_item(req);
         finish_item(req);
@@ -129,11 +129,11 @@ class instruction_memory_memory_instr_sequence
         //STI instrunctions (512x8)
         repeat(4096) begin
         req.randomize() with {opcode == STI;};
-        req.Instr_dout[8:0] = req.PCOffset9;
-        req.Instr_dout[11:9] = req.src;
-        req.Instr_dout[15:12] = req.opcode;
+        req.Instr_Dout[8:0] = req.PCoffset9;
+        req.Instr_Dout[11:9] = req.src;
+        req.Instr_Dout[15:12] = req.opcode;
 
-        assert(Instr_dout[15:12] == 4'b1011);
+        assert(req.Instr_Dout[15:12] == 4'b1011);
         
         start_item(req);
         finish_item(req);

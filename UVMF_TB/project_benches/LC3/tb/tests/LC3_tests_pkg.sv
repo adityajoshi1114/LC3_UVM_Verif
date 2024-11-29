@@ -63,6 +63,7 @@ package LC3_tests_pkg;
    `include "src/test_top.svh"
    `include "src/register_test.svh"
    `include "src/example_derived_test.svh"
+   `include "src/ALU_instr_test.svh"
 
   // pragma uvmf custom package_item_additional begin
   // UVMF_CHANGE_ME : When adding new tests to the src directory
