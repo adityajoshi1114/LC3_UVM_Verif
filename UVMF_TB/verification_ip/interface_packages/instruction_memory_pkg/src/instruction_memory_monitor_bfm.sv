@@ -169,21 +169,41 @@ end
     // task should return when a complete transfer has been observed.  Once this task is
     // exited with captured values, it is then called again to wait for and observe 
     // the next transfer. One clock cycle is consumed between calls to do_monitor.
-    if (instrmem_rd_i) begin // If enable is high
-      monitored_trans.start_time = $time;
-      @(negedge clock_i);   // Capture values at negedge
-      monitored_trans.PC  = PC_i;
-      monitored_trans.Imem_en = instrmem_rd_i;
-      monitored_trans.Instr_Dout  = instr_dout_i;
-      monitored_trans.cmp_instr = complete_instr_i;
-      @(posedge clock_i);   // Move to end of transaction
-      //proxy.notify_transaction( monitored_trans ); 
-      monitored_trans.end_time = $time;
-    end else begin 
+    // First Transaction 
+    if (reset_i === 1'b1) begin 
+      do_wait_for_reset();
       @(posedge clock_i);
     end
+    
+    if (complete_instr_i == 0) begin // If a valid instruction has been sent this cycle
+      @(posedge complete_instr_i);
+      @(posedge clock_i);
+    end
+    finish_monitoring();
     // pragma uvmf custom do_monitor end
   endtask         
+
+  task finish_monitoring();
+    monitored_trans.start_time = $time;
+    @(negedge clock_i);   // Capture values at negedge
+    monitored_trans.PC  = PC_i;
+    monitored_trans.Imem_en = instrmem_rd_i;
+    monitored_trans.Instr_Dout  = instr_dout_i;
+    monitored_trans.opcode = instr_dout_i[15:12];
+    monitored_trans.src1 = instr_dout_i[8:6];
+    monitored_trans.src2 = instr_dout_i[2:0];
+    monitored_trans.src  = instr_dout_i[11:9];
+    monitored_trans.dest = instr_dout_i[11:9];
+    monitored_trans.imm5 = instr_dout_i[4:0];
+    monitored_trans.PCoffset9 = instr_dout_i[8:0];
+    monitored_trans.PCoffset6 = instr_dout_i[5:0];
+    monitored_trans.BaseR = instr_dout_i[8:6];
+    monitored_trans.cnd_flags = instr_dout_i[11:9];
+    monitored_trans.cmp_instr = complete_instr_i;
+    @(posedge clock_i);   // Move to end of transaction
+    monitored_trans.end_time = $time;
+    proxy.notify_transaction( monitored_trans ); 
+  endtask
   
  
 endinterface
