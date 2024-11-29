@@ -58,6 +58,7 @@ package instruction_memory_pkg;
    `include "src/instruction_memory_random_sequence.svh"
 
    `include "src/instruction_memory_responder_sequence.svh"
+   `include "src/instruction_memory_alu_instr_sequence.svh"
    `include "src/instruction_memory2reg_adapter.svh"
 
    `include "src/instruction_memory_agent.svh"
