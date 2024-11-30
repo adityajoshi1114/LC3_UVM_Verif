@@ -184,21 +184,36 @@ end
   endtask         
 
   task finish_monitoring();
+    // To fix casting issues
+    reg_t src1_bus, src2_bus, src_bus, dest_bus, BaseR_bus;
+    nzp_t cnd_flags_bus;
+    opcode_t opcode_bus;
     monitored_trans.start_time = $time;
     @(negedge clock_i);   // Capture values at negedge
     monitored_trans.PC  = PC_i;
     monitored_trans.Imem_en = instrmem_rd_i;
     monitored_trans.Instr_Dout  = instr_dout_i;
-    monitored_trans.opcode = instr_dout_i[15:12];
-    monitored_trans.src1 = instr_dout_i[8:6];
-    monitored_trans.src2 = instr_dout_i[2:0];
-    monitored_trans.src  = instr_dout_i[11:9];
-    monitored_trans.dest = instr_dout_i[11:9];
+    if (!$cast(opcode_bus,instr_dout_i[15:12])) $fatal;
+    if (!$cast(src1_bus,instr_dout_i[8:6])) $fatal;
+    if (!$cast(src2_bus,instr_dout_i[2:0])) $fatal;
+    if (!$cast(src_bus, instr_dout_i[11:9])) $fatal;
+    if (!$cast(dest_bus,instr_dout_i[11:9])) $fatal;
+    if (!$cast(BaseR_bus,instr_dout_i[8:6])) $fatal;
+    if (instr_dout_i[11:9] != 3'b000) begin 
+      if (!$cast(cnd_flags_bus,instr_dout_i[11:9])) $fatal;
+    end
+    monitored_trans.opcode = opcode_bus;
+    monitored_trans.src1 = src1_bus ;
+    monitored_trans.src2 = src2_bus ;
+    monitored_trans.src  = src_bus ;
+    monitored_trans.dest = dest_bus ;
     monitored_trans.imm5 = instr_dout_i[4:0];
     monitored_trans.PCoffset9 = instr_dout_i[8:0];
     monitored_trans.PCoffset6 = instr_dout_i[5:0];
-    monitored_trans.BaseR = instr_dout_i[8:6];
-    monitored_trans.cnd_flags = instr_dout_i[11:9];
+    monitored_trans.BaseR = BaseR_bus;
+    if (instr_dout_i[11:9] != 3'b000) begin 
+      monitored_trans.cnd_flags = cnd_flags_bus;
+    end
     monitored_trans.cmp_instr = complete_instr_i;
     @(posedge clock_i);   // Move to end of transaction
     monitored_trans.end_time = $time;

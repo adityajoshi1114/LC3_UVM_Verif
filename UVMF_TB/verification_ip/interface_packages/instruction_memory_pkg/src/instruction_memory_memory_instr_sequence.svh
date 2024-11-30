@@ -28,116 +28,115 @@ class instruction_memory_memory_instr_sequence
   endfunction
 
   task body();
+    
     req=instruction_memory_transaction::type_id::create("req");
-    //forever begin
+    // Load the Reg File
+    start_item(req);
+    finish_item(req);
+    req.Instr_Dout[15:12] = 4'ha;
+    req.Instr_Dout[8:0]  = 9'b101000010;
+    for (int i = 0; i<8 ; i ++) begin 
+      req.Instr_Dout[11:9]  = i;
       start_item(req);
       finish_item(req);
-      // pragma uvmf custom body begin
-      // UVMF_CHANGE_ME : Do something here with the resulting req item.  The
-      // finish_item() call above will block until the req transaction is ready
-      // to be handled by the responder sequence.
-      // If this was an item that required a response, the expectation is
-      // that the response should be populated within this transaction now.
-      
-      //`uvm_info("SEQ",$sformatf("Processed txn: %s",req.convert2string()),UVM_HIGH)
+    end
+
+    //LD instrunctions (512x8)
+    repeat(4096) begin
+    req.randomize() with {opcode == LD;};
+    req.Instr_Dout[8:0] = req.PCoffset9;
+    req.Instr_Dout[11:9] = req.dest;
+    req.Instr_Dout[15:12] = req.opcode;
+
+    assert(req.Instr_Dout[15:12] == 4'b0010);
+    
+    start_item(req);
+    finish_item(req);
+    end
 
 
-        //LD instrunctions (512x8)
-        repeat(4096) begin
-        req.randomize() with {opcode == LD;};
-        req.Instr_Dout[8:0] = req.PCoffset9;
-        req.Instr_Dout[11:9] = req.dest;
-        req.Instr_Dout[15:12] = req.opcode;
+    //LDR instrunctions (64x8x8)
+    repeat(4096) begin
+    req.randomize() with {opcode == LDR;};
+    req.Instr_Dout[5:0] = req.PCoffset6;
+    req.Instr_Dout[8:6] = req.BaseR;
+    req.Instr_Dout[11:9] = req.dest;
+    req.Instr_Dout[15:12] = req.opcode;
 
-        assert(req.Instr_Dout[15:12] == 4'b0010);
-        
-        start_item(req);
-        finish_item(req);
-        end
-
-
-        //LDR instrunctions (64x8x8)
-        repeat(4096) begin
-        req.randomize() with {opcode == LDR;};
-        req.Instr_Dout[5:0] = req.PCoffset6;
-        req.Instr_Dout[8:6] = req.BaseR;
-        req.Instr_Dout[11:9] = req.dest;
-        req.Instr_Dout[15:12] = req.opcode;
-
-        assert(req.Instr_Dout[15:12] == 4'b0110);
-        
-        start_item(req);
-        finish_item(req);
-        end
+    assert(req.Instr_Dout[15:12] == 4'b0110);
+    
+    start_item(req);
+    finish_item(req);
+    end
 
 
-        //LDI instrunctions (512x8)
-        repeat(4096) begin
-        req.randomize() with {opcode == LDI;};
-        req.Instr_Dout[8:0] = req.PCoffset9;
-        req.Instr_Dout[11:9] = req.dest;
-        req.Instr_Dout[15:12] = req.opcode;
+    //LDI instrunctions (512x8)
+    repeat(4096) begin
+    req.randomize() with {opcode == LDI;};
+    req.Instr_Dout[8:0] = req.PCoffset9;
+    req.Instr_Dout[11:9] = req.dest;
+    req.Instr_Dout[15:12] = req.opcode;
 
-        assert(req.Instr_Dout[15:12] == 4'b1010);
-        
-        start_item(req);
-        finish_item(req);
-        end
+    assert(req.Instr_Dout[15:12] == 4'b1010);
+    
+    start_item(req);
+    finish_item(req);
+    end
 
-        //LDA instrunctions (512x8)
-        repeat(4096) begin
-        req.randomize() with {opcode == LEA;};
-        req.Instr_Dout[8:0] = req.PCoffset9;
-        req.Instr_Dout[11:9] = req.dest;
-        req.Instr_Dout[15:12] = req.opcode;
+    //LDA instrunctions (512x8)
+    repeat(4096) begin
+    req.randomize() with {opcode == LEA;};
+    req.Instr_Dout[8:0] = req.PCoffset9;
+    req.Instr_Dout[11:9] = req.dest;
+    req.Instr_Dout[15:12] = req.opcode;
 
-        assert(req.Instr_Dout[15:12] == 4'b1110);
-        
-        start_item(req);
-        finish_item(req);
-        end
-
-
-        //ST instrunctions (512x8)
-        repeat(4096) begin
-        req.randomize() with {opcode == ST;};
-        req.Instr_Dout[8:0] = req.PCoffset9;
-        req.Instr_Dout[11:9] = req.src;
-        req.Instr_Dout[15:12] = req.opcode;
-
-        assert(req.Instr_Dout[15:12] == 4'b0011);
-        
-        start_item(req);
-        finish_item(req);
-        end
+    assert(req.Instr_Dout[15:12] == 4'b1110);
+    
+    start_item(req);
+    finish_item(req);
+    end
 
 
-        //STR instrunctions (64x8x8)
-        repeat(4096) begin
-        req.randomize() with {opcode == STR;};
-        req.Instr_Dout[5:0] = req.PCoffset6;
-        req.Instr_Dout[8:6] = req.BaseR;
-        req.Instr_Dout[11:9] = req.src;
-        req.Instr_Dout[15:12] = req.opcode;
+    //ST instrunctions (512x8)
+    repeat(4096) begin
+    req.randomize() with {opcode == ST;};
+    req.Instr_Dout[8:0] = req.PCoffset9;
+    req.Instr_Dout[11:9] = req.src;
+    req.Instr_Dout[15:12] = req.opcode;
 
-        assert(req.Instr_Dout[15:12] == 4'b0111);
-        
-        start_item(req);
-        finish_item(req);
-        end
+    assert(req.Instr_Dout[15:12] == 4'b0011);
+    
+    start_item(req);
+    finish_item(req);
+    end
 
-        //STI instrunctions (512x8)
-        repeat(4096) begin
-        req.randomize() with {opcode == STI;};
-        req.Instr_Dout[8:0] = req.PCoffset9;
-        req.Instr_Dout[11:9] = req.src;
-        req.Instr_Dout[15:12] = req.opcode;
 
-        assert(req.Instr_Dout[15:12] == 4'b1011);
-        
-        start_item(req);
-        finish_item(req);
-        end
+    //STR instrunctions (64x8x8)
+    repeat(4096) begin
+    req.randomize() with {opcode == STR;};
+    req.Instr_Dout[5:0] = req.PCoffset6;
+    req.Instr_Dout[8:6] = req.BaseR;
+    req.Instr_Dout[11:9] = req.src;
+    req.Instr_Dout[15:12] = req.opcode;
+
+    assert(req.Instr_Dout[15:12] == 4'b0111);
+    
+    start_item(req);
+    finish_item(req);
+    end
+
+    //STI instrunctions (512x8)
+    repeat(4096) begin
+    req.randomize() with {opcode == STI;};
+    req.Instr_Dout[8:0] = req.PCoffset9;
+    req.Instr_Dout[11:9] = req.src;
+    req.Instr_Dout[15:12] = req.opcode;
+
+    assert(req.Instr_Dout[15:12] == 4'b1011);
+    
+    start_item(req);
+    finish_item(req);
+    end
 
 
       // pragma uvmf custom body end

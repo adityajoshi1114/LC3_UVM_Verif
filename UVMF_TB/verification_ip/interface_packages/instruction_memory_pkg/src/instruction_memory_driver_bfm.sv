@@ -257,26 +257,27 @@ bit first_transfer=1;
        //      complete_instr_o <= responder_trans.xyz;  //     
        //    Responder inout signals
     
-
-  if (!first_transfer) begin
-    // Perform transfer response here.   
-    // Reply using data recieved in the responder_trans.
-    // IF the previously sent instruction stalled the pipeline then wait for fetch
-    // to be enabled again i.e Imem read to be enabled again
-      @(posedge clock_i);
-      instr_dout_o <= responder_trans.Instr_Dout;
-  end
-    // Wait for next transfer then gather info from intiator about the transfer.
-    // Place the data into the responder_trans handle.
-    if (instrmem_rd_i == 0) begin 
-      complete_instr_o <= 1'b0; 
-      wait (instrmem_rd_i);    // Wait for enable 
+    if (first_transfer) begin 
+      wait(instrmem_rd_i);
+      responder_trans.PC = PC_i;
+      complete_instr_o <= 1'b1;
+      first_transfer = 0;
+    end else begin // Further transfers
+      #1.5;
+      if (instrmem_rd_i == 1'b0) begin 
+        complete_instr_o <= 1'b0; 
+        wait(instrmem_rd_i == 1'b1);
+      end
+      complete_instr_o <= 1'b1; 
+      instr_dout_o <= responder_trans.Instr_Dout; // Safe to drive
+      responder_trans.PC = PC_i;
     end
+    @(posedge clock_i);
 
-    #1.5; 
-    responder_trans.PC = PC_i;
-    complete_instr_o <= 1'b1;
-    first_transfer = 0;
+
+
+
+
   endtask
 // pragma uvmf custom respond_and_wait_for_next_transfer end
 

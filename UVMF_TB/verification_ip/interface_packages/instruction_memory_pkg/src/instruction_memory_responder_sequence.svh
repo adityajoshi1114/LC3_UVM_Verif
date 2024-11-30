@@ -40,6 +40,7 @@ class instruction_memory_responder_sequence
       // that the response should be populated within this transaction now.
       `uvm_info("SEQ",$sformatf("Processed txn: %s",req.convert2string()),UVM_HIGH)
       
+      // Fill in Reg File
       req.Instr_Dout[15:12] = 4'ha;
       req.Instr_Dout[8:0]  = 9'b101000010;
       for (int i = 0; i<8 ; i ++) begin 
@@ -48,26 +49,18 @@ class instruction_memory_responder_sequence
         finish_item(req);
       end
 
-      req.Instr_Dout = 16'h1078;
-      $display("Instruction - %x",req.Instr_Dout);
-
-      start_item(req);
-      finish_item(req);
-
-      req.Instr_Dout = 16'h1278;
-      $display("Instruction - %x",req.Instr_Dout);
-
-      start_item(req);
-      finish_item(req);
-
-      req.Instr_Dout = 16'h1478;
-      $display("Instruction - %x",req.Instr_Dout);
-
-      start_item(req);
-      finish_item(req);
+      // Do add Imm on all Regs to check
+      req.Instr_Dout[15:12] = 4'h1;
+      req.Instr_Dout[5] = 1'b1;
+      req.Instr_Dout[11:9] = 3'b000;
+      for (int i = 0; i<8; i++) begin  
+        req.Instr_Dout[8:6] = i;
+        start_item(req);
+        finish_item(req);
+      end
 
       // pragma uvmf custom body end
-    //end
+    
   endtask
 
 endclass

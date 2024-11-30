@@ -18,16 +18,16 @@ class execute_out_transaction  extends uvmf_transaction_base;
 
   `uvm_object_utils( execute_out_transaction )
 
-  logic [15:0] alu_out ;
-  logic [1:0] w_ctrl ;
-  logic mem_ctrl ;
-  logic [15:0] M_data ;
-  logic [2:0] dest_reg ;
-  logic [2:0] src_reg1 ;
-  logic [2:0] src_reg2 ;
-  logic [15:0] IR_ex ;
-  logic [2:0] nzp ;
-  logic [15:0] pc_out ;
+  bit [15:0] alu_out ;
+  bit [1:0] w_ctrl ;
+  bit mem_ctrl ;
+  bit [15:0] M_data ;
+  bit [2:0] dest_reg ;
+  bit [2:0] src_reg1 ;
+  bit [2:0] src_reg2 ;
+  bit [15:0] IR_ex ;
+  bit [2:0] nzp ;
+  bit [15:0] pc_out ;
 
   //Constraints for the transaction variables:
 

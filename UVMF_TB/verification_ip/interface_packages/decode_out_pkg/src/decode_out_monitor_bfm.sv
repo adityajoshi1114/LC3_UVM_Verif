@@ -170,23 +170,19 @@ end
     // exited with captured values, it is then called again to wait for and observe 
     // the next transfer. One clock cycle is consumed between calls to do_monitor.
     
-    // Startup
+    // First transaction
     if (reset_i == 1) begin 
       do_wait_for_reset();
       @(posedge enable_decode_i);
       @(posedge clock_i); // One cycle delay since its decode_out
-    end
-    // Ideally decode enable should be high
-    if (enable_decode_i != 1'b1) begin 
-   // Monitor 1 transaction and then wait
-      finish_monitoring();
-      while(enable_decode_i != 1'b1) begin
-        @(posedge clock_i);
+    end else begin // Further transactions
+      if (enable_decode_i != 1'b1) begin 
+        while(enable_decode_i != 1'b1) begin
+          @(posedge clock_i);   // This ensures we get to one clock cycle after the cycle where enable decode went high
+        end
       end
-      @(posedge clock_i); // Adding another posedge because its decode_out
-    end else begin 
-      finish_monitoring();
     end
+    finish_monitoring();
     // pragma uvmf custom do_monitor end
   endtask         
 
@@ -201,7 +197,6 @@ end
     @(posedge clock_i);
     monitored_trans.end_time = $time;
     proxy.notify_transaction( monitored_trans );
-    #1; // To capture values slightly after posedge
   endtask
   
  

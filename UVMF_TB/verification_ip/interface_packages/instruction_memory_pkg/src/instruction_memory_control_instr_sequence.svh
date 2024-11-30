@@ -28,47 +28,46 @@ class instruction_memory_control_instr_sequence
   endfunction
 
   task body();
+  
     req=instruction_memory_transaction::type_id::create("req");
-    //forever begin
+    // Load the Reg File
+    start_item(req);
+    finish_item(req);
+    req.Instr_Dout[15:12] = 4'ha;
+    req.Instr_Dout[8:0]  = 9'b101000010;
+    for (int i = 0; i<8 ; i ++) begin 
+      req.Instr_Dout[11:9]  = i;
       start_item(req);
       finish_item(req);
-      // pragma uvmf custom body begin
-      // UVMF_CHANGE_ME : Do something here with the resulting req item.  The
-      // finish_item() call above will block until the req transaction is ready
-      // to be handled by the responder sequence.
-      // If this was an item that required a response, the expectation is
-      // that the response should be populated within this transaction now.
-      
-      //`uvm_info("SEQ",$sformatf("Processed txn: %s",req.convert2string()),UVM_HIGH)
-
-
-        //BR instrunctions (512x7)
-        repeat(3584) begin
-        req.randomize() with {opcode == BR;};
-        req.Instr_Dout[8:0] = req.PCoffset9;
-        req.Instr_Dout[11:9] = req.cnd_flags;
-        req.Instr_Dout[15:12] = req.opcode;
-
-        assert(req.Instr_Dout[15:12] == 4'b0000);
+    end
         
-        start_item(req);
-        finish_item(req);
-        end
+    //BR instrunctions (512x7)
+    repeat(3584) begin
+    req.randomize() with {opcode == BR;};
+    req.Instr_Dout[8:0] = req.PCoffset9;
+    req.Instr_Dout[11:9] = req.cnd_flags;
+    req.Instr_Dout[15:12] = req.opcode;
+
+    assert(req.Instr_Dout[15:12] == 4'b0000);
+    
+    start_item(req);
+    finish_item(req);
+    end
 
 
-        //JUMP Instructions (8)
-        repeat(8) begin
-        req.randomize() with {opcode == JMP;};
-        req.Instr_Dout[5:0] = 6'b000000;
-        req.Instr_Dout[8:6] = req.BaseR;
-        req.Instr_Dout[11:9] = 3'b000;
-        req.Instr_Dout[15:12] = req.opcode;
+    //JUMP Instructions (8)
+    repeat(8) begin
+    req.randomize() with {opcode == JMP;};
+    req.Instr_Dout[5:0] = 6'b000000;
+    req.Instr_Dout[8:6] = req.BaseR;
+    req.Instr_Dout[11:9] = 3'b000;
+    req.Instr_Dout[15:12] = req.opcode;
 
-        assert(req.Instr_Dout[15:12] == 4'b1100);
-        
-        start_item(req);
-        finish_item(req);
-        end
+    assert(req.Instr_Dout[15:12] == 4'b1100);
+    
+    start_item(req);
+    finish_item(req);
+    end
       // pragma uvmf custom body end
     //end
   endtask
