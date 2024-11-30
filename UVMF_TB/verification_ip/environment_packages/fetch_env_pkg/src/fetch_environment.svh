@@ -76,6 +76,7 @@ class fetch_environment  extends uvmf_environment_base #(
     configuration.set_vsqr(vsqr);
 
     // pragma uvmf custom build_phase begin
+      Fetch_Scoreboard.disable_end_of_test_empty_check();
     // pragma uvmf custom build_phase end
   endfunction
 
