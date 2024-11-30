@@ -165,15 +165,16 @@ end
       do_wait_for_reset();
       assert(enable_fetch_i);
       @(posedge clock_i); // Adding another posedge because its fetch_out
-      finish_monitoring();
-    end else begin 
+      //finish_monitoring();
+    end /*else begin 
       if (enable_fetch_i == 0) begin 
         while(enable_fetch_i != 1'b1) begin
           @(posedge clock_i); // This ensures that we skip the posedge where enable first goes high
         end
       end
       finish_monitoring();
-    end
+    end*/
+    finish_monitoring();
     // pragma uvmf custom do_monitor end
   endtask
 

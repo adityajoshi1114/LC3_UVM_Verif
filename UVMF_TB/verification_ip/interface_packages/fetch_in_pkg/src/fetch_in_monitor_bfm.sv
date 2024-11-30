@@ -78,6 +78,7 @@ end
   fetch_in_pkg::fetch_in_monitor  proxy;
 
   // pragma uvmf custom interface_item_additional begin
+    bit [15:0] previous_pc;
   // pragma uvmf custom interface_item_additional end
   
   //******************************************************************                         
@@ -112,8 +113,7 @@ end
     @go;                                                                                   
     forever begin                                                                        
       monitored_trans = new("monitored_trans");
-      do_monitor( );              
-      proxy.notify_transaction( monitored_trans ); 
+      do_monitor( );               
     end                                                                                    
   end                                                                                       
 
@@ -165,14 +165,16 @@ end
     // Wait for Reset -> first transaction
     if (reset_i == 1) begin 
       do_wait_for_reset();
-      finish_monitoring();
-    end else begin  // subsequent transactions
+      // finish_monitoring();
+    end /*else begin  // subsequent transactions
       // Wait for enable
       if (enable_fetch_i == 0) begin 
         @(posedge enable_fetch_i);
+        //wait(enable_fetch_i);
       end
-      finish_monitoring();
-    end
+      //finish_monitoring();
+    end*/
+    finish_monitoring();
     // pragma uvmf custom do_monitor end
   endtask 
 
@@ -185,7 +187,9 @@ end
     monitored_trans.Enable_fetch    = enable_fetch_i;
     @(posedge clock_i);
     monitored_trans.end_time = $time;
-    #1; // One of the outputs is produced asynchronously
+    //if (monitored_trans.Enable_fetch) begin 
+      proxy.notify_transaction( monitored_trans );
+    //end // Prevents sending transactions with glitches 
   endtask        
   
  
