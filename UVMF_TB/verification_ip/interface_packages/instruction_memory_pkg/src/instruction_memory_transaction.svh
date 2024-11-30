@@ -31,7 +31,7 @@ class instruction_memory_transaction  extends uvmf_transaction_base;
   rand bit [5:0] PCoffset6 ;
   rand reg_t BaseR ;
   rand nzp_t cnd_flags ;
-  bit [15:0] Instr_Dout ;
+  randc bit [15:0] Instr_Dout ;
 
   //Constraints for the transaction variables:
 
