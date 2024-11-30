@@ -273,11 +273,6 @@ bit first_transfer=1;
       responder_trans.PC = PC_i;
     end
     @(posedge clock_i);
-
-
-
-
-
   endtask
 // pragma uvmf custom respond_and_wait_for_next_transfer end
 
