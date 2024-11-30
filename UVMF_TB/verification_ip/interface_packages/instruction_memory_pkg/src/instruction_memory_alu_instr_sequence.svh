@@ -20,7 +20,7 @@ task body();
    end
    
    //ADD 2 source registers
-   repeat(1024) begin
+   repeat(1600) begin
       req.randomize() with {opcode == ADD;};
       req.Instr_Dout[2:0] = req.src2;
       req.Instr_Dout[5:3] = 3'b000;
@@ -33,7 +33,7 @@ task body();
       finish_item(req);
    end
    // ADD Source Register and ADD Immediate
-   repeat(3000) begin
+   repeat(4096) begin
       req.randomize() with {opcode == ADD;};
       req.Instr_Dout[4:0] = req.imm5;
       req.Instr_Dout[5] = 1'b1;
@@ -46,7 +46,7 @@ task body();
       finish_item(req);
    end
    // AND 2 source Register
-   repeat(1024) begin
+   repeat(1600) begin
       req.randomize() with {opcode == AND;};
       req.Instr_Dout[2:0] = req.src2;
       req.Instr_Dout[5:3] = 3'b000;
@@ -59,7 +59,7 @@ task body();
       finish_item(req);
    end
    // AND Source Register and AND Immediate
-   repeat(3000) begin
+   repeat(4096) begin
       req.randomize() with {opcode == AND;};
       req.Instr_Dout[4:0] = req.imm5;
       req.Instr_Dout[5] = 1'b1;
@@ -72,7 +72,7 @@ task body();
       finish_item(req);
    end
   // NOT operation
-   repeat(128) begin
+   repeat(200) begin
      req.randomize() with {opcode == NOT;};
      req.Instr_Dout[5:0] = 6'b111111;;
      req.Instr_Dout[8:6] = req.src1;
