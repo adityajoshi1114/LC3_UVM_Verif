@@ -99,7 +99,7 @@ class control_predictor #(
     // broadcasted transactions.  Creation of a different object is done by constructing the transaction 
     // using either new() or create().  Broadcasting a transaction object more than once to either the 
     // same subscriber or multiple subscribers will result in unexpected and incorrect behavior.
-    controller_model(
+    assert(!controller_model(
     .complete_data(t.complete_data),
     .complete_instr(t.complete_instr),
     .IR(t.IR),
@@ -118,7 +118,7 @@ class control_predictor #(
     .bypass_mem_2(pred_to_scbd_output_transaction.bypass_mem_2),
     .mem_state(pred_to_scbd_output_transaction.mem_state),
     .br_taken(pred_to_scbd_output_transaction.br_taken)
-    );
+    ));
     pred_to_scbd.write(pred_to_scbd_output_transaction);
     // pragma uvmf custom agent_in_predictor end
   endfunction

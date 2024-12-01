@@ -146,7 +146,6 @@ function bit execute_model
       case (E_Control[5: 4]) // can use EX_IR too
         2'b00: begin
           aluout = alu1 + alu2;
-          $display ("aluout = %0d alu1 = %0d alu2 = %0d",aluout,alu1,alu2);
         end
 
         2'b01: begin

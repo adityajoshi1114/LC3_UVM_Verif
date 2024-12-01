@@ -168,7 +168,6 @@ end
     if (first_transaction) begin 
       wait (mem_state_i == 2'b11);
       @(mem_state_i);  
-      $display("%0.2f",$time);
       first_transaction = 0;
       #5; // For asynchronous value capture
     end

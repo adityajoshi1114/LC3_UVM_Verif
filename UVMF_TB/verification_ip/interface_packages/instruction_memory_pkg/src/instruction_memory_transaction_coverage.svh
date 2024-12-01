@@ -46,12 +46,12 @@ class instruction_memory_transaction_coverage  extends uvm_subscriber #(.T(instr
 
   covergroup alu_cg;
       option.per_instance = 1;
-      Instr_dout_bit  : coverpoint coverage_trans.Instr_Dout[5];
-      opcode          : coverpoint coverage_trans.opcode;
-      src1            : coverpoint coverage_trans.src1;
-      src2            : coverpoint coverage_trans.src2;
-      dest            : coverpoint coverage_trans.dest;
-      imm5            : coverpoint coverage_trans.imm5;
+      Instr_dout_bit  : coverpoint coverage_trans.Instr_Dout[5]{option.weight = 0;}
+      opcode          : coverpoint coverage_trans.opcode{option.weight = 0;}
+      src1            : coverpoint coverage_trans.src1{option.weight = 0;}
+      src2            : coverpoint coverage_trans.src2{option.weight = 0;}
+      dest            : coverpoint coverage_trans.dest{option.weight = 0;}
+      imm5            : coverpoint coverage_trans.imm5{option.weight = 0;}
     
     // Cross for Register Adds 
     add_reg_cross : cross src1,src2,dest,opcode,Instr_dout_bit
@@ -87,15 +87,16 @@ class instruction_memory_transaction_coverage  extends uvm_subscriber #(.T(instr
 
   covergroup memory_cg;
     option.per_instance = 1;
-    opcode    : coverpoint coverage_trans.opcode;
-    BaseR     : coverpoint coverage_trans.BaseR;
+    opcode    : coverpoint coverage_trans.opcode{option.weight = 0;}
+    BaseR     : coverpoint coverage_trans.BaseR{option.weight = 0;}
     PCoffset9 : coverpoint coverage_trans.PCoffset9
     {
+      option.weight = 0;
       bins all [] = {[0:511]};
     }
-    PCoffset6 : coverpoint coverage_trans.PCoffset6;
-    dest      : coverpoint coverage_trans.dest;
-    src       : coverpoint coverage_trans.src;
+    PCoffset6 : coverpoint coverage_trans.PCoffset6{option.weight = 0;}
+    dest      : coverpoint coverage_trans.dest{option.weight = 0;}
+    src       : coverpoint coverage_trans.src{option.weight = 0;}
 
 
     // Cross for load PC relative instructions
@@ -145,13 +146,14 @@ class instruction_memory_transaction_coverage  extends uvm_subscriber #(.T(instr
 
   covergroup control_cg;
     option.per_instance = 1;
-    opcode    : coverpoint coverage_trans.opcode;
+    opcode    : coverpoint coverage_trans.opcode{option.weight = 0;}
     PCoffset9 : coverpoint coverage_trans.PCoffset9
     {
+      option.weight = 0;
       bins all [] = {[0:511]};
     }
-    cnd_flags : coverpoint coverage_trans.cnd_flags;
-    BaseR     : coverpoint coverage_trans.BaseR;
+    cnd_flags : coverpoint coverage_trans.cnd_flags{option.weight = 0;}
+    BaseR     : coverpoint coverage_trans.BaseR{option.weight = 0;}
 
     // Cross for Branch instructions
     branch_cross : cross PCoffset9,cnd_flags,opcode

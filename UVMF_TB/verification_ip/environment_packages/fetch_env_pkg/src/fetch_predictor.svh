@@ -98,7 +98,7 @@ class fetch_predictor #(
     //`uvm_info("UNIMPLEMENTED_PREDICTOR_MODEL", "UVMF_CHANGE_ME: The fetch_predictor::write_fetch_in_ae function needs to be completed with DUT prediction model",UVM_NONE)
     //`uvm_info("UNIMPLEMENTED_PREDICTOR_MODEL", "******************************************************************************************************",UVM_NONE)
  
-    fetch_model_garbage_return = fetch_model (
+      fetch_model_garbage_return = fetch_model (
                 t.Enable_updatePC,
                 t.Enable_fetch,
                 t.Br_taken,

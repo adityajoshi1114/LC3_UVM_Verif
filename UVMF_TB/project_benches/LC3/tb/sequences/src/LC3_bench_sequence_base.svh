@@ -162,18 +162,18 @@ class LC3_bench_sequence_base extends uvmf_sequence_base #(uvm_sequence_item);
     // through the design.
     // Use the below extra time if needed
     fork
-      fe_env_in_agent_config.wait_for_num_clocks(40);
-      fe_env_out_agent_config.wait_for_num_clocks(40);
-      de_env_agent_in_config.wait_for_num_clocks(40);
-      de_env_agent_out_config.wait_for_num_clocks(40);
-      ex_env_agent_in_config.wait_for_num_clocks(40);
-      ex_env_agent_out_config.wait_for_num_clocks(40);
-      wb_env_agent_in_config.wait_for_num_clocks(40);
-      wb_env_agent_out_config.wait_for_num_clocks(40);
-      ctrl_env_agent_in_config.wait_for_num_clocks(40);
-      ctrl_env_agent_out_config.wait_for_num_clocks(40);
-      Instruction_config.wait_for_num_clocks(40);
-      Data_config.wait_for_num_clocks(40);
+      fe_env_in_agent_config.wait_for_num_clocks(10);
+      fe_env_out_agent_config.wait_for_num_clocks(10);
+      de_env_agent_in_config.wait_for_num_clocks(10);
+      de_env_agent_out_config.wait_for_num_clocks(10);
+      ex_env_agent_in_config.wait_for_num_clocks(10);
+      ex_env_agent_out_config.wait_for_num_clocks(10);
+      wb_env_agent_in_config.wait_for_num_clocks(10);
+      wb_env_agent_out_config.wait_for_num_clocks(10);
+      ctrl_env_agent_in_config.wait_for_num_clocks(10);
+      ctrl_env_agent_out_config.wait_for_num_clocks(10);
+      Instruction_config.wait_for_num_clocks(10);
+      Data_config.wait_for_num_clocks(10);
     join
 
     // pragma uvmf custom body end

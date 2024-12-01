@@ -90,14 +90,12 @@ class execute_predictor #(
     execute_in_ae_debug = t;
     `uvm_info("PRED", "Transaction Received through execute_in_ae", UVM_MEDIUM)
     `uvm_info("PRED", {"            Data: ",t.convert2string()}, UVM_FULL)
-    $display("Received transaction - %s",t.convert2string());
     // Construct one of each output transaction type.
     execute_out_ap_output_transaction = execute_out_ap_output_transaction_t::type_id::create("execute_out_ap_output_transaction");
     
 
-    $display("Empty output transaction - %s",execute_out_ap_output_transaction.convert2string());
     //  UVMF_CHANGE_ME: Implement predictor model here.  
-    execute_model(
+    assert(!execute_model(
       // Inputs
       t.E_ctrl, 
       t.bp_alu_1, 
@@ -122,9 +120,8 @@ class execute_predictor #(
       execute_out_ap_output_transaction.IR_ex,
       execute_out_ap_output_transaction.nzp,
       execute_out_ap_output_transaction.pc_out
-    );
+    ));
 
-    $display("Predicted transaction - %s",execute_out_ap_output_transaction.convert2string());
  
     // Code for sending output transaction out through execute_out_ap
     // Please note that each broadcasted transaction should be a different object than previously 

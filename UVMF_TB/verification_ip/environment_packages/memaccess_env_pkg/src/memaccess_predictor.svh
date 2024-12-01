@@ -97,7 +97,7 @@ class memaccess_predictor #(
     // `uvm_info("UNIMPLEMENTED_PREDICTOR_MODEL", "******************************************************************************************************",UVM_NONE)
     // `uvm_info("UNIMPLEMENTED_PREDICTOR_MODEL", "UVMF_CHANGE_ME: The memaccess_predictor::write_from_in_agent function needs to be completed with DUT prediction model",UVM_NONE)
     // `uvm_info("UNIMPLEMENTED_PREDICTOR_MODEL", "******************************************************************************************************",UVM_NONE)
-    mem_access_model(
+    assert(!mem_access_model(
       .M_Data(t.M_Data),
       .M_Addr(t.M_Addr),
       .M_Control(t.M_Control), 
@@ -107,7 +107,7 @@ class memaccess_predictor #(
       .DMem_din(pred_to_scrbd_output_transaction.DMem_din), 
       .memout(pred_to_scrbd_output_transaction.memout), 
       .DMem_rd(pred_to_scrbd_output_transaction.DMem_rd)
-    );
+    ));
     
     // Code for sending output transaction out through pred_to_scrbd
     // Please note that each broadcasted transaction should be a different object than previously 
