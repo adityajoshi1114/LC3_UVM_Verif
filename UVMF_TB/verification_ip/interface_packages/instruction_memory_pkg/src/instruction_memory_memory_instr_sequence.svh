@@ -47,10 +47,10 @@ class instruction_memory_memory_instr_sequence
     // req.Instr_Dout[8:0] = req.PCoffset9;
     // req.Instr_Dout[11:9] = req.dest;
     // req.Instr_Dout[15:12] = req.opcode;
-    req.randomize() with {Instr_Dout[15:12] == LD;};
-    req.PCoffset9 =  req.Instr_Dout[8:0];
-    req.dest = req.Instr_Dout[11:9];
-    req.opcode = req.Instr_Dout[15:12];
+    assert(req.randomize() with {Instr_Dout[15:12] == LD;});
+    assert($cast(req.PCoffset9 ,  req.Instr_Dout[8:0]));
+    assert($cast(req.dest , req.Instr_Dout[11:9]));
+    assert($cast(req.opcode , req.Instr_Dout[15:12]));
 
     assert(req.Instr_Dout[15:12] == 4'b0010);
     
@@ -66,11 +66,11 @@ class instruction_memory_memory_instr_sequence
     // req.Instr_Dout[8:6] = req.BaseR;
     // req.Instr_Dout[11:9] = req.dest;
     // req.Instr_Dout[15:12] = req.opcode;
-    req.randomize() with {Instr_Dout[15:12] == LDR;};
-    req.PCoffset6 = req.Instr_Dout[5:0];
-    req.BaseR = req.Instr_Dout[8:6];
-    req.dest = req.Instr_Dout[11:9];
-    req.opcode = req.Instr_Dout[15:12];
+    assert(req.randomize() with {Instr_Dout[15:12] == LDR;});
+    assert($cast(req.PCoffset6 , req.Instr_Dout[5:0]));
+    assert($cast(req.BaseR , req.Instr_Dout[8:6]));
+    assert($cast(req.dest , req.Instr_Dout[11:9]));
+    assert($cast(req.opcode , req.Instr_Dout[15:12]));
 
     assert(req.Instr_Dout[15:12] == 4'b0110);
     
@@ -85,10 +85,10 @@ class instruction_memory_memory_instr_sequence
     // req.Instr_Dout[8:0] = req.PCoffset9;
     // req.Instr_Dout[11:9] = req.dest;
     // req.Instr_Dout[15:12] = req.opcode;
-    req.randomize() with {Instr_Dout[15:12] == LDI;};
-    req.PCoffset9 = req.Instr_Dout[8:0];
-    req.dest = req.Instr_Dout[11:9];
-    req.opcode = req.Instr_Dout[15:12];
+    assert(req.randomize() with {Instr_Dout[15:12] == LDI;});
+    assert($cast(req.PCoffset9 , req.Instr_Dout[8:0]));
+    assert($cast(req.dest , req.Instr_Dout[11:9]));
+    assert($cast(req.opcode , req.Instr_Dout[15:12]));
 
     assert(req.Instr_Dout[15:12] == 4'b1010);
     
@@ -102,10 +102,10 @@ class instruction_memory_memory_instr_sequence
     // req.Instr_Dout[8:0] = req.PCoffset9;
     // req.Instr_Dout[11:9] = req.dest;
     // req.Instr_Dout[15:12] = req.opcode;
-    req.randomize() with {Instr_Dout[15:12] == LEA;};
-    req.PCoffset9 = req.Instr_Dout[8:0];
-    req.dest = req.Instr_Dout[11:9];
-    req.opcode = req.Instr_Dout[15:12];
+    assert(req.randomize() with {Instr_Dout[15:12] == LEA;});
+    assert($cast(req.PCoffset9 , req.Instr_Dout[8:0]));
+    assert($cast(req.dest , req.Instr_Dout[11:9]));
+    assert($cast(req.opcode , req.Instr_Dout[15:12]));
 
     assert(req.Instr_Dout[15:12] == 4'b1110);
     
@@ -117,9 +117,9 @@ class instruction_memory_memory_instr_sequence
     req.Instr_Dout[15:12] = LEA;
     req.Instr_Dout[8:0] = 30;
     req.Instr_Dout[11:9] = 3;
-    req.PCoffset9 = req.Instr_Dout[8:0];
-    req.dest = req.Instr_Dout[11:9];
-    req.opcode = req.Instr_Dout[15:12];
+    assert($cast(req.PCoffset9 , req.Instr_Dout[8:0]));
+    assert($cast(req.dest , req.Instr_Dout[11:9]));
+    assert($cast(req.opcode , req.Instr_Dout[15:12]));
     assert(req.Instr_Dout[15:12] == 4'b1110);
     
     start_item(req);
@@ -133,10 +133,10 @@ class instruction_memory_memory_instr_sequence
     // req.Instr_Dout[8:0] = req.PCoffset9;
     // req.Instr_Dout[11:9] = req.src;
     // req.Instr_Dout[15:12] = req.opcode;
-    req.randomize() with {Instr_Dout[15:12] == ST;};
-    req.PCoffset9 = req.Instr_Dout[8:0];
-    req.src = req.Instr_Dout[11:9];
-    req.opcode = req.Instr_Dout[15:12];
+    assert(req.randomize() with {Instr_Dout[15:12] == ST;});
+    assert($cast(req.PCoffset9 , req.Instr_Dout[8:0]));
+    assert($cast(req.src , req.Instr_Dout[11:9]));
+    assert($cast(req.opcode , req.Instr_Dout[15:12]));
 
     assert(req.Instr_Dout[15:12] == 4'b0011);
     
@@ -152,11 +152,11 @@ class instruction_memory_memory_instr_sequence
     // req.Instr_Dout[8:6] = req.BaseR;
     // req.Instr_Dout[11:9] = req.src;
     // req.Instr_Dout[15:12] = req.opcode;
-    req.randomize() with {Instr_Dout[15:12] == STR;};
-    req.PCoffset6 = req.Instr_Dout[5:0];
-    req.BaseR = req.Instr_Dout[8:6];
-    req.src = req.Instr_Dout[11:9];
-    req.opcode = req.Instr_Dout[15:12];
+    assert(req.randomize() with {Instr_Dout[15:12] == STR;});
+    assert($cast(req.PCoffset6 , req.Instr_Dout[5:0]));
+    assert($cast(req.BaseR , req.Instr_Dout[8:6]));
+    assert($cast(req.src , req.Instr_Dout[11:9]));
+    assert($cast(req.opcode , req.Instr_Dout[15:12]));
 
     assert(req.Instr_Dout[15:12] == 4'b0111);
     
@@ -170,10 +170,10 @@ class instruction_memory_memory_instr_sequence
     // req.Instr_Dout[8:0] = req.PCoffset9;
     // req.Instr_Dout[11:9] = req.src;
     // req.Instr_Dout[15:12] = req.opcode;
-    req.randomize() with {Instr_Dout[15:12] == STI;};
-    req.PCoffset9 = req.Instr_Dout[8:0];
-    req.src = req.Instr_Dout[11:9];
-    req.opcode = req.Instr_Dout[15:12];
+    assert(req.randomize() with {Instr_Dout[15:12] == STI;});
+    assert($cast(req.PCoffset9 , req.Instr_Dout[8:0]));
+    assert($cast(req.src , req.Instr_Dout[11:9]));
+    assert($cast(req.opcode , req.Instr_Dout[15:12]));
 
     assert(req.Instr_Dout[15:12] == 4'b1011);
     
