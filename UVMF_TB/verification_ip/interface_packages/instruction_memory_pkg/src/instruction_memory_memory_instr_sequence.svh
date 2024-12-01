@@ -43,10 +43,14 @@ class instruction_memory_memory_instr_sequence
 
     //LD instrunctions (512x8)
     repeat(4096) begin
-    req.randomize() with {opcode == LD;};
-    req.Instr_Dout[8:0] = req.PCoffset9;
-    req.Instr_Dout[11:9] = req.dest;
-    req.Instr_Dout[15:12] = req.opcode;
+    // req.randomize() with {opcode == LD;};
+    // req.Instr_Dout[8:0] = req.PCoffset9;
+    // req.Instr_Dout[11:9] = req.dest;
+    // req.Instr_Dout[15:12] = req.opcode;
+    req.randomize() with {Instr_Dout[15:12] == LD;};
+    req.PCoffset9 =  req.Instr_Dout[8:0];
+    req.dest = req.Instr_Dout[11:9];
+    req.opcode = req.Instr_Dout[15:12];
 
     assert(req.Instr_Dout[15:12] == 4'b0010);
     
@@ -57,11 +61,16 @@ class instruction_memory_memory_instr_sequence
 
     //LDR instrunctions (64x8x8)
     repeat(4096) begin
-    req.randomize() with {opcode == LDR;};
-    req.Instr_Dout[5:0] = req.PCoffset6;
-    req.Instr_Dout[8:6] = req.BaseR;
-    req.Instr_Dout[11:9] = req.dest;
-    req.Instr_Dout[15:12] = req.opcode;
+    // req.randomize() with {opcode == LDR;};
+    // req.Instr_Dout[5:0] = req.PCoffset6;
+    // req.Instr_Dout[8:6] = req.BaseR;
+    // req.Instr_Dout[11:9] = req.dest;
+    // req.Instr_Dout[15:12] = req.opcode;
+    req.randomize() with {Instr_Dout[15:12] == LDR;};
+    req.PCoffset6 = req.Instr_Dout[5:0];
+    req.BaseR = req.Instr_Dout[8:6];
+    req.dest = req.Instr_Dout[11:9];
+    req.opcode = req.Instr_Dout[15:12];
 
     assert(req.Instr_Dout[15:12] == 4'b0110);
     
@@ -72,10 +81,14 @@ class instruction_memory_memory_instr_sequence
 
     //LDI instrunctions (512x8)
     repeat(4096) begin
-    req.randomize() with {opcode == LDI;};
-    req.Instr_Dout[8:0] = req.PCoffset9;
-    req.Instr_Dout[11:9] = req.dest;
-    req.Instr_Dout[15:12] = req.opcode;
+    // req.randomize() with {opcode == LDI;};
+    // req.Instr_Dout[8:0] = req.PCoffset9;
+    // req.Instr_Dout[11:9] = req.dest;
+    // req.Instr_Dout[15:12] = req.opcode;
+    req.randomize() with {Instr_Dout[15:12] == LDI;};
+    req.PCoffset9 = req.Instr_Dout[8:0];
+    req.dest = req.Instr_Dout[11:9];
+    req.opcode = req.Instr_Dout[15:12];
 
     assert(req.Instr_Dout[15:12] == 4'b1010);
     
@@ -85,10 +98,14 @@ class instruction_memory_memory_instr_sequence
 
     //LDA instrunctions (512x8)
     repeat(4096) begin
-    req.randomize() with {opcode == LEA;};
-    req.Instr_Dout[8:0] = req.PCoffset9;
-    req.Instr_Dout[11:9] = req.dest;
-    req.Instr_Dout[15:12] = req.opcode;
+    // req.randomize() with {opcode == LEA;};
+    // req.Instr_Dout[8:0] = req.PCoffset9;
+    // req.Instr_Dout[11:9] = req.dest;
+    // req.Instr_Dout[15:12] = req.opcode;
+    req.randomize() with {Instr_Dout[15:12] == LEA;};
+    req.PCoffset9 = req.Instr_Dout[8:0];
+    req.dest = req.Instr_Dout[11:9];
+    req.opcode = req.Instr_Dout[15:12];
 
     assert(req.Instr_Dout[15:12] == 4'b1110);
     
@@ -96,13 +113,30 @@ class instruction_memory_memory_instr_sequence
     finish_item(req);
     end
 
+    // Additional item for missing bin in LEA (PCOffset9 -> 30, Dest -> R3)
+    req.Instr_Dout[15:12] = LEA;
+    req.Instr_Dout[8:0] = 30;
+    req.Instr_Dout[11:9] = 3;
+    req.PCoffset9 = req.Instr_Dout[8:0];
+    req.dest = req.Instr_Dout[11:9];
+    req.opcode = req.Instr_Dout[15:12];
+    assert(req.Instr_Dout[15:12] == 4'b1110);
+    
+    start_item(req);
+    finish_item(req);
+
+
 
     //ST instrunctions (512x8)
     repeat(4096) begin
-    req.randomize() with {opcode == ST;};
-    req.Instr_Dout[8:0] = req.PCoffset9;
-    req.Instr_Dout[11:9] = req.src;
-    req.Instr_Dout[15:12] = req.opcode;
+    // req.randomize() with {opcode == ST;};
+    // req.Instr_Dout[8:0] = req.PCoffset9;
+    // req.Instr_Dout[11:9] = req.src;
+    // req.Instr_Dout[15:12] = req.opcode;
+    req.randomize() with {Instr_Dout[15:12] == ST;};
+    req.PCoffset9 = req.Instr_Dout[8:0];
+    req.src = req.Instr_Dout[11:9];
+    req.opcode = req.Instr_Dout[15:12];
 
     assert(req.Instr_Dout[15:12] == 4'b0011);
     
@@ -113,11 +147,16 @@ class instruction_memory_memory_instr_sequence
 
     //STR instrunctions (64x8x8)
     repeat(4096) begin
-    req.randomize() with {opcode == STR;};
-    req.Instr_Dout[5:0] = req.PCoffset6;
-    req.Instr_Dout[8:6] = req.BaseR;
-    req.Instr_Dout[11:9] = req.src;
-    req.Instr_Dout[15:12] = req.opcode;
+    // req.randomize() with {opcode == STR;};
+    // req.Instr_Dout[5:0] = req.PCoffset6;
+    // req.Instr_Dout[8:6] = req.BaseR;
+    // req.Instr_Dout[11:9] = req.src;
+    // req.Instr_Dout[15:12] = req.opcode;
+    req.randomize() with {Instr_Dout[15:12] == STR;};
+    req.PCoffset6 = req.Instr_Dout[5:0];
+    req.BaseR = req.Instr_Dout[8:6];
+    req.src = req.Instr_Dout[11:9];
+    req.opcode = req.Instr_Dout[15:12];
 
     assert(req.Instr_Dout[15:12] == 4'b0111);
     
@@ -127,10 +166,14 @@ class instruction_memory_memory_instr_sequence
 
     //STI instrunctions (512x8)
     repeat(4096) begin
-    req.randomize() with {opcode == STI;};
-    req.Instr_Dout[8:0] = req.PCoffset9;
-    req.Instr_Dout[11:9] = req.src;
-    req.Instr_Dout[15:12] = req.opcode;
+    // req.randomize() with {opcode == STI;};
+    // req.Instr_Dout[8:0] = req.PCoffset9;
+    // req.Instr_Dout[11:9] = req.src;
+    // req.Instr_Dout[15:12] = req.opcode;
+    req.randomize() with {Instr_Dout[15:12] == STI;};
+    req.PCoffset9 = req.Instr_Dout[8:0];
+    req.src = req.Instr_Dout[11:9];
+    req.opcode = req.Instr_Dout[15:12];
 
     assert(req.Instr_Dout[15:12] == 4'b1011);
     
